@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
-import { InputLabel, MenuItem, Chip, OutlinedInput } from '@mui/material';
+import { InputLabel, MenuItem, Chip, OutlinedInput, SelectChangeEvent } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export type Option = {
@@ -26,6 +26,7 @@ export interface SelectControllerProps {
     margin?: 'none' | 'dense' | 'normal' | undefined;
     size?: 'small' | 'medium' | undefined;
     fullWidth?: boolean;
+    onChange?: (event: SelectChangeEvent) => void;
 }
 
 const ChipsWrapper = styled('div')(
@@ -46,7 +47,8 @@ export const SelectController = ({
     variant = 'outlined',
     margin = 'dense',
     fullWidth = true,
-    size
+    size,
+    onChange
 }: SelectControllerProps) => {
     return (
         <Controller
@@ -79,6 +81,10 @@ export const SelectController = ({
                             )
                         })}
                         {...field}
+                        onChange={(event) => {
+                            onChange && onChange(event);
+                            field.onChange(event);
+                        }}
                     >
                         {options?.map((option, index) => {
                             return (
