@@ -1,5 +1,5 @@
 {
-    "name": "dashty-template-react-component-library",
+    "name": "mui-rhf-library",
     "version": "0.0.1",
     "description": "A template for a React component library",
     "author": "dashty94",
@@ -11,6 +11,9 @@
     },
     "devDependencies": {
         "@babel/core": "^7.17.0",
+        "@emotion/react": "^11.7.1",
+        "@emotion/styled": "^11.6.0",
+        "@mui/material": "^5.4.1",
         "@rollup/plugin-commonjs": "^21.0.1",
         "@rollup/plugin-node-resolve": "^13.1.3",
         "@rollup/plugin-typescript": "^8.3.0",
@@ -22,6 +25,7 @@
         "babel-loader": "^8.2.3",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
+        "react-hook-form": "^7.26.1",
         "rollup": "^2.67.1",
         "rollup-plugin-dts": "^4.1.0",
         "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -37,10 +41,14 @@
     "types": "dist/index.d.ts",
     "repository": {
         "type": "git",
-        "url": "https://github.com/dashty94/template-react-component-library"
+        "url": "https://github.com/dashty94/mui-rhf-library"
     },
     "dependencies": {},
     "peerDependencies": {
-        "react": "^17.0.2"
+        "react": "^17.0.2",
+        "@emotion/react": "^11.7.1",
+        "@emotion/styled": "^11.6.0",
+        "@mui/material": "^5.4.1",
+        "react-hook-form": "^7.26.1"
     }
 }
