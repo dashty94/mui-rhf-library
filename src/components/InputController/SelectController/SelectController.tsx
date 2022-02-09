@@ -44,7 +44,7 @@ export const SelectController = ({
     control,
     errors,
     multiple,
-    variant = 'outlined',
+    variant,
     margin = 'dense',
     fullWidth = true,
     size,
