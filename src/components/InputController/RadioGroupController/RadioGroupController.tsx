@@ -3,13 +3,14 @@ import { Controller } from 'react-hook-form';
 
 // material ui
 import { FormControl, FormControlLabel, FormHelperText, FormLabel, Radio, RadioGroup } from '@mui/material';
+import { Options } from '../SelectController/SelectController';
 
 export interface RadioGroupControllerProps {
     name: string;
     label: string;
     control: any;
     defaultValue: string | number;
-    options: Array<{ value: string | number; label: string }>;
+    options: Options;
     errors: any;
 }
 

@@ -45,8 +45,8 @@ export const SelectController = ({
     errors,
     multiple,
     variant,
-    margin = 'dense',
-    fullWidth = true,
+    margin,
+    fullWidth,
     size,
     onChange
 }: SelectControllerProps) => {

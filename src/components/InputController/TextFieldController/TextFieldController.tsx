@@ -6,7 +6,7 @@ export interface TextFieldControllerProps {
     name: string;
     label: string;
     control: any;
-    defaultValue: string;
+    defaultValue: string | number;
     errors: any;
     variant?: 'standard' | 'outlined' | 'filled' | undefined;
     fullWidth?: boolean;
@@ -20,9 +20,9 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
     label,
     defaultValue,
     errors,
-    fullWidth = true,
-    variant = 'outlined',
-    margin = 'dense',
+    fullWidth,
+    variant,
+    margin,
     size
 }) => {
     return (
