@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Select, { SelectProps } from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
 import { InputLabel, MenuItem, Chip, OutlinedInput, SelectChangeEvent } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -13,21 +13,14 @@ export type Option = {
 
 export type Options = Array<Option>;
 
-export interface SelectControllerProps {
+export type SelectControllerProps = SelectProps & {
     name: string;
-    label: string;
     control: any;
-    defaultValue: any;
+    defaultValue?: any;
     options: Options;
     errors: any;
-    disabled?: boolean;
-    multiple?: boolean;
-    variant?: 'standard' | 'outlined' | 'filled' | undefined;
-    margin?: 'none' | 'dense' | 'normal' | undefined;
-    size?: 'small' | 'medium' | undefined;
-    fullWidth?: boolean;
     onChange?: (event: SelectChangeEvent) => void;
-}
+};
 
 const ChipsWrapper = styled('div')(
     () => `
@@ -38,40 +31,28 @@ const ChipsWrapper = styled('div')(
 
 export const SelectController = ({
     name,
-    label,
-    options,
-    defaultValue,
     control,
+    defaultValue,
+    options,
     errors,
-    multiple,
-    variant,
-    margin,
-    fullWidth,
-    size,
-    onChange
+    onChange,
+    ...rest
 }: SelectControllerProps) => {
     return (
         <Controller
             name={name}
             control={control}
-            defaultValue={multiple ? defaultValue?.map((dv: Option) => dv.value) || [] : defaultValue || ''}
+            defaultValue={rest?.multiple ? defaultValue?.map((dv: Option) => dv.value) || [] : defaultValue || ''}
             render={({ field }) => (
-                <FormControl
-                    variant={variant}
-                    margin={margin}
-                    fullWidth={fullWidth}
-                    size={size}
-                    error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}
-                >
-                    <InputLabel id={name}>{label}</InputLabel>
+                <FormControl error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}>
+                    <InputLabel id={name}>{rest.label}</InputLabel>
 
                     <Select
                         labelId={name}
-                        id={label}
                         style={{ width: '100%' }}
-                        multiple={multiple}
-                        input={<OutlinedInput label={label} />}
-                        {...(multiple && {
+                        multiple={rest?.multiple}
+                        input={<OutlinedInput label={rest.label} />}
+                        {...(rest?.multiple && {
                             renderValue: (selected: any) => (
                                 <ChipsWrapper>
                                     {selected.map((value: any, i: number) => (
@@ -80,6 +61,7 @@ export const SelectController = ({
                                 </ChipsWrapper>
                             )
                         })}
+                        {...rest}
                         {...field}
                         onChange={(event) => {
                             onChange && onChange(event);
