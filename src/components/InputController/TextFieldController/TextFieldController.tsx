@@ -1,29 +1,21 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
+import { TextFieldProps } from '@mui/material';
 
-export interface TextFieldControllerProps {
+export type TextFieldControllerProps = TextFieldProps & {
     name: string;
-    label: string;
     control: any;
-    defaultValue: string | number;
     errors: any;
-    variant?: 'standard' | 'outlined' | 'filled' | undefined;
-    fullWidth?: boolean;
-    margin?: 'none' | 'dense' | 'normal' | undefined;
-    size?: 'small' | 'medium' | undefined;
-}
+    defaultValue?: any;
+};
 
 export const TextFieldController: React.FC<TextFieldControllerProps> = ({
     name,
     control,
-    label,
-    defaultValue,
     errors,
-    fullWidth,
-    variant,
-    margin,
-    size
+    defaultValue,
+    ...rest
 }) => {
     return (
         <Controller
@@ -32,13 +24,10 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
             defaultValue={defaultValue || ''}
             render={({ field }) => (
                 <TextField
-                    fullWidth={fullWidth}
-                    variant={variant}
-                    label={label}
+                    fullWidth={rest.fullWidth}
                     error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}
                     helperText={errors[name]?.message}
-                    margin={margin}
-                    size={size}
+                    {...rest}
                     {...field}
                 />
             )}
