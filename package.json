@@ -4,6 +4,14 @@
     "description": "A set of configured Material UI form inputs configured with React Hook Form and Yup.",
     "author": "dashty94",
     "license": "MIT",
+    "keywords": [
+        "mui",
+        "react",
+        "form",
+        "yup",
+        "react-hook-form",
+        "material-ui"
+    ],
     "scripts": {
         "rollup": "rollup -c",
         "storybook": "start-storybook -p 6006",

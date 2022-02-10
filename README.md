@@ -8,7 +8,7 @@ A set of configured Material UI form inputs configured with React Hook Form and 
 
 ## Installation
 
-mui-rhf-library is available as an [npm package](https://www.npmjs.com/package/@mui/material).
+mui-rhf-library is available as an [npm package](https://www.npmjs.com/package/mui-rhf-library).
 
 ```sh
 // with npm
