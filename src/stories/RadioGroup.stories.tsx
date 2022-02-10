@@ -1,10 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {
-    RadioGroupController,
-    RadioGroupControllerProps
-} from '../components/InputController/RadioGroupController/RadioGroupController';
+import { RadioGroupController } from '../components/InputController/RadioGroupController/RadioGroupController';
 import { useForm } from 'react-hook-form';
+import { RadioGroupControllerProps } from '../fields';
 
 const meta: Meta = {
     title: 'RadioGroup Controller',

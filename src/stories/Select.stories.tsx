@@ -1,10 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {
-    SelectController,
-    SelectControllerProps
-} from '../components/InputController/SelectController/SelectController';
+import { SelectController } from '../components/InputController/SelectController/SelectController';
 import { useForm } from 'react-hook-form';
+import { SelectControllerProps } from '../fields';
 
 const meta: Meta = {
     title: 'Select Controller',

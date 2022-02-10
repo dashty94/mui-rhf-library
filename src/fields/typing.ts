@@ -51,15 +51,12 @@ export type AutocompleteControllerProps = MuiRhfFieldProps &
     AutocompleteProps<Object, boolean, boolean, boolean> & {
         defaultValue: any;
         options: Array<Option>;
-        disabled?: boolean;
         multiple?: boolean;
 
-        textFieldProps: TextFieldProps;
+        textFieldProps: TextFieldProps; // Props that's only applied to the TextField component
 
         loading?: boolean;
         renderOption?: (option: Option | any) => React.ReactNode;
         disableClearable?: boolean;
         // onChange?: (event: SelectChangeEvent) => void;
-        size?: 'small' | 'medium' | undefined;
-        noOptionsText?: string;
     };

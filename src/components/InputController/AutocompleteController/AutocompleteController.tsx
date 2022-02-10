@@ -9,11 +9,8 @@ export const AutocompleteController = ({
     name,
     errors,
     defaultValue,
-
     options,
-
     textFieldProps,
-
     multiple,
     size = 'small',
     ...rest
@@ -22,7 +19,7 @@ export const AutocompleteController = ({
         <Controller
             control={control}
             name={name}
-            render={({ field: { onChange: fieldOnChange, value: fieldValue, ...rest } }) => {
+            render={({ field: { onChange: fieldOnChange, value: fieldValue, ...restField } }) => {
                 return (
                     <Autocomplete
                         defaultValue={multiple ? defaultValue?.map((dv: Option) => dv.value) || [] : defaultValue || ''}
@@ -38,10 +35,10 @@ export const AutocompleteController = ({
                         isOptionEqualToValue={(option: Option, value: any) => {
                             return option?.value == value;
                         }}
-                        disableClearable={fieldValue.disableClearable}
-                        disabled={fieldValue.disabled}
-                        {...(fieldValue.noOptionsText && {
-                            noOptionsText: fieldValue.noOptionsText
+                        disableClearable={rest.disableClearable}
+                        disabled={rest.disabled}
+                        {...(rest.noOptionsText && {
+                            noOptionsText: rest.noOptionsText
                         })}
                         multiple={multiple}
                         size={size}
@@ -50,9 +47,9 @@ export const AutocompleteController = ({
                             return (
                                 <TextField
                                     {...params}
-                                    label={textFieldProps.label}
-                                    variant={textFieldProps.variant}
-                                    fullWidth={textFieldProps.fullWidth}
+                                    label={textFieldProps?.label}
+                                    variant={textFieldProps?.variant}
+                                    fullWidth={textFieldProps?.fullWidth}
                                     error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}
                                     helperText={errors[name]?.message}
                                     inputProps={{
@@ -72,7 +69,7 @@ export const AutocompleteController = ({
                         //             : ''
                         //     );
                         // }}
-                        {...rest}
+                        {...restField}
                     />
                 );
             }}

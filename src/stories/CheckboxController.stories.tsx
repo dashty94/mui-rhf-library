@@ -1,10 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {
-    CheckboxController,
-    CheckboxControllerProps
-} from '../components/InputController/CheckboxController/CheckboxController';
+import { CheckboxController } from '../components/InputController/CheckboxController/CheckboxController';
 import { useForm } from 'react-hook-form';
+import { CheckboxControllerProps } from '../fields';
 
 const meta: Meta = {
     title: 'Checkbox Controller',

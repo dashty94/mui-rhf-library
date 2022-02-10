@@ -1,10 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {
-    SwitchController,
-    SwitchControllerProps
-} from '../components/InputController/SwitchController/SwitchController';
+import { SwitchController } from '../components/InputController/SwitchController/SwitchController';
 import { useForm } from 'react-hook-form';
+import { SwitchControllerProps } from '../fields';
 
 const meta: Meta = {
     title: 'Switch Controller',

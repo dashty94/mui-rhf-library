@@ -1,10 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {
-    TextFieldController,
-    TextFieldControllerProps
-} from '../components/InputController/TextFieldController/TextFieldController';
+import { TextFieldController } from '../components/InputController/TextFieldController/TextFieldController';
 import { useForm } from 'react-hook-form';
+import { TextFieldControllerProps } from '../fields';
 
 const meta: Meta = {
     title: 'TextField Controller',

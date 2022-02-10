@@ -1,10 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import {
-    AutocompleteController,
-    AutocompleteControllerProps
-} from '../components/InputController/AutocompleteController/AutocompleteController';
+import { AutocompleteController } from '../components/InputController/AutocompleteController/AutocompleteController';
 import { useForm } from 'react-hook-form';
+import { AutocompleteControllerProps } from '../fields';
 
 const meta: Meta = {
     title: 'Autocomplete Controller',
@@ -36,25 +34,30 @@ export const Autocomplete = Template.bind({});
 
 Autocomplete.args = {
     name: 'Autocomplete',
-    label: 'Autocomplete Controller',
+    textFieldProps: {
+        label: 'Autocomplete Controller',
+        fullWidth: true,
+        variant: 'outlined'
+    },
     defaultValue: '',
     options: [
         { label: 'Option One', value: 'option-one' },
         { label: 'Option Two', value: 'option-two' }
-    ],
-    variant: 'outlined'
+    ]
 };
 
-export const SelectMultiple = Template.bind({});
+export const AutocompleteMultiple = Template.bind({});
 
-SelectMultiple.args = {
+AutocompleteMultiple.args = {
     name: 'autocompleteMultiple',
-    label: 'Autocomplete Multiple Controller',
+    textFieldProps: {
+        label: 'Autocomplete Multiple Controller',
+        fullWidth: true
+    },
     defaultValue: [],
     options: [
         { label: 'Option One', value: 'option-one' },
         { label: 'Option Two', value: 'option-two' }
     ],
-    variant: 'outlined',
     multiple: true
 };

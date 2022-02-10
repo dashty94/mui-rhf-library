@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 // material ui
 import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText } from '@mui/material';
 
-import { CheckboxControllerProps } from '../../../fields/index';
+import { CheckboxControllerProps } from '../../../fields';
 
 export const CheckboxController: React.FC<CheckboxControllerProps> = ({ control, name, label, errors }) => {
     return (
