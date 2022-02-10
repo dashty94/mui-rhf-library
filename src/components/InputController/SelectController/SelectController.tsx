@@ -29,7 +29,10 @@ export const SelectController = ({
             control={control}
             defaultValue={rest?.multiple ? defaultValue?.map((dv: Option) => dv.value) || [] : defaultValue || ''}
             render={({ field }) => (
-                <FormControl error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}>
+                <FormControl
+                    error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}
+                    fullWidth={rest.fullWidth}
+                >
                     <InputLabel id={name}>{rest.label}</InputLabel>
 
                     <Select
