@@ -3,16 +3,7 @@ import { Controller } from 'react-hook-form';
 
 // material ui
 import { FormControl, FormControlLabel, FormHelperText, FormLabel, Radio, RadioGroup } from '@mui/material';
-import { Options } from '../SelectController/SelectController';
-
-export interface RadioGroupControllerProps {
-    name: string;
-    label: string;
-    control: any;
-    defaultValue: string | number;
-    options: Options;
-    errors: any;
-}
+import { RadioGroupControllerProps } from '../../../fields/index';
 
 export const RadioGroupController: React.FC<RadioGroupControllerProps> = ({
     name,

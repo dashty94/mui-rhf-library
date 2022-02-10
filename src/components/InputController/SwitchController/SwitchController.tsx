@@ -6,13 +6,7 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
-export interface SwitchControllerProps {
-    name: string;
-    label: string;
-    control: any;
-    defaultValue: boolean;
-    errors: any;
-}
+import { SwitchControllerProps } from '../../../fields/index';
 
 export const SwitchController: React.FC<SwitchControllerProps> = ({ control, name, label, errors, defaultValue }) => {
     const [isChecked, setIsChecked] = useState(defaultValue);

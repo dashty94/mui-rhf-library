@@ -1,14 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
-import { TextFieldProps } from '@mui/material';
-
-export type TextFieldControllerProps = TextFieldProps & {
-    name: string;
-    control: any;
-    errors: any;
-    defaultValue?: any;
-};
+import { TextFieldControllerProps } from '../../../fields/index';
 
 export const TextFieldController: React.FC<TextFieldControllerProps> = ({
     name,

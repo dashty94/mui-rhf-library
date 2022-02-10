@@ -1,26 +1,11 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectProps } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
-import { InputLabel, MenuItem, Chip, OutlinedInput, SelectChangeEvent } from '@mui/material';
+import { InputLabel, MenuItem, Chip, OutlinedInput } from '@mui/material';
 import { styled } from '@mui/material/styles';
-
-export type Option = {
-    value: string;
-    label: string;
-};
-
-export type Options = Array<Option>;
-
-export type SelectControllerProps = SelectProps & {
-    name: string;
-    control: any;
-    defaultValue?: any;
-    options: Options;
-    errors: any;
-    onChange?: (event: SelectChangeEvent) => void;
-};
+import { SelectControllerProps, Option } from '../../../fields/index';
 
 const ChipsWrapper = styled('div')(
     () => `
