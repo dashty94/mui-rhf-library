@@ -3,6 +3,8 @@ import { Meta, Story } from '@storybook/react';
 import { AutocompleteController } from '../components/InputController/AutocompleteController/AutocompleteController';
 import { useForm } from 'react-hook-form';
 import { AutocompleteControllerProps } from '../fields';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 const meta: Meta = {
     title: 'Autocomplete Controller',
@@ -22,18 +24,34 @@ const meta: Meta = {
 export default meta;
 
 const Template: Story<AutocompleteControllerProps> = (args) => {
+    const schema = yup.object().shape({
+        autocomplete: yup.string().required()
+    });
+
     const {
+        handleSubmit,
         control,
         formState: { errors }
-    } = useForm();
+    } = useForm({
+        resolver: yupResolver(schema)
+    });
 
-    return <AutocompleteController {...args} control={control} errors={errors} />;
+    const handleFormSubmit = (data: any) => {
+        console.log({ data });
+    };
+
+    return (
+        <form onSubmit={handleSubmit(handleFormSubmit)}>
+            <AutocompleteController {...args} name="autocomplete" control={control} errors={errors} />
+            <button type="submit">Submit</button>
+        </form>
+    );
 };
 
 export const Autocomplete = Template.bind({});
 
 Autocomplete.args = {
-    name: 'Autocomplete',
+    name: 'autocomplete',
     textFieldProps: {
         label: 'Autocomplete Controller',
         fullWidth: true,
