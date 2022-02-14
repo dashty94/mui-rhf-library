@@ -3,7 +3,7 @@ import { TextFieldProps, SelectProps, SelectChangeEvent, AutocompleteProps } fro
 
 // Common input field props
 export type MuiRhfFieldProps = {
-    control: Control;
+    control: Control<any>;
     name: string;
     errors: any;
 };
