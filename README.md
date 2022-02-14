@@ -120,23 +120,25 @@ Props of Material UI Autocomplete are also available.
 
 #### Checkbox Controller
 
-| Prop     | Type                                                 | Default | Definition                                                   |
-| -------- | ---------------------------------------------------- | ------- | ------------------------------------------------------------ |
-| name*    | string                                               |         | The name of the input                                        |
-| label*   | string                                               |         | The label content                                            |
-| control* | any                                                  |         | The React Hook Form object to register components into React Hook Form. |
-| errors*  | any                                                  |         | The React Hook Form object to retrieve errors                |
-| onChange | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the checkbox is changed |
+| Prop         | Type                                                 | Default | Definition                                                   |
+| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------ |
+| name*        | string                                               |         | The name of the input                                        |
+| label*       | string                                               |         | The label content                                            |
+| control*     | any                                                  |         | The React Hook Form object to register components into React Hook Form. |
+| errors*      | any                                                  |         | The React Hook Form object to retrieve errors                |
+| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the checkbox is changed |
+| defaultValue | boolean                                              |         | The default value of the input that would be injected into React Hook Form Controller and the component |
 
 #### Switch Controller
 
-| Prop         | Type    | Default | Definition                                                   |
-| ------------ | ------- | ------- | ------------------------------------------------------------ |
-| name*        | string  |         | The name of the input                                        |
-| label*       | string  |         | The label content                                            |
-| control*     | any     |         | The React Hook Form object to register components into React Hook Form. |
-| errors*      | any     |         | The React Hook Form object to retrieve errors                |
-| defaultValue | boolean |         |                                                              |
+| Prop         | Type                                                 | Default | Definition                                                   |
+| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------ |
+| name*        | string                                               |         | The name of the input                                        |
+| label*       | string                                               |         | The label content                                            |
+| control*     | any                                                  |         | The React Hook Form object to register components into React Hook Form. |
+| errors*      | any                                                  |         | The React Hook Form object to retrieve errors                |
+| defaultValue | boolean                                              |         | The default value of the input that would be injected into React Hook Form Controller and the component |
+| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the switch is changed |
 
 ## 
 

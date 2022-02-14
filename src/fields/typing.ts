@@ -31,7 +31,8 @@ export type SelectControllerProps = MuiRhfFieldProps &
 // Switch
 export type SwitchControllerProps = MuiRhfFieldProps & {
     label: string;
-    defaultValue: boolean;
+    defaultValue?: boolean;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 // RadioGroup

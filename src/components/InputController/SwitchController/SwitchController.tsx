@@ -8,7 +8,15 @@ import Switch from '@mui/material/Switch';
 
 import { SwitchControllerProps } from '../../../fields/index';
 
-export const SwitchController: React.FC<SwitchControllerProps> = ({ control, name, label, errors, defaultValue }) => {
+export const SwitchController: React.FC<SwitchControllerProps> = ({
+    control,
+    name,
+    label,
+    errors,
+    defaultValue = false,
+    onChange,
+    ...rest
+}) => {
     const [isChecked, setIsChecked] = useState(defaultValue);
 
     return (
@@ -17,7 +25,7 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({ control, nam
                 <Controller
                     name={name}
                     control={control}
-                    defaultValue={defaultValue || false}
+                    defaultValue={defaultValue}
                     render={({ field }) => {
                         return (
                             <FormControlLabel
@@ -26,9 +34,11 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({ control, nam
                                     <Switch
                                         checked={isChecked}
                                         {...field}
+                                        {...rest}
                                         onChange={(event) => {
                                             setIsChecked(event.target.checked);
-                                            field.onChange(event.target.checked);
+                                            field.onChange(Boolean(event.target.checked));
+                                            onChange && onChange(event);
                                         }}
                                     />
                                 }
