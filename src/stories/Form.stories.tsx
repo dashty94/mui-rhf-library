@@ -2,10 +2,10 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { TextFieldController } from '../components/InputController/TextFieldController/TextFieldController';
 import { useForm } from 'react-hook-form';
-import { SelectControllerProps, TextFieldControllerProps } from '../fields';
+import { CheckboxControllerProps } from '../fields';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { SelectController } from '../components/InputController/SelectController/SelectController';
+import { CheckboxController } from '../components/InputController/CheckboxController/CheckboxController';
 
 const meta: Meta = {
     title: 'Form',
@@ -24,9 +24,9 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<SelectControllerProps> = (args) => {
+const Template: Story<CheckboxControllerProps> = (args) => {
     const schema = yup.object().shape({
-        textfield: yup.string().required()
+        textfield: yup.string()
     });
 
     const {
@@ -45,22 +45,11 @@ const Template: Story<SelectControllerProps> = (args) => {
         <form onSubmit={handleSubmit(handleFormSubmit)}>
             {/* <TextFieldController {...args} control={control} errors={errors} /> */}
 
-            <SelectController {...args} control={control} errors={errors} />
+            <CheckboxController name="test2" label="test2" control={control} errors={errors} defaultValue={true} />
+            <CheckboxController name="test" label="test" control={control} errors={errors} />
             <button type="submit">Submit</button>
         </form>
     );
 };
 
 export const TextField = Template.bind({});
-
-TextField.args = {
-    name: 'textfield',
-    defaultValue: '',
-    variant: 'outlined',
-    label: 'Text Field Controller',
-    options: [
-        { label: 'Option One', value: 'option-one' },
-        { label: 'Option Two', value: 'option-two' }
-    ],
-    fullWidth: true
-};

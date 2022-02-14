@@ -5,16 +5,40 @@ import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText } fr
 
 import { CheckboxControllerProps } from '../../../fields';
 
-export const CheckboxController: React.FC<CheckboxControllerProps> = ({ control, name, label, errors }) => {
+export const CheckboxController: React.FC<CheckboxControllerProps> = ({
+    control,
+    name,
+    label,
+    defaultValue = false,
+    errors,
+    onChange,
+    ...rest
+}) => {
     return (
         <FormControl required error={errors.hasOwnProperty(name)} component="fieldset">
             <FormGroup>
-                <Controller
-                    name={name}
-                    control={control}
-                    render={({ field }) => {
-                        return <FormControlLabel control={<Checkbox {...field} />} label={label} />;
-                    }}
+                <FormControlLabel
+                    label={label}
+                    control={
+                        <Controller
+                            defaultValue={defaultValue}
+                            name={name}
+                            control={control}
+                            render={({ field }) => {
+                                return (
+                                    <Checkbox
+                                        checked={field.value}
+                                        {...field}
+                                        {...rest}
+                                        onChange={(e) => {
+                                            onChange && onChange(e);
+                                            field.onChange(e.target.checked);
+                                        }}
+                                    />
+                                );
+                            }}
+                        />
+                    }
                 />
             </FormGroup>
             <FormHelperText>{errors[name]?.message}</FormHelperText>
