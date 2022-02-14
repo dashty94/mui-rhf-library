@@ -45,7 +45,7 @@ export type RadioGroupControllerProps = MuiRhfFieldProps & {
 export type CheckboxControllerProps = MuiRhfFieldProps & {
     label: string;
     defaultValue?: boolean;
-    onChange?: (event: React.ChangeEvent<boolean>) => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 // Autocomplete
