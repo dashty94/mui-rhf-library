@@ -3,7 +3,8 @@ import { Meta, Story } from '@storybook/react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { FormFields, FormFieldsProps } from '../components/form/FormFields';
+import { FormFields } from '../components/form/FormFields';
+import { FormFieldsProps } from '../form/typing';
 
 const meta: Meta = {
     title: 'Form',
@@ -42,7 +43,8 @@ const Template: Story<FormFieldsProps> = (args) => {
             label: 'firstName',
             control: control,
             errors: errors,
-            props: { fullWidth: true }
+            props: { fullWidth: true },
+            gridProps: { xs: 12 }
         }
     ];
 

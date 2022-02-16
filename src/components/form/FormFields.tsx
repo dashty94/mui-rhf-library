@@ -1,107 +1,43 @@
 import React from 'react';
-import { Control } from 'react-hook-form';
 import { TextFieldController } from '../InputController/TextFieldController/TextFieldController';
 import { SelectController } from '../InputController/SelectController/SelectController';
 import { AutocompleteController } from '../InputController/AutocompleteController/AutocompleteController';
 import { CheckboxController } from '../InputController/CheckboxController/CheckboxController';
 import { RadioGroupController } from '../InputController/RadioGroupController/RadioGroupController';
 import { SwitchController } from '../InputController/SwitchController/SwitchController';
+import { Grid } from '@mui/material';
 
-type Field = {
-    fieldType: 'textField' | 'select' | 'autocomplete' | 'checkbox' | 'radioGroup' | 'switch' | string;
-    name: string;
-    label?: string;
-    props?: any;
+import { FormFieldsProps, MuiRhfFieldComponentMap } from '../../form/typing';
+
+const MuiFieldComponentMapper: MuiRhfFieldComponentMap = {
+    textField: TextFieldController,
+    select: SelectController,
+    autocomplete: AutocompleteController,
+    checkbox: CheckboxController,
+    radioGroup: RadioGroupController,
+    switch: SwitchController
 };
-
-export interface FormFieldsProps {
-    fields: Array<Field>;
-    control: Control;
-    errors: any;
-}
 
 export const FormFields: React.FC<FormFieldsProps> = ({ fields, control, errors }) => {
     return (
-        <>
-            {fields.map((field, index) => {
-                if (field.fieldType === 'textField') {
-                    return (
-                        <TextFieldController
+        <Grid container>
+            {fields.map(({ fieldType, props, name, label, gridProps }, index) => {
+                const MuiRhfField =
+                    MuiFieldComponentMapper[fieldType as keyof MuiRhfFieldComponentMap] || TextFieldController;
+
+                return (
+                    <Grid item xs={4} {...gridProps}>
+                        <MuiRhfField
                             key={index}
-                            {...field.props}
-                            name={field.name}
-                            label={field.label}
+                            {...props}
+                            name={name}
+                            label={label}
                             control={control}
                             errors={errors}
                         />
-                    );
-                } else if (field.fieldType === 'select') {
-                    return (
-                        <SelectController
-                            key={index}
-                            {...field.props}
-                            name={field.name}
-                            label={field.label}
-                            control={control}
-                            errors={errors}
-                        />
-                    );
-                } else if (field.fieldType === 'checkbox') {
-                    return (
-                        <CheckboxController
-                            key={index}
-                            {...field.props}
-                            name={field.name}
-                            label={field.label}
-                            control={control}
-                            errors={errors}
-                        />
-                    );
-                } else if (field.fieldType === 'switch') {
-                    return (
-                        <SwitchController
-                            key={index}
-                            {...field.props}
-                            name={field.name}
-                            label={field.label}
-                            control={control}
-                            errors={errors}
-                        />
-                    );
-                } else if (field.fieldType === 'radioGroup') {
-                    return (
-                        <RadioGroupController
-                            key={index}
-                            {...field.props}
-                            name={field.name}
-                            label={field.label}
-                            control={control}
-                            errors={errors}
-                        />
-                    );
-                } else if (field.fieldType === 'autocomplete') {
-                    return (
-                        <AutocompleteController
-                            key={index}
-                            {...field.props}
-                            name={field.name}
-                            label={field.label}
-                            control={control}
-                            errors={errors}
-                        />
-                    );
-                } else
-                    return (
-                        <TextFieldController
-                            key={index}
-                            {...field.props}
-                            name={field.name}
-                            label={field.label}
-                            control={control}
-                            errors={errors}
-                        />
-                    );
+                    </Grid>
+                );
             })}
-        </>
+        </Grid>
     );
 };
