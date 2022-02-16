@@ -186,11 +186,11 @@ Props of Material UI Autocomplete are also available.
 
 #### FormFields
 
-| Prop     | Type  | Default   | Definition                                                   |
-| -------- | ----- | --------- | ------------------------------------------------------------ |
-| fields*  | array |           | The name of the input                                        |
-| control* | any   | `Control` | The React Hook Form object to register components into React Hook Form. |
-| errors*  | any   |           | The React Hook Form object to retrieve errors                |
+| Prop     | Type             | Default   | Definition                                                   |
+| -------- | ---------------- | --------- | ------------------------------------------------------------ |
+| fields*  | array of `Field` |           | The name of the input                                        |
+| control* |                  | `Control` | The React Hook Form object to register components into React Hook Form. |
+| errors*  | any              |           | The React Hook Form object to retrieve errors                |
 
 
 
