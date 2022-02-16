@@ -28,12 +28,13 @@ import ReactDOM from 'react-dom';
 import { TextFieldController, SelectController } from 'mui-rhf-library';
 import { useForm } from 'react-hook-form';
 
-const {
-    control,
-    formState: { errors }
-} = useForm();
 
 function App() {
+    const {
+        control,
+    	formState: { errors }
+	} = useForm();
+
     return (
         <>
             <TextFieldController
@@ -56,6 +57,48 @@ function App() {
                 variant="outlined"
             />
         </>
+    );
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'));
+```
+
+Generate form fields:
+
+```jsx
+import React from 'react';
+import { FormFields } from 'mui-rhf-library';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+function App() {
+     const {
+         handleSubmit
+         control,
+         formState: { errors }
+     } = useForm();
+
+  	const fields = [
+        {
+            fieldType: 'textField', // 'textField' | 'select' | 'autocomplete' | 'checkbox' | 'radioGroup' | 'switch'
+            name: 'firstName',
+            label: 'firstName',
+            control: control,
+            errors: errors,
+            props: { fullWidth: true } // Props of the field
+        }
+    ];
+
+	const handleFormSubmit = (data) => {
+        console.log({ data });
+    };
+    
+    return (
+        <form onSubmit={handleSubmit(handleFormSubmit)}>
+            <FormFields fields={fields} control={control} errors={errors} />
+            <button type="submit">Submit</button>
+        </form>
     );
 }
 
@@ -140,7 +183,7 @@ Props of Material UI Autocomplete are also available.
 | defaultValue | boolean                                              |         | The default value of the input that would be injected into React Hook Form Controller and the component |
 | onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the switch is changed |
 
-## 
+
 
 ## Changelog
 
