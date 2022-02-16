@@ -37,7 +37,7 @@ export type SwitchControllerProps = MuiRhfFieldProps & {
 
 // RadioGroup
 export type RadioGroupControllerProps = MuiRhfFieldProps & {
-    label: string;
+    label?: string;
     defaultValue: string | number;
     options: Array<Option>;
 };
