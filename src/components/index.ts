@@ -8,3 +8,7 @@ export { SwitchController } from './InputController/SwitchController/SwitchContr
 export { RadioGroupController } from './InputController/RadioGroupController/RadioGroupController';
 // Checkbox Controller
 export { CheckboxController } from './InputController/CheckboxController/CheckboxController';
+// Autocomplete Controller
+export { AutocompleteController } from './InputController/AutocompleteController/AutocompleteController';
+// Form Fields
+export { FormFields } from './form/FormFields';
