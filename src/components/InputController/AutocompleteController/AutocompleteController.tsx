@@ -72,5 +72,3 @@ export const AutocompleteController = ({
         }}
     />
 );
-
-export default AutocompleteController;
