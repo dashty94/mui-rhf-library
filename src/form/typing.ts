@@ -9,7 +9,7 @@ import {
     TextFieldControllerProps
 } from '../fields';
 
-export type Field = {
+export type FieldProps = {
     fieldType: 'textField' | 'select' | 'autocomplete' | 'checkbox' | 'radioGroup' | 'switch' | string;
     name: string;
     label?: string;
@@ -18,7 +18,7 @@ export type Field = {
 };
 
 export interface FormFieldsProps {
-    fields: Array<Field>;
+    fields: Array<FieldProps>;
     control: Control<any>;
     errors: any;
 }
