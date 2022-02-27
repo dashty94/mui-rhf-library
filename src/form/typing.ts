@@ -1,4 +1,4 @@
-import { GridProps } from '@mui/material';
+import { GridProps, TextFieldProps } from '@mui/material';
 import { Control } from 'react-hook-form';
 import {
     AutocompleteControllerProps,
@@ -15,6 +15,7 @@ export type FieldProps = {
     label?: string;
     props?: any;
     gridProps?: Pick<GridProps, 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
+    textFieldProps?: TextFieldProps;
 };
 
 export interface FormFieldsProps {
