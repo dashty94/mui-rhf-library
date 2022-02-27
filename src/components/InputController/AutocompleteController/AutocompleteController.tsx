@@ -40,22 +40,20 @@ export const AutocompleteController = ({
                     multiple={multiple}
                     size={rest.size}
                     className="MuiFormControl-marginDense"
-                    renderInput={(params) => {
-                        return (
-                            <TextField
-                                {...params}
-                                label={textFieldProps?.label}
-                                variant={textFieldProps?.variant}
-                                fullWidth={textFieldProps?.fullWidth}
-                                error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}
-                                helperText={errors[name]?.message}
-                                inputProps={{
-                                    ...params.inputProps,
-                                    autoComplete: 'disabled'
-                                }}
-                            />
-                        );
-                    }}
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            label={textFieldProps?.label}
+                            variant={textFieldProps?.variant}
+                            fullWidth={textFieldProps?.fullWidth}
+                            error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}
+                            helperText={errors[name]?.message}
+                            inputProps={{
+                                ...params.inputProps,
+                                autoComplete: 'disabled'
+                            }}
+                        />
+                    )}
                     onChange={(_, newValue: any) => {
                         // onChange && onChange(newValue);
                         fieldOnChange(

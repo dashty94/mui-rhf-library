@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormFields } from '../components/form/FormFields';
 import { FormFieldsProps } from '../form/typing';
+import { Grid } from '@mui/material';
 
 const meta: Meta = {
     title: 'Form',
@@ -38,13 +39,12 @@ const Template: Story<FormFieldsProps> = (args) => {
 
     const fields = [
         {
-            fieldType: 'select',
             name: 'firstName',
             label: 'firstName',
-            control: control,
-            errors: errors,
-            props: { fullWidth: true },
-            gridProps: { xs: 12 }
+            fieldType: 'autocomplete',
+            props: { options: [] },
+            gridProps: { xs: 12 },
+            textFieldProps: { label: 'First Name', variant: 'filled', fullWidth: true }
         }
     ];
 
@@ -54,7 +54,9 @@ const Template: Story<FormFieldsProps> = (args) => {
 
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <FormFields fields={fields} control={control} errors={errors} />
+            <Grid container>
+                <FormFields fields={fields} control={control} errors={errors} />
+            </Grid>
 
             <button type="submit">Submit</button>
         </form>
