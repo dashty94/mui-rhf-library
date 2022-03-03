@@ -26,7 +26,7 @@ export default meta;
 
 const Template: Story<FormFieldsProps> = (args) => {
     const schema = yup.object().shape({
-        firstName: yup.string().required()
+        multiple: yup.array().required()
     });
 
     const {
@@ -39,13 +39,35 @@ const Template: Story<FormFieldsProps> = (args) => {
 
     const fields = [
         {
-            name: 'firstName',
-            label: 'firstName',
+            name: 'multiple',
+            label: 'multiple',
             fieldType: 'autocomplete',
-            props: { options: [] },
+            props: {
+                defaultValue: [{ label: 'one', value: 'one' }],
+                options: [
+                    { label: 'one', value: 'one' },
+                    { label: 'two', value: 'two' }
+                ],
+                multiple: true
+            },
             gridProps: { xs: 12 },
-            textFieldProps: { label: 'First Name', variant: 'filled', fullWidth: true }
+
+            textFieldProps: { label: 'First Name', fullWidth: true }
         }
+        // {
+        //     name: 'firstName',
+        //     label: 'firstName',
+        //     fieldType: 'select',
+        //     props: {
+        //         options: [
+        //             { label: 'one', value: 'one' },
+        //             { label: 'two', value: 'two' }
+        //         ],
+        //         fullWidth: true
+        //     },
+        //     gridProps: { xs: 12 },
+        //     defaultValue: [{ label: 'one', value: 'one' }]
+        // }
     ];
 
     const handleFormSubmit = (data: any) => {
