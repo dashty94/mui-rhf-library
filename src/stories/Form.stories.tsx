@@ -53,6 +53,21 @@ const Template: Story<FormFieldsProps> = (args) => {
             gridProps: { xs: 12 },
 
             textFieldProps: { label: 'First Name', fullWidth: true }
+        },
+        {
+            name: 'single',
+            label: 'single',
+            fieldType: 'autocomplete',
+            props: {
+                defaultValue: { label: 'one', value: 'one' },
+                options: [
+                    { label: 'one', value: 'one' },
+                    { label: 'two', value: 'two' }
+                ]
+            },
+            gridProps: { xs: 12 },
+
+            textFieldProps: { label: 'First Name', fullWidth: true }
         }
         // {
         //     name: 'firstName',

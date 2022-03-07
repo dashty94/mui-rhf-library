@@ -37,6 +37,13 @@ export const AutocompleteController = ({
                                 get(option, optionLabel, '') || (found && get(found, optionLabel, '')) || option || '';
                             return label.toString();
                         }}
+                        renderOption={(props: React.HTMLAttributes<HTMLLIElement>, option: any): React.ReactNode => {
+                            return (
+                                <li {...props} key={props.id}>
+                                    {get(option, optionLabel, '')}
+                                </li>
+                            );
+                        }}
                         disableCloseOnSelect={multiple}
                         isOptionEqualToValue={(option: any, value: any) => {
                             return typeof value === 'string'
