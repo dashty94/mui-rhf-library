@@ -6,6 +6,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import { InputLabel, MenuItem, Chip, OutlinedInput } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { SelectControllerProps, Option } from '../../../fields/index';
+import get from 'lodash.get';
 
 const ChipsWrapper = styled('div')(
     () => `
@@ -21,13 +22,17 @@ export const SelectController = ({
     options,
     errors,
     onChange,
+    optionValue = 'value',
+    optionLabel = 'label',
     ...rest
 }: SelectControllerProps) => {
     return (
         <Controller
             name={name}
             control={control}
-            defaultValue={rest?.multiple ? defaultValue?.map((dv: Option) => dv.value) || [] : defaultValue || ''}
+            defaultValue={
+                rest?.multiple ? defaultValue?.map((dv: Option) => get(dv, optionValue, '')) || [] : defaultValue || ''
+            }
             render={({ field }) => (
                 <FormControl
                     error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}
@@ -44,7 +49,13 @@ export const SelectController = ({
                             renderValue: (selected: any) => (
                                 <ChipsWrapper>
                                     {selected.map((value: any, i: number) => (
-                                        <Chip key={i} label={value?.label || value} />
+                                        <Chip
+                                            key={i}
+                                            label={get(
+                                                options.find((o: any) => get(o, optionValue) === value),
+                                                optionLabel
+                                            )}
+                                        />
                                     ))}
                                 </ChipsWrapper>
                             )
@@ -58,8 +69,8 @@ export const SelectController = ({
                     >
                         {options?.map((option, index) => {
                             return (
-                                <MenuItem key={index} value={option.value}>
-                                    {option.label || option}
+                                <MenuItem key={index} value={get(option, optionValue, '')}>
+                                    {get(option, optionLabel, '') || option}
                                 </MenuItem>
                             );
                         })}

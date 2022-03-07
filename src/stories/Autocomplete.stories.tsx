@@ -57,10 +57,11 @@ Autocomplete.args = {
         fullWidth: true,
         variant: 'outlined'
     },
-    defaultValue: '',
+    optionLabel: 'entity.id',
+    optionValue: 'entity.id',
     options: [
-        { label: 'Option One', value: 'option-one' },
-        { label: 'Option Two', value: 'option-two' }
+        { title: 'Option One', entity: { id: 'entity-one' }, value: 'option-one' },
+        { title: 'Option Two', entity: { id: 'entity-two' }, value: 'option-two' }
     ]
 };
 
@@ -73,9 +74,11 @@ AutocompleteMultiple.args = {
         fullWidth: true
     },
     defaultValue: [],
+    optionLabel: 'title',
+    optionValue: 'entity.id',
     options: [
-        { label: 'Option One', value: 'option-one' },
-        { label: 'Option Two', value: 'option-two' }
+        { title: 'Option One', entity: { id: 'entity-one' }, value: 'option-one' },
+        { title: 'Option Two', entity: { id: 'entity-two' }, value: 'option-two' }
     ],
     multiple: true
 };

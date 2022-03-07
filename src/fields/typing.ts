@@ -24,8 +24,10 @@ export type TextFieldControllerProps = MuiRhfFieldProps &
 export type SelectControllerProps = MuiRhfFieldProps &
     SelectProps & {
         defaultValue?: any;
-        options: Array<Option>;
+        options: {}[];
         onChange?: (event: SelectChangeEvent) => void;
+        optionValue?: string;
+        optionLabel?: string;
     };
 
 // Switch
@@ -53,7 +55,7 @@ export type CheckboxControllerProps = MuiRhfFieldProps & {
 export type AutocompleteControllerProps = MuiRhfFieldProps &
     AutocompleteProps<Object, boolean, boolean, boolean> & {
         defaultValue: any;
-        options: Array<Option>;
+        options: {}[];
         multiple?: boolean;
 
         textFieldProps: TextFieldProps; // Props that's only applied to the TextField component
@@ -62,4 +64,7 @@ export type AutocompleteControllerProps = MuiRhfFieldProps &
         renderOption?: (option: Option | any) => React.ReactNode;
         disableClearable?: boolean;
         // onChange?: (event: SelectChangeEvent) => void;
+
+        optionValue?: string;
+        optionLabel?: string;
     };

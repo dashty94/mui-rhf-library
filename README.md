@@ -51,9 +51,11 @@ function App() {
                 control={control}
                 errors={errors}
                 options: [
-        			{ label: 'Option One', value: 'option-one' },
-        			{ label: 'Option Two', value: 'option-two' }
+        			{ label: 'Option One', value: 'option-one', example: {name: 'example-one'} },
+        			{ label: 'Option Two', value: 'option-two', example: {name: 'example-two'} }
     			]
+                optionValue: 'example.name',
+                optionLabel: 'example.name',
                 variant="outlined"
             />
         </>
@@ -123,31 +125,35 @@ Props of Material UI TextField are also available.
 
 Props of Material UI Select are also available.
 
-| Prop         | Type                                 | Default | Definition                                                                                              |
-| ------------ | ------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*       | string                               |         | The name of the input                                                                                   |
-| control\*    | `Control`                            |         | The React Hook Form object to register components into React Hook Form.                                 |
+| Prop         | Type                                 | Default | Definition                                                   |
+| ------------ | ------------------------------------ | ------- | ------------------------------------------------------------ |
+| name\*       | string                               |         | The name of the input                                        |
+| control\*    | `Control`                            |         | The React Hook Form object to register components into React Hook Form. |
 | defaultValue | any                                  |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| errors\*     | any                                  |         | The React Hook Form object to retrieve errors                                                           |
-| options      | `Options`                            |         | The option items that is available to the component.                                                    |
-| onChange     | `(event: SelectChangeEvent) => void` |         | Callback fired when a menu item is selected.                                                            |
+| errors\*     | any                                  |         | The React Hook Form object to retrieve errors                |
+| options      | `{}[]`                               |         | The option items that is available to the component.         |
+| optionValue  | string                               | 'value' | Set property of options's value                              |
+| optionLabel  | string                               | 'label' | Set property of items’s text label                           |
+| onChange     | `(event: SelectChangeEvent) => void` |         | Callback fired when a menu item is selected.                 |
 
 #### Autocomplete Controller
 
 Props of Material UI Autocomplete are also available.
 
-| Prop             | Type                                 | Default | Definition                                                                                              |
-| ---------------- | ------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*           | string                               |         | The name of the input                                                                                   |
-| control\*        | `Control`                            |         | The React Hook Form object to register components into React Hook Form.                                 |
+| Prop             | Type                                 | Default | Definition                                                   |
+| ---------------- | ------------------------------------ | ------- | ------------------------------------------------------------ |
+| name\*           | string                               |         | The name of the input                                        |
+| control\*        | `Control`                            |         | The React Hook Form object to register components into React Hook Form. |
 | defaultValue\*   | any                                  |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| errors\*         | any                                  |         | The React Hook Form object to retrieve errors                                                           |
-| options          | `Options`                            |         | The option items that is available to the component.                                                    |
-| multiple         | boolean                              |         | If `true`, menu will support multiple selections.                                                       |
-| onChange         | `(event: SelectChangeEvent) => void` |         | Callback fired when a menu item is selected.                                                            |
-| loading          | boolean                              |         | If `true` the component will be in the loading state.                                                   |
-| disableClearable | boolean                              |         |                                                                                                         |
-| textFieldProps   | `TextFieldProps`                     |         | The props that will be passed to TextField component in the `renderInput` of `AutoComplete`.            |
+| errors\*         | any                                  |         | The React Hook Form object to retrieve errors                |
+| options          | `{}[]`                               |         | The option items that is available to the component.         |
+| optionValue      | string                               | 'value' | Set property of options's value                              |
+| optionLabel      | string                               | 'label' | Set property of items’s text label                           |
+| multiple         | boolean                              |         | If `true`, menu will support multiple selections.            |
+| onChange         | `(event: SelectChangeEvent) => void` |         | Callback fired when a menu item is selected.                 |
+| loading          | boolean                              |         | If `true` the component will be in the loading state.        |
+| disableClearable | boolean                              |         |                                                              |
+| textFieldProps   | `TextFieldProps`                     |         | The props that will be passed to TextField component in the `renderInput` of `AutoComplete`. |
 
 #### RadioGroup Controller
 

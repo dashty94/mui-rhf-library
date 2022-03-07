@@ -37,10 +37,12 @@ Select.args = {
     label: 'Select Controller',
     defaultValue: '',
     options: [
-        { label: 'Option One', value: 'option-one' },
-        { label: 'Option Two', value: 'option-two' }
+        { label: 'Option One', value: 'option-one', entity: { id: 'entity-one' } },
+        { label: 'Option Two', value: 'option-two', entity: { id: 'entity-two' } }
     ],
-    variant: 'outlined'
+    optionValue: 'entity.id',
+    variant: 'outlined',
+    fullWidth: true
 };
 
 export const SelectMultiple = Template.bind({});
@@ -50,9 +52,11 @@ SelectMultiple.args = {
     label: 'Select Multiple Controller',
     defaultValue: [],
     options: [
-        { label: 'Option One', value: 'option-one' },
-        { label: 'Option Two', value: 'option-two' }
+        { label: 'Option One', value: 'option-one', entity: { id: 'entity-one' } },
+        { label: 'Option Two', value: 'option-two', entity: { id: 'entity-two' } }
     ],
+    optionValue: 'entity.id',
     variant: 'outlined',
-    multiple: true
+    multiple: true,
+    fullWidth: true
 };
