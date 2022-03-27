@@ -20,7 +20,6 @@ export const SelectController = ({
     control,
     defaultValue,
     options,
-    errors,
     onChange,
     optionValue = 'value',
     optionLabel = 'label',
@@ -33,11 +32,8 @@ export const SelectController = ({
             defaultValue={
                 rest?.multiple ? defaultValue?.map((dv: Option) => get(dv, optionValue, '')) || [] : defaultValue || ''
             }
-            render={({ field }) => (
-                <FormControl
-                    error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}
-                    fullWidth={rest.fullWidth}
-                >
+            render={({ field, fieldState }) => (
+                <FormControl error={fieldState?.invalid} fullWidth={rest.fullWidth}>
                     <InputLabel id={name}>{rest.label}</InputLabel>
 
                     <Select
@@ -76,7 +72,7 @@ export const SelectController = ({
                         })}
                     </Select>
 
-                    <FormHelperText>{errors[name]?.message}</FormHelperText>
+                    <FormHelperText>{fieldState?.error?.message}</FormHelperText>
                 </FormControl>
             )}
         />

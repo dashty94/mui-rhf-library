@@ -22,12 +22,9 @@ const meta: Meta = {
 export default meta;
 
 const Template: Story<TextFieldControllerProps> = (args) => {
-    const {
-        control,
-        formState: { errors }
-    } = useForm();
+    const { control } = useForm();
 
-    return <TextFieldController {...args} control={control} errors={errors} />;
+    return <TextFieldController {...args} control={control} />;
 };
 
 export const TextField = Template.bind({});

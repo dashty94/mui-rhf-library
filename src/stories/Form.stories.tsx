@@ -26,14 +26,15 @@ export default meta;
 
 const Template: Story<FormFieldsProps> = (args) => {
     const schema = yup.object().shape({
-        multiple: yup.array().required()
+        multiple: yup.array().min(1).of(yup.string().required()),
+        single: yup.string().required(),
+        checkbox: yup.string().required(),
+        name: yup.object().shape({
+            ckb: yup.string().required()
+        })
     });
 
-    const {
-        handleSubmit,
-        control,
-        formState: { errors }
-    } = useForm({
+    const { handleSubmit, control } = useForm({
         resolver: yupResolver(schema)
     });
 
@@ -43,7 +44,7 @@ const Template: Story<FormFieldsProps> = (args) => {
             label: 'multiple',
             fieldType: 'autocomplete',
             props: {
-                defaultValue: [{ label: 'one', value: 'one' }],
+                defaultValue: [],
                 options: [
                     { label: 'one', value: 'one' },
                     { label: 'two', value: 'two' }
@@ -51,38 +52,42 @@ const Template: Story<FormFieldsProps> = (args) => {
                 multiple: true
             },
             gridProps: { xs: 12 },
-
             textFieldProps: { label: 'First Name', fullWidth: true }
         },
         {
             name: 'single',
             label: 'single',
-            fieldType: 'autocomplete',
+            fieldType: 'select',
             props: {
-                defaultValue: { label: 'one', value: 'one' },
                 options: [
                     { label: 'one', value: 'one' },
                     { label: 'two', value: 'two' }
-                ]
+                ],
+                fullWidth: true
             },
-            gridProps: { xs: 12 },
-
-            textFieldProps: { label: 'First Name', fullWidth: true }
+            gridProps: { xs: 12 }
+        },
+        {
+            name: 'name.ckb',
+            label: 'name',
+            props: {
+                fullWidth: true
+            },
+            fieldType: 'textField',
+            gridProps: { xs: 12 }
+        },
+        {
+            name: 'checkbox',
+            label: 'checkbox',
+            fieldType: 'checkbox',
+            gridProps: { xs: 12 }
+        },
+        {
+            name: 'switch',
+            label: 'switch',
+            fieldType: 'switch',
+            gridProps: { xs: 12 }
         }
-        // {
-        //     name: 'firstName',
-        //     label: 'firstName',
-        //     fieldType: 'select',
-        //     props: {
-        //         options: [
-        //             { label: 'one', value: 'one' },
-        //             { label: 'two', value: 'two' }
-        //         ],
-        //         fullWidth: true
-        //     },
-        //     gridProps: { xs: 12 },
-        //     defaultValue: [{ label: 'one', value: 'one' }]
-        // }
     ];
 
     const handleFormSubmit = (data: any) => {
@@ -91,8 +96,8 @@ const Template: Story<FormFieldsProps> = (args) => {
 
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <Grid container>
-                <FormFields fields={fields} control={control} errors={errors} />
+            <Grid container spacing={2}>
+                <FormFields fields={fields} control={control} />
             </Grid>
 
             <button type="submit">Submit</button>

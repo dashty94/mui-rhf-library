@@ -8,7 +8,6 @@ import get from 'lodash.get';
 export const AutocompleteController = ({
     control,
     name,
-    errors,
     defaultValue,
     options,
     textFieldProps,
@@ -22,20 +21,20 @@ export const AutocompleteController = ({
             control={control}
             name={name}
             defaultValue={multiple ? defaultValue || [] : defaultValue || null}
-            render={({ field: { onChange: fieldOnChange, ...restField } }) => {
+            render={({ field: { onChange: fieldOnChange, ...restField }, fieldState }) => {
                 return (
                     <Autocomplete
                         options={options || []}
                         autoHighlight
                         getOptionLabel={(option: any) => {
-                            const found = options.find(
+                            const found = options?.find(
                                 (o: any) =>
                                     get(o, optionValue, '') === option ||
                                     get(o, optionValue, '') === option[optionValue]
                             ) as any;
                             const label =
                                 get(option, optionLabel, '') || (found && get(found, optionLabel, '')) || option || '';
-                            return label.toString();
+                            return label?.toString();
                         }}
                         renderOption={(props: React.HTMLAttributes<HTMLLIElement>, option: any): React.ReactNode => {
                             return (
@@ -65,8 +64,8 @@ export const AutocompleteController = ({
                                     label={textFieldProps?.label}
                                     variant={textFieldProps?.variant}
                                     fullWidth={textFieldProps?.fullWidth}
-                                    error={Object.prototype.hasOwnProperty.call(errors, name) ? true : false}
-                                    helperText={errors[name]?.message}
+                                    error={fieldState?.invalid}
+                                    helperText={fieldState?.error?.message}
                                     inputProps={{
                                         ...params.inputProps,
                                         autoComplete: 'off'

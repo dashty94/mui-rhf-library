@@ -12,7 +12,6 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
     control,
     name,
     label,
-    errors,
     defaultValue = false,
     onChange,
     ...rest
@@ -20,14 +19,14 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
     const [isChecked, setIsChecked] = useState(defaultValue);
 
     return (
-        <FormControl required error={errors.hasOwnProperty(name)} component="fieldset">
-            <FormGroup>
-                <Controller
-                    name={name}
-                    control={control}
-                    defaultValue={defaultValue}
-                    render={({ field }) => {
-                        return (
+        <Controller
+            name={name}
+            control={control}
+            defaultValue={defaultValue}
+            render={({ field, fieldState }) => {
+                return (
+                    <FormControl required error={fieldState?.invalid} component="fieldset">
+                        <FormGroup>
                             <FormControlLabel
                                 style={{ width: '100%' }}
                                 control={
@@ -44,11 +43,11 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
                                 }
                                 label={label}
                             />
-                        );
-                    }}
-                />
-            </FormGroup>
-            <FormHelperText>{errors[name]?.message}</FormHelperText>
-        </FormControl>
+                        </FormGroup>
+                        <FormHelperText>{fieldState?.error?.message}</FormHelperText>
+                    </FormControl>
+                );
+            }}
+        />
     );
 };

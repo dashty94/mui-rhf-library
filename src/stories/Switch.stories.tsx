@@ -22,12 +22,9 @@ const meta: Meta = {
 export default meta;
 
 const Template: Story<SwitchControllerProps> = (args) => {
-    const {
-        control,
-        formState: { errors }
-    } = useForm();
+    const { control } = useForm();
 
-    return <SwitchController {...args} control={control} errors={errors} />;
+    return <SwitchController {...args} control={control} />;
 };
 
 export const Switch = Template.bind({});

@@ -22,12 +22,9 @@ const meta: Meta = {
 export default meta;
 
 const Template: Story<RadioGroupControllerProps> = (args) => {
-    const {
-        control,
-        formState: { errors }
-    } = useForm();
+    const { control } = useForm();
 
-    return <RadioGroupController {...args} control={control} errors={errors} />;
+    return <RadioGroupController {...args} control={control} />;
 };
 
 export const FormGroup = Template.bind({});

@@ -22,12 +22,9 @@ const meta: Meta = {
 export default meta;
 
 const Template: Story<CheckboxControllerProps> = (args) => {
-    const {
-        control,
-        formState: { errors }
-    } = useForm();
+    const { control } = useForm();
 
-    return <CheckboxController {...args} control={control} errors={errors} />;
+    return <CheckboxController {...args} control={control} />;
 };
 
 export const Checkbox = Template.bind({});

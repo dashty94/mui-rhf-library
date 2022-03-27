@@ -28,11 +28,7 @@ const Template: Story<AutocompleteControllerProps> = (args) => {
         autocomplete: yup.string().required()
     });
 
-    const {
-        handleSubmit,
-        control,
-        formState: { errors }
-    } = useForm({
+    const { handleSubmit, control } = useForm({
         resolver: yupResolver(schema)
     });
 
@@ -42,7 +38,7 @@ const Template: Story<AutocompleteControllerProps> = (args) => {
 
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <AutocompleteController {...args} name="autocomplete" control={control} errors={errors} />
+            <AutocompleteController {...args} name="autocomplete" control={control} />
             <button type="submit">Submit</button>
         </form>
     );

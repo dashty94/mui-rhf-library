@@ -22,12 +22,9 @@ const meta: Meta = {
 export default meta;
 
 const Template: Story<SelectControllerProps> = (args) => {
-    const {
-        control,
-        formState: { errors }
-    } = useForm();
+    const { control } = useForm();
 
-    return <SelectController {...args} control={control} errors={errors} />;
+    return <SelectController {...args} control={control} />;
 };
 
 export const Select = Template.bind({});

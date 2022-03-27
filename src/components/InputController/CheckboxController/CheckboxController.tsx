@@ -9,23 +9,22 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
     control,
     name,
     label,
-    defaultValue = false,
-    errors,
+    defaultValue,
     onChange,
     ...rest
 }) => {
     return (
-        <FormControl required error={errors.hasOwnProperty(name)} component="fieldset">
-            <FormGroup>
-                <FormControlLabel
-                    label={label}
-                    control={
-                        <Controller
-                            defaultValue={defaultValue}
-                            name={name}
-                            control={control}
-                            render={({ field }) => {
-                                return (
+        <Controller
+            defaultValue={defaultValue}
+            name={name}
+            control={control}
+            render={({ field, fieldState }) => {
+                return (
+                    <FormControl required error={fieldState?.invalid} component="fieldset">
+                        <FormGroup>
+                            <FormControlLabel
+                                label={label}
+                                control={
                                     <Checkbox
                                         checked={field.value}
                                         {...field}
@@ -35,13 +34,13 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
                                             field.onChange(e.target.checked);
                                         }}
                                     />
-                                );
-                            }}
-                        />
-                    }
-                />
-            </FormGroup>
-            <FormHelperText>{errors[name]?.message}</FormHelperText>
-        </FormControl>
+                                }
+                            />
+                        </FormGroup>
+                        <FormHelperText>{fieldState?.error?.message}</FormHelperText>
+                    </FormControl>
+                );
+            }}
+        />
     );
 };

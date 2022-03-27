@@ -32,14 +32,12 @@ import { useForm } from 'react-hook-form';
 function App() {
     const {
         control,
-    	formState: { errors }
 	} = useForm();
 
     return (
         <>
             <TextFieldController
                 control={control}
-                errors={errors}
                 name="name"
                 defaultValue=""
                 label="TextField Controller"
@@ -49,7 +47,6 @@ function App() {
                 name="select"
                 label="Select Controller"
                 control={control}
-                errors={errors}
                 options: [
         			{ label: 'Option One', value: 'option-one', example: {name: 'example-one'} },
         			{ label: 'Option Two', value: 'option-two', example: {name: 'example-two'} }
@@ -78,7 +75,6 @@ function App() {
      const {
          handleSubmit
          control,
-         formState: { errors }
      } = useForm();
 
   	const fields = [
@@ -87,7 +83,6 @@ function App() {
             name: 'firstName',
             label: 'firstName',
             control: control,
-            errors: errors,
             props: { fullWidth: true }, // Props of the field
             gridProps: {xs: 12} // Props of the Grid: "xs" | "sm" | "md" | "ld" | "xl"
         }
@@ -99,7 +94,7 @@ function App() {
 
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <FormFields fields={fields} control={control} errors={errors} />
+            <FormFields fields={fields} control={control} />
             <button type="submit">Submit</button>
         </form>
     );
@@ -114,12 +109,11 @@ ReactDOM.render(<App />, document.querySelector('#app'));
 
 Props of Material UI TextField are also available.
 
-| Prop         | Type      | Default | Definition                                                                                              |
-| ------------ | --------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*       | string    |         | The name of the input                                                                                   |
-| control\*    | `Control` |         | The React Hook Form object to register components into React Hook Form.                                 |
+| Prop         | Type      | Default | Definition                                                   |
+| ------------ | --------- | ------- | ------------------------------------------------------------ |
+| name\*       | string    |         | The name of the input                                        |
+| control\*    | `Control` |         | The React Hook Form object to register components into React Hook Form. |
 | defaultValue | any       |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| errors\*     | any       |         | The React Hook Form object to retrieve errors                                                           |
 
 #### Select Controller
 
@@ -130,7 +124,6 @@ Props of Material UI Select are also available.
 | name\*       | string                               |         | The name of the input                                        |
 | control\*    | `Control`                            |         | The React Hook Form object to register components into React Hook Form. |
 | defaultValue | any                                  |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| errors\*     | any                                  |         | The React Hook Form object to retrieve errors                |
 | options      | `{}[]`                               |         | The option items that is available to the component.         |
 | optionValue  | string                               | 'value' | Set property of options's value                              |
 | optionLabel  | string                               | 'label' | Set property of items’s text label                           |
@@ -145,7 +138,6 @@ Props of Material UI Autocomplete are also available.
 | name\*           | string                               |         | The name of the input                                        |
 | control\*        | `Control`                            |         | The React Hook Form object to register components into React Hook Form. |
 | defaultValue\*   | any                                  |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| errors\*         | any                                  |         | The React Hook Form object to retrieve errors                |
 | options          | `{}[]`                               |         | The option items that is available to the component.         |
 | optionValue      | string                               | 'value' | Set property of options's value                              |
 | optionLabel      | string                               | 'label' | Set property of items’s text label                           |
@@ -157,44 +149,40 @@ Props of Material UI Autocomplete are also available.
 
 #### RadioGroup Controller
 
-| Prop         | Type             | Default | Definition                                                                                              |
-| ------------ | ---------------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*       | string           |         | The name of the input                                                                                   |
-| label        | string           |         | The label content                                                                                       |
-| control\*    | `Control`        |         | The React Hook Form object to register components into React Hook Form.                                 |
+| Prop         | Type             | Default | Definition                                                   |
+| ------------ | ---------------- | ------- | ------------------------------------------------------------ |
+| name\*       | string           |         | The name of the input                                        |
+| label        | string           |         | The label content                                            |
+| control\*    | `Control`        |         | The React Hook Form object to register components into React Hook Form. |
 | defaultValue | string \| number |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| errors\*     | any              |         | The React Hook Form object to retrieve errors                                                           |
-| options      | `Options`        |         | The option items that is available to the component.                                                    |
+| options      | `Options`        |         | The option items that is available to the component.         |
 
 #### Checkbox Controller
 
-| Prop         | Type                                                 | Default | Definition                                                                                              |
-| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*       | string                                               |         | The name of the input                                                                                   |
-| label\*      | string                                               |         | The label content                                                                                       |
-| control\*    | `Control`                                            |         | The React Hook Form object to register components into React Hook Form.                                 |
-| errors\*     | any                                                  |         | The React Hook Form object to retrieve errors                                                           |
-| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the checkbox is changed                           |
+| Prop         | Type                                                 | Default | Definition                                                   |
+| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------ |
+| name\*       | string                                               |         | The name of the input                                        |
+| label\*      | string                                               |         | The label content                                            |
+| control\*    | `Control`                                            |         | The React Hook Form object to register components into React Hook Form. |
+| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the checkbox is changed |
 | defaultValue | boolean                                              |         | The default value of the input that would be injected into React Hook Form Controller and the component |
 
 #### Switch Controller
 
-| Prop         | Type                                                 | Default | Definition                                                                                              |
-| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*       | string                                               |         | The name of the input                                                                                   |
-| label\*      | string                                               |         | The label content                                                                                       |
-| control\*    | `Control`                                            |         | The React Hook Form object to register components into React Hook Form.                                 |
-| errors\*     | any                                                  |         | The React Hook Form object to retrieve errors                                                           |
+| Prop         | Type                                                 | Default | Definition                                                   |
+| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------ |
+| name\*       | string                                               |         | The name of the input                                        |
+| label\*      | string                                               |         | The label content                                            |
+| control\*    | `Control`                                            |         | The React Hook Form object to register components into React Hook Form. |
 | defaultValue | boolean                                              |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the switch is changed                             |
+| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the switch is changed |
 
 #### FormFields
 
-| Prop      | Type                  | Default   | Definition                                                              |
-| --------- | --------------------- | --------- | ----------------------------------------------------------------------- |
-| fields\*  | array of `FieldProps` |           | The name of the input                                                   |
+| Prop      | Type                  | Default   | Definition                                                   |
+| --------- | --------------------- | --------- | ------------------------------------------------------------ |
+| fields\*  | array of `FieldProps` |           | The name of the input                                        |
 | control\* |                       | `Control` | The React Hook Form object to register components into React Hook Form. |
-| errors\*  | any                   |           | The React Hook Form object to retrieve errors                           |
 
 ## Changelog
 

@@ -5,7 +5,6 @@ import { TextFieldProps, SelectProps, SelectChangeEvent, AutocompleteProps } fro
 export type MuiRhfFieldProps = {
     control: Control<any>;
     name: string;
-    errors: any;
 };
 
 // Option

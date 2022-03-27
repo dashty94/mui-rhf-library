@@ -18,7 +18,7 @@ const MuiFieldComponentMapper: MuiRhfFieldComponentMap = {
     switch: SwitchController
 };
 
-export const FormFields: React.FC<FormFieldsProps> = ({ fields, control, errors }) => {
+export const FormFields: React.FC<FormFieldsProps> = ({ fields, control }) => {
     return (
         <>
             {fields.map(({ fieldType, props, name, label, gridProps, ...rest }, index) => {
@@ -27,7 +27,7 @@ export const FormFields: React.FC<FormFieldsProps> = ({ fields, control, errors 
 
                 return (
                     <Grid item xs={12} {...gridProps} key={index}>
-                        <MuiRhfField {...props} {...rest} name={name} label={label} control={control} errors={errors} />
+                        <MuiRhfField {...props} {...rest} name={name} label={label} control={control} />
                     </Grid>
                 );
             })}

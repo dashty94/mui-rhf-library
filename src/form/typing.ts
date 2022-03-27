@@ -21,7 +21,6 @@ export type FieldProps = {
 export interface FormFieldsProps {
     fields: Array<FieldProps>;
     control: Control<any>;
-    errors: any;
 }
 
 export type MuiRhfFieldComponentMap = {
