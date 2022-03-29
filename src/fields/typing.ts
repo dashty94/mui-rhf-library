@@ -27,6 +27,7 @@ export type SelectControllerProps = MuiRhfFieldProps &
         onChange?: (event: SelectChangeEvent) => void;
         optionValue?: string;
         optionLabel?: string;
+        loading?: boolean;
     };
 
 // Switch

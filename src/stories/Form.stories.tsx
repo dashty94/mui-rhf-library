@@ -49,7 +49,8 @@ const Template: Story<FormFieldsProps> = (args) => {
                     { label: 'one', value: 'one' },
                     { label: 'two', value: 'two' }
                 ],
-                multiple: true
+                multiple: true,
+                loading: false
             },
             gridProps: { xs: 12 },
             textFieldProps: { label: 'First Name', fullWidth: true }
@@ -63,7 +64,8 @@ const Template: Story<FormFieldsProps> = (args) => {
                     { label: 'one', value: 'one' },
                     { label: 'two', value: 'two' }
                 ],
-                fullWidth: true
+                fullWidth: true,
+                loading: false
             },
             gridProps: { xs: 12 }
         },

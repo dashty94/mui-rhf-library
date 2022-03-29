@@ -1,9 +1,19 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import Autocomplete from '@mui/material/Autocomplete';
-import { TextField } from '@mui/material';
+import { TextField, LinearProgress as MuiLinearProgress, FormControl } from '@mui/material';
 import { AutocompleteControllerProps } from '../../../fields/index';
 import get from 'lodash.get';
+import { styled } from '@mui/material/styles';
+
+const LinearProgress = styled(MuiLinearProgress)(
+    () => `
+    position: absolute;
+    left: 1%;
+    right: 1%;
+    top: 90%;
+`
+);
 
 export const AutocompleteController = ({
     control,
@@ -14,9 +24,15 @@ export const AutocompleteController = ({
     multiple,
     optionValue = 'value',
     optionLabel = 'label',
+    loading = false,
     ...rest
 }: AutocompleteControllerProps) => {
-    return (
+    return loading ? (
+        <FormControl fullWidth={textFieldProps?.fullWidth}>
+            <LinearProgress />
+            <TextField variant={textFieldProps?.variant} label={textFieldProps?.label} disabled />
+        </FormControl>
+    ) : (
         <Controller
             control={control}
             name={name}
