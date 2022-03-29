@@ -128,6 +128,7 @@ Props of Material UI Select are also available.
 | optionValue  | string                               | 'value' | Set property of options's value                              |
 | optionLabel  | string                               | 'label' | Set property of items’s text label                           |
 | onChange     | `(event: SelectChangeEvent) => void` |         | Callback fired when a menu item is selected.                 |
+| loading      | boolean                              | false   | Displays linear progress bar                                 |
 
 #### Autocomplete Controller
 
@@ -146,6 +147,7 @@ Props of Material UI Autocomplete are also available.
 | loading          | boolean                              |         | If `true` the component will be in the loading state.        |
 | disableClearable | boolean                              |         |                                                              |
 | textFieldProps   | `TextFieldProps`                     |         | The props that will be passed to TextField component in the `renderInput` of `AutoComplete`. |
+| loading          | boolean                              | false   | Displays linear progress bar                                 |
 
 #### RadioGroup Controller
 
