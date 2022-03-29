@@ -144,7 +144,6 @@ Props of Material UI Autocomplete are also available.
 | optionLabel      | string                               | 'label' | Set property of items’s text label                           |
 | multiple         | boolean                              |         | If `true`, menu will support multiple selections.            |
 | onChange         | `(event: SelectChangeEvent) => void` |         | Callback fired when a menu item is selected.                 |
-| loading          | boolean                              |         | If `true` the component will be in the loading state.        |
 | disableClearable | boolean                              |         |                                                              |
 | textFieldProps   | `TextFieldProps`                     |         | The props that will be passed to TextField component in the `renderInput` of `AutoComplete`. |
 | loading          | boolean                              | false   | Displays linear progress bar                                 |
