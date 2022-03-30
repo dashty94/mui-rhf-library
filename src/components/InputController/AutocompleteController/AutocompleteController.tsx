@@ -93,8 +93,8 @@ export const AutocompleteController = ({
                             // onChange && onChange(newValue);
                             fieldOnChange(
                                 multiple
-                                    ? newValue?.map((v: any) => get(v, optionValue, '') || v)
-                                    : get(newValue, optionValue, '')
+                                    ? newValue?.map((v: any) => get(v, optionValue, null) || v)
+                                    : get(newValue, optionValue, null)
                             );
                         }}
                         {...restField}
