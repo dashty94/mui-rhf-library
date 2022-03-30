@@ -15,7 +15,7 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
 }) => {
     return (
         <Controller
-            defaultValue={defaultValue}
+            defaultValue={defaultValue || false}
             name={name}
             control={control}
             render={({ field, fieldState }) => {

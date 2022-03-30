@@ -30,7 +30,7 @@ const Template: Story<FormFieldsProps> = (args) => {
         single: yup.string().required(),
         checkbox: yup.string().required(),
         name: yup.object().shape({
-            ckb: yup.string().required()
+            ckb: yup.string()
         })
     });
 
