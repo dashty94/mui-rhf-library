@@ -67,4 +67,6 @@ export type AutocompleteControllerProps = MuiRhfFieldProps &
 
         optionValue?: string;
         optionLabel?: string;
+
+        onChange?: (event: SelectChangeEvent) => void;
     };

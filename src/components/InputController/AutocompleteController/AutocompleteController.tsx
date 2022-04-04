@@ -25,6 +25,7 @@ export const AutocompleteController = ({
     optionValue = 'value',
     optionLabel = 'label',
     loading = false,
+    onChange,
     ...rest
 }: AutocompleteControllerProps) => {
     return loading ? (
@@ -90,7 +91,7 @@ export const AutocompleteController = ({
                             );
                         }}
                         onChange={(_, newValue: any) => {
-                            // onChange && onChange(newValue);
+                            onChange && onChange(newValue);
                             fieldOnChange(
                                 multiple
                                     ? newValue?.map((v: any) => get(v, optionValue, null) || v)
