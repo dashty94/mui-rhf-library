@@ -1,6 +1,6 @@
 {
     "name": "mui-rhf-library",
-    "version": "1.0.13",
+    "version": "1.0.14",
     "description": "A set of configured Material UI form inputs configured with React Hook Form and Yup.",
     "author": "dashty94",
     "license": "MIT",
