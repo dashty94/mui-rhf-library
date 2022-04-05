@@ -22,7 +22,7 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
                     helperText={fieldState?.error?.message}
                     type={type}
                     InputLabelProps={
-                        type == 'date'
+                        type === 'date' || type === 'month'
                             ? {
                                   shrink: true
                               }
