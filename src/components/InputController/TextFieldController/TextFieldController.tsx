@@ -3,7 +3,13 @@ import { Controller } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import { TextFieldControllerProps } from '../../../fields/index';
 
-export const TextFieldController: React.FC<TextFieldControllerProps> = ({ name, control, defaultValue, ...rest }) => {
+export const TextFieldController: React.FC<TextFieldControllerProps> = ({
+    name,
+    control,
+    defaultValue,
+    type,
+    ...rest
+}) => {
     return (
         <Controller
             name={name}
@@ -14,6 +20,14 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({ name, 
                     fullWidth={rest.fullWidth}
                     error={fieldState?.invalid}
                     helperText={fieldState?.error?.message}
+                    type={type}
+                    InputLabelProps={
+                        type == 'date'
+                            ? {
+                                  shrink: true
+                              }
+                            : {}
+                    }
                     {...rest}
                     {...field}
                 />

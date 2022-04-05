@@ -17,6 +17,7 @@ export type Option = {
 export type TextFieldControllerProps = MuiRhfFieldProps &
     TextFieldProps & {
         defaultValue?: any;
+        type: React.HTMLInputTypeAttribute | undefined;
     };
 
 // Select
