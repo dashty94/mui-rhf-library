@@ -18,8 +18,8 @@ export const RadioGroupController: React.FC<RadioGroupControllerProps> = ({
             name={name}
             defaultValue={defaultValue || ''}
             render={({ field, fieldState }) => (
-                <FormControl required error={fieldState?.invalid} component="fieldset">
-                    <FormLabel component="legend">{label}</FormLabel>
+                <FormControl error={fieldState?.invalid} component="fieldset">
+                    {label && <FormLabel>{label}</FormLabel>}
                     <RadioGroup style={{ flexDirection: 'row' }} {...field}>
                         {options.map((option, index) => (
                             <FormControlLabel

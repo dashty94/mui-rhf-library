@@ -122,6 +122,16 @@ const Template: Story<FormFieldsProps> = (args) => {
                 label: 'switch',
                 fieldType: 'switch',
                 gridProps: { xs: 12 }
+            },
+            {
+                name: 'formGroup',
+                fieldType: 'radioGroup',
+                defaultValue: '',
+                label: 'RadioGroup Controller',
+                options: [
+                    { label: 'Option 1', value: 'option1' },
+                    { label: 'Option 2', value: 'option2' }
+                ]
             }
         ],
         [options, loading]
