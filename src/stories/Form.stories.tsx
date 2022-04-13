@@ -47,7 +47,8 @@ const Template: Story<FormFieldsProps> = (args) => {
         setTimeout(() => {
             setOptions([
                 { name: { ckb: 'one' }, id: 'one' },
-                { name: { ckb: 'two' }, id: 'two' }
+                { name: { ckb: 'two' }, id: 'two' },
+                { name: { ckb: 'three' }, id: 'three' }
             ]);
             setLoading(false);
         }, 2000);
