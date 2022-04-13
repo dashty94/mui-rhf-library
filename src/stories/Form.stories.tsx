@@ -97,7 +97,8 @@ const Template: Story<FormFieldsProps> = (args) => {
                 props: {
                     options: [
                         { label: 'one', value: 'one' },
-                        { label: 'two', value: 'two' }
+                        { label: 'two', value: 'two' },
+                        { label: 'three', value: 'three' }
                     ],
                     fullWidth: true,
                     loading: false
