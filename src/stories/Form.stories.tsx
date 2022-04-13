@@ -83,7 +83,8 @@ const Template: Story<FormFieldsProps> = (args) => {
                     optionValue: 'id',
                     onChange: (value: any) => {
                         console.log('custom onchange');
-                    }
+                    },
+                    customOptionLabel: (option: any) => option?.name?.ckb + '' + 'Custom Option Label'
                 },
                 gridProps: { xs: 12 },
                 textFieldProps: { label: 'singleAutocomplete', fullWidth: true }
@@ -106,7 +107,8 @@ const Template: Story<FormFieldsProps> = (args) => {
                 name: 'name.ckb',
                 label: 'name',
                 props: {
-                    fullWidth: true
+                    fullWidth: true,
+                    type: 'month'
                 },
                 fieldType: 'textField',
                 gridProps: { xs: 12 }

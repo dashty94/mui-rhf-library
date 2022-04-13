@@ -14,6 +14,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { SelectControllerProps, Option } from '../../../fields/index';
 import get from 'lodash.get';
+import ListItemText from '@mui/material/ListItemText';
 
 const ChipsWrapper = styled('div')(
     () => `
@@ -40,6 +41,7 @@ export const SelectController = ({
     optionValue = 'value',
     optionLabel = 'label',
     loading = false,
+    customOptionLabel,
     ...rest
 }: SelectControllerProps) => {
     return (
@@ -84,7 +86,11 @@ export const SelectController = ({
                             {options?.map((option, index) => {
                                 return (
                                     <MenuItem key={index} value={get(option, optionValue, '')}>
-                                        {get(option, optionLabel, '') || option}
+                                        <ListItemText>
+                                            {customOptionLabel
+                                                ? customOptionLabel(option)
+                                                : get(option, optionLabel, '') || option}
+                                        </ListItemText>
                                     </MenuItem>
                                 );
                             })}

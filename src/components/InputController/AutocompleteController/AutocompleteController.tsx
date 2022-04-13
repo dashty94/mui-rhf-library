@@ -26,6 +26,7 @@ export const AutocompleteController = ({
     optionLabel = 'label',
     loading = false,
     onChange,
+    customOptionLabel,
     ...rest
 }: AutocompleteControllerProps) => {
     return loading ? (
@@ -47,16 +48,18 @@ export const AutocompleteController = ({
                             const found = options?.find(
                                 (o: any) =>
                                     get(o, optionValue, '') === option ||
-                                    get(o, optionValue, '') === option[optionValue]
+                                    get(o, optionValue, '') === get(option, optionLabel, '')
                             ) as any;
                             const label =
                                 get(option, optionLabel, '') || (found && get(found, optionLabel, '')) || option || '';
-                            return label?.toString();
+                            return customOptionLabel ? customOptionLabel(found || option || '') : label?.toString();
                         }}
                         renderOption={(props: React.HTMLAttributes<HTMLLIElement>, option: any): React.ReactNode => {
                             return (
                                 <li {...props} key={props.id}>
-                                    {get(option, optionLabel, '')}
+                                    {customOptionLabel
+                                        ? customOptionLabel(option)
+                                        : get(option, optionLabel, '') || option}
                                 </li>
                             );
                         }}
