@@ -16,7 +16,7 @@
         "rollup": "rollup -c",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
-        "chromatic": "chromatic --exit-zero-on-changes"
+        "chromatic": "npx chromatic --project-token=process.env.CHROMATIC_PROJECT_TOKEN"
     },
     "devDependencies": {
         "@babel/core": "^7.17.0",
