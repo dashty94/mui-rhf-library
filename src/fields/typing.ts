@@ -29,7 +29,7 @@ export type SelectControllerProps = MuiRhfFieldProps &
         optionValue?: string;
         optionLabel?: string;
         loading?: boolean;
-        customOptionLabel?: (option: any) => string;
+        customOptionLabel?: (option: any) => any;
     };
 
 // Switch
@@ -71,5 +71,5 @@ export type AutocompleteControllerProps = MuiRhfFieldProps &
         optionLabel?: string;
 
         onChange?: (event: SelectChangeEvent) => void;
-        customOptionLabel?: (option: any) => string;
+        customOptionLabel?: (option: any) => any;
     };
