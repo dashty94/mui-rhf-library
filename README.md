@@ -129,7 +129,7 @@ Props of Material UI Select are also available.
 | optionLabel       | string                               | 'label' | Set property of items’s text label                           |
 | onChange          | `(event: SelectChangeEvent) => void` |         | Callback fired when a menu item is selected.                 |
 | loading           | boolean                              | false   | Displays linear progress bar                                 |
-| customOptionLabel | `(option: any) => string`            |         | Display custom option label                                  |
+| customOptionLabel | `(option: any) => any`               |         | Display custom option label                                  |
 
 #### Autocomplete Controller
 
@@ -148,7 +148,7 @@ Props of Material UI Autocomplete are also available.
 | disableClearable  | boolean                              |         |                                                              |
 | textFieldProps    | `TextFieldProps`                     |         | The props that will be passed to TextField component in the `renderInput` of `AutoComplete`. |
 | loading           | boolean                              | false   | Displays linear progress bar                                 |
-| customOptionLabel | `(option: any) => string`            |         | Display custom option label                                  |
+| customOptionLabel | `(option: any) => any`               |         | Display custom option label                                  |
 
 #### RadioGroup Controller
 
