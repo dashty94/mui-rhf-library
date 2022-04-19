@@ -52,7 +52,7 @@ export const SelectController = ({
                 rest?.multiple ? defaultValue?.map((dv: Option) => get(dv, optionValue, '')) || [] : defaultValue || ''
             }
             render={({ field, fieldState }) => (
-                <FormControl error={fieldState?.invalid} fullWidth={rest.fullWidth}>
+                <FormControl error={fieldState?.invalid} fullWidth={rest.fullWidth} size={rest.size}>
                     {!loading ? <InputLabel id={name}>{rest.label}</InputLabel> : <LinearProgress />}
 
                     {!loading ? (
