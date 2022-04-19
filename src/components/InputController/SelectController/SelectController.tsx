@@ -96,7 +96,7 @@ export const SelectController = ({
                             })}
                         </Select>
                     ) : (
-                        <TextField variant={rest?.variant} label={rest.label} disabled />
+                        <TextField variant={rest?.variant} label={rest.label} disabled size={rest.size} />
                     )}
 
                     <FormHelperText>{fieldState?.error?.message}</FormHelperText>
