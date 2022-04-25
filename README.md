@@ -162,13 +162,14 @@ Props of Material UI Autocomplete are also available.
 
 #### RadioGroup Controller
 
-| Prop         | Type             | Default | Definition                                                                                              |
-| ------------ | ---------------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*       | string           |         | The name of the input                                                                                   |
-| label        | string           |         | The label content                                                                                       |
-| control\*    | `Control`        |         | The React Hook Form object to register components into React Hook Form.                                 |
-| defaultValue | string \| number |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| options      | `Options`        |         | The option items that is available to the component.                                                    |
+| Prop         | Type                                                 | Default | Definition                                                   |
+| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------ |
+| name\*       | string                                               |         | The name of the input                                        |
+| label        | string                                               |         | The label content                                            |
+| control\*    | `Control`                                            |         | The React Hook Form object to register components into React Hook Form. |
+| defaultValue | string \| number                                     |         | The default value of the input that would be injected into React Hook Form Controller and the component |
+| options      | `Options`                                            |         | The option items that is available to the component.         |
+| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the input is changed |
 
 #### Checkbox Controller
 

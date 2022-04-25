@@ -44,6 +44,7 @@ export type RadioGroupControllerProps = MuiRhfFieldProps & {
     label?: string;
     defaultValue: string | number;
     options: Array<Option>;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 // Checkbox

@@ -10,7 +10,8 @@ export const RadioGroupController: React.FC<RadioGroupControllerProps> = ({
     label,
     defaultValue,
     control,
-    options
+    options,
+    onChange
 }) => {
     return (
         <Controller
@@ -20,7 +21,14 @@ export const RadioGroupController: React.FC<RadioGroupControllerProps> = ({
             render={({ field, fieldState }) => (
                 <FormControl error={fieldState?.invalid} component="fieldset">
                     {label && <FormLabel>{label}</FormLabel>}
-                    <RadioGroup style={{ flexDirection: 'row' }} {...field}>
+                    <RadioGroup
+                        style={{ flexDirection: 'row' }}
+                        {...field}
+                        onChange={(event) => {
+                            onChange && onChange(event);
+                            field.onChange(event);
+                        }}
+                    >
                         {options.map((option, index) => (
                             <FormControlLabel
                                 key={index}

@@ -14,7 +14,6 @@ import {
 import { styled } from '@mui/material/styles';
 import { SelectControllerProps, Option } from '../../../fields/index';
 import get from 'lodash.get';
-import ListItemText from '@mui/material/ListItemText';
 
 const ChipsWrapper = styled('div')(
     () => `
