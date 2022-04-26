@@ -77,6 +77,15 @@ export const AutocompleteController = ({
                         multiple={multiple}
                         size={rest.size}
                         className="MuiFormControl-marginDense"
+                        onChange={(_, newValue: any) => {
+                            onChange && onChange(newValue);
+                            fieldOnChange(
+                                multiple
+                                    ? newValue?.map((v: any) => get(v, optionValue, null) || v)
+                                    : get(newValue, optionValue, null)
+                            );
+                        }}
+                        {...rest}
                         renderInput={(params) => {
                             return (
                                 <TextField
@@ -93,16 +102,7 @@ export const AutocompleteController = ({
                                 />
                             );
                         }}
-                        onChange={(_, newValue: any) => {
-                            onChange && onChange(newValue);
-                            fieldOnChange(
-                                multiple
-                                    ? newValue?.map((v: any) => get(v, optionValue, null) || v)
-                                    : get(newValue, optionValue, null)
-                            );
-                        }}
                         {...restField}
-                        {...rest}
                     />
                 );
             }}
