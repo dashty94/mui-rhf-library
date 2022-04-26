@@ -129,17 +129,17 @@ Props of Material UI TextField are also available.
 
 Props of Material UI Select are also available.
 
-| Prop              | Type                                 | Default | Definition                                                                                              |
-| ----------------- | ------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*            | string                               |         | The name of the input                                                                                   |
-| control\*         | `Control`                            |         | The React Hook Form object to register components into React Hook Form.                                 |
-| defaultValue      | any                                  |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| options           | `{}[]`                               |         | The option items that is available to the component.                                                    |
-| optionValue       | string                               | 'value' | Set property of options's value                                                                         |
-| optionLabel       | string                               | 'label' | Set property of items’s text label                                                                      |
-| onChange          | `(event: SelectChangeEvent) => void` |         | Callback fired when a menu item is selected.                                                            |
-| loading           | boolean                              | false   | Displays linear progress bar                                                                            |
-| customOptionLabel | `(option: any) => any`               |         | Display custom option label                                                                             |
+| Prop              | Type                                        | Default | Definition                                                   |
+| ----------------- | ------------------------------------------- | ------- | ------------------------------------------------------------ |
+| name\*            | string                                      |         | The name of the input                                        |
+| control\*         | `Control`                                   |         | The React Hook Form object to register components into React Hook Form. |
+| defaultValue      | any                                         |         | The default value of the input that would be injected into React Hook Form Controller and the component |
+| options           | `{disabled?: boolean, [key:string]: any}[]` |         | The option items that is available to the component.         |
+| optionValue       | string                                      | 'value' | Set property of options's value                              |
+| optionLabel       | string                                      | 'label' | Set property of items’s text label                           |
+| onChange          | `(event: SelectChangeEvent) => void`        |         | Callback fired when a menu item is selected.                 |
+| loading           | boolean                                     | false   | Displays linear progress bar                                 |
+| customOptionLabel | `(option: any) => any`                      |         | Display custom option label                                  |
 
 #### Autocomplete Controller
 
