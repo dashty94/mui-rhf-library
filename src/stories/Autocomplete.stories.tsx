@@ -57,7 +57,7 @@ Autocomplete.args = {
     optionValue: 'entity.id',
     options: [
         { title: 'Option One', entity: { id: 'entity-one' }, value: 'option-one' },
-        { title: 'Option One', entity: { id: 'entity-one' }, value: 'option-one' }
+        { title: 'Option two', entity: { id: 'entity-two' }, value: 'option-two' }
     ]
 };
 

@@ -84,7 +84,11 @@ export const SelectController = ({
                         >
                             {options?.map((option, index) => {
                                 return (
-                                    <MenuItem key={index} value={get(option, optionValue, '')}>
+                                    <MenuItem
+                                        key={index}
+                                        disabled={option?.disabled}
+                                        value={get(option, optionValue, '')}
+                                    >
                                         {customOptionLabel
                                             ? customOptionLabel(option)
                                             : get(option, optionLabel, '') || option}

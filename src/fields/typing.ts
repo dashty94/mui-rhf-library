@@ -24,7 +24,7 @@ export type TextFieldControllerProps = MuiRhfFieldProps &
 export type SelectControllerProps = MuiRhfFieldProps &
     SelectProps & {
         defaultValue?: any;
-        options: {}[];
+        options: { disabled?: boolean; [key: string]: any }[];
         onChange?: (event: SelectChangeEvent) => void;
         optionValue?: string;
         optionLabel?: string;
@@ -58,7 +58,7 @@ export type CheckboxControllerProps = MuiRhfFieldProps & {
 export type AutocompleteControllerProps = MuiRhfFieldProps &
     AutocompleteProps<Object, boolean, boolean, boolean> & {
         defaultValue: any;
-        options: {}[];
+        options: { [key: string]: any }[];
         multiple?: boolean;
 
         textFieldProps: TextFieldProps; // Props that's only applied to the TextField component
