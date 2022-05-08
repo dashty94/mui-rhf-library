@@ -57,9 +57,7 @@ export const AutocompleteController = ({
                         renderOption={(props: React.HTMLAttributes<HTMLLIElement>, option: any): React.ReactNode => {
                             return (
                                 <li {...props} key={props.id}>
-                                    {customOptionLabel
-                                        ? customOptionLabel(option)
-                                        : get(option, optionLabel, '') || option}
+                                    {customOptionLabel ? customOptionLabel(option) : get(option, optionLabel, '')}
                                 </li>
                             );
                         }}

@@ -89,9 +89,7 @@ export const SelectController = ({
                                         disabled={option?.disabled}
                                         value={get(option, optionValue, '')}
                                     >
-                                        {customOptionLabel
-                                            ? customOptionLabel(option)
-                                            : get(option, optionLabel, '') || option}
+                                        {customOptionLabel ? customOptionLabel(option) : get(option, optionLabel, '')}
                                     </MenuItem>
                                 );
                             })}
