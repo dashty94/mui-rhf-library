@@ -26,7 +26,7 @@ export const FormFields: React.FC<FormFieldsProps> = ({ fields, control }) => {
                     MuiFieldComponentMapper[fieldType as keyof MuiRhfFieldComponentMap] || TextFieldController;
 
                 return (
-                    <Grid item xs={12} {...gridProps} key={index}>
+                    <Grid item xs={12} {...gridProps} key={name + index}>
                         <MuiRhfField {...props} {...rest} name={name} label={label} control={control} />
                     </Grid>
                 );
