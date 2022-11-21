@@ -1,4 +1,5 @@
 import { GridProps, TextFieldProps } from '@mui/material';
+import React from 'react';
 import { Control } from 'react-hook-form';
 import {
     AutocompleteControllerProps,
@@ -6,7 +7,8 @@ import {
     RadioGroupControllerProps,
     SelectControllerProps,
     SwitchControllerProps,
-    TextFieldControllerProps
+    TextFieldControllerProps,
+    CustomComponentControllerProps
 } from '../fields';
 
 export type FieldProps = {
@@ -30,4 +32,5 @@ export type MuiRhfFieldComponentMap = {
     autocomplete: React.FC<AutocompleteControllerProps>;
     radioGroup: React.FC<RadioGroupControllerProps>;
     switch: React.FC<SwitchControllerProps>;
+    custom: React.FC<CustomComponentControllerProps>;
 };

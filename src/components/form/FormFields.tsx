@@ -5,6 +5,8 @@ import { AutocompleteController } from '../InputController/AutocompleteControlle
 import { CheckboxController } from '../InputController/CheckboxController/CheckboxController';
 import { RadioGroupController } from '../InputController/RadioGroupController/RadioGroupController';
 import { SwitchController } from '../InputController/SwitchController/SwitchController';
+import { CustomComponentController } from '../InputController/CustomComponentController/CustomComponentController';
+
 import { Grid } from '@mui/material';
 
 import { FormFieldsProps, MuiRhfFieldComponentMap } from '../../form/typing';
@@ -15,7 +17,8 @@ const MuiFieldComponentMapper: MuiRhfFieldComponentMap = {
     autocomplete: AutocompleteController,
     checkbox: CheckboxController,
     radioGroup: RadioGroupController,
-    switch: SwitchController
+    switch: SwitchController,
+    custom: CustomComponentController
 };
 
 export const FormFields: React.FC<FormFieldsProps> = ({ fields, control }) => {

@@ -122,6 +122,13 @@ const Template: Story<FormFieldsProps> = (args) => {
                 gridProps: { xs: 12 }
             },
             {
+                name: 'customComponent',
+                fieldType: 'custom',
+                label: 'Custom Component',
+                gridProps: { xs: 12 },
+                CustomComponent: (props: any) => <div>hello</div>
+            },
+            {
                 name: 'switch',
                 label: 'switch',
                 fieldType: 'switch',

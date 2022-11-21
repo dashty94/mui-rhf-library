@@ -1,5 +1,6 @@
 import { Control } from 'react-hook-form';
 import { TextFieldProps, SelectProps, SelectChangeEvent, AutocompleteProps } from '@mui/material';
+import React from 'react';
 
 // Common input field props
 export type MuiRhfFieldProps = {
@@ -74,3 +75,7 @@ export type AutocompleteControllerProps = MuiRhfFieldProps &
         onChange?: (event: SelectChangeEvent) => void;
         customOptionLabel?: (option: any) => any;
     };
+
+export type CustomComponentControllerProps = MuiRhfFieldProps & {
+    CustomComponent: React.FC<any>;
+};
