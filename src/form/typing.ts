@@ -18,6 +18,7 @@ export type FieldProps = {
     props?: any;
     gridProps?: Pick<GridProps, 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
     textFieldProps?: TextFieldProps;
+    CustomComponent?: React.FC<any>;
 };
 
 export interface FormFieldsProps {
