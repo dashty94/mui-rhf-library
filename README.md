@@ -191,6 +191,14 @@ Props of Material UI Autocomplete are also available.
 | defaultValue | boolean                                              |         | The default value of the input that would be injected into React Hook Form Controller and the component |
 | onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the switch is changed                             |
 
+#### Custom Controller
+
+| Prop            | Type          | Default | Definition                                                   |
+| --------------- | ------------- | ------- | ------------------------------------------------------------ |
+| name\*          | string        |         | The name of the input                                        |
+| control\*       | `Control`     |         | The React Hook Form object to register components into React Hook Form. |
+| CustomComponent | React.FC<any> |         | A custom component that will be rendered.                    |
+
 #### FormFields
 
 | Prop      | Type                  | Default   | Definition                                                              |
