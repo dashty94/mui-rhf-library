@@ -57,12 +57,17 @@
         "type": "git",
         "url": "https://github.com/dashty94/mui-rhf-library"
     },
-    "dependencies": {},
+    "dependencies": {
+        "@storybook/addon-postcss": "^2.0.0"
+    },
     "peerDependencies": {
-        "@emotion/react": "^11.7.1",
-        "@emotion/styled": "^11.6.0",
-        "@mui/material": "^5.8.5",
+        "@emotion/react": "^11.10.6",
+        "@emotion/styled": "^11.10.6",
+        "@mui/material": "^5.11.11",
         "react": "^17.0.2",
-        "react-hook-form": "^7.26.1"
+        "react-hook-form": "^7.43.3"
+    },
+    "resolutions": {
+        "@storybook/react-docgen-typescript-plugin": "npm:react-docgen-typescript-plugin@1.0.2"
     }
 }
