@@ -2,3 +2,4 @@ node_modules
 dist
 .vscode
 .env
+README-pv.md
