@@ -124,7 +124,7 @@ const Template: Story<FormFieldsProps> = (args) => {
                 name: 'datePicker',
                 label: 'datePicker',
                 fieldType: 'datePicker',
-                format: 'MM-DD-YYYY',
+                format: 'YYYY-MM-DD',
                 gridProps: { xs: 12 },
                 parser: (value: any) => {
                     return moment(value);

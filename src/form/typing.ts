@@ -11,8 +11,9 @@ import {
     DatePickerControllerProps,
     CustomComponentControllerProps
 } from '../fields';
+import { DatePickerProps } from '@mui/x-date-pickers';
 
-type DatePickerFieldProps<T> = {
+type DatePickerFieldProps<T> = DatePickerProps<any> & {
     fieldType: 'datePicker';
     parser: (value: string) => T;
 };
