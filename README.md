@@ -20,7 +20,7 @@ yarn add mui-rhf-library
 
 ## Demo
 
-Check the storybook of the library: https://6256bd53e0b94a003aad40bd-dkglyrzjjp.chromatic.com/
+Check the storybook of the library: https://6256bd53e0b94a003aad40bd-ihiyahoxwt.chromatic.com/
 
 ## Usage
 
@@ -83,7 +83,7 @@ function App() {
 
   	const fields = [
         {
-            fieldType: 'textField', // 'textField' | 'select' | 'autocomplete' | 'checkbox' | 'radioGroup' | 'switch'
+            fieldType: 'textField', // 'textField' | 'select' | 'autocomplete' | 'checkbox' | 'radioGroup' | 'switch' | 'datePicker' |'custom'
             name: 'firstName',
             label: 'firstName',
             control: control,
@@ -184,6 +184,15 @@ Props of Material UI Autocomplete are also available.
 | control\*    | `Control`                                            |         | The React Hook Form object to register components into React Hook Form.                                 |
 | defaultValue | boolean                                              |         | The default value of the input that would be injected into React Hook Form Controller and the component |
 | onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the switch is changed                             |
+
+#### DatePicker Controller
+
+| Prop         | Type      | Default | Definition                                                                                              |
+| ------------ | --------- | ------- | ------------------------------------------------------------------------------------------------------- |
+| name\*       | string    |         | The name of the input                                                                                   |
+| label\*      | string    |         | The label content                                                                                       |
+| control\*    | `Control` |         | The React Hook Form object to register components into React Hook Form.                                 |
+| defaultValue |           |         | The default value of the input that would be injected into React Hook Form Controller and the component |
 
 #### Custom Controller
 

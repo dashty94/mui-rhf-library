@@ -4,8 +4,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormFields } from '../components/form/FormFields';
-import { FormFieldsProps } from '../form/typing';
+import { FieldProps, FormFieldsProps } from '../form/typing';
 import { Grid } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import moment from 'moment';
 
 const meta: Meta = {
     title: 'Form',
@@ -30,9 +33,11 @@ const Template: Story<FormFieldsProps> = (args) => {
         singleAutocomplete: yup.string().nullable(),
         single: yup.string().required(),
         checkbox: yup.string().required(),
+        date: yup.string().required(),
         name: yup.object().shape({
             ckb: yup.string()
-        })
+        }),
+        datePicker: yup.string().required()
     });
 
     const { handleSubmit, control } = useForm({
@@ -54,7 +59,7 @@ const Template: Story<FormFieldsProps> = (args) => {
         }, 2000);
     }, []);
 
-    const fields = useMemo(
+    const fields: FieldProps[] = useMemo(
         () => [
             // {
             //     name: 'multiple',
@@ -116,6 +121,16 @@ const Template: Story<FormFieldsProps> = (args) => {
                 gridProps: { xs: 12 }
             },
             {
+                name: 'datePicker',
+                label: 'datePicker',
+                fieldType: 'datePicker',
+                format: 'MM-DD-YYYY',
+                gridProps: { xs: 12 },
+                parser: (value: any) => {
+                    return moment(value);
+                }
+            },
+            {
                 name: 'checkbox',
                 label: 'checkbox',
                 fieldType: 'checkbox',
@@ -153,13 +168,15 @@ const Template: Story<FormFieldsProps> = (args) => {
     };
 
     return (
-        <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <Grid container spacing={2}>
-                <FormFields fields={fields} control={control} />
-            </Grid>
+        <LocalizationProvider dateAdapter={AdapterMoment as any}>
+            <form onSubmit={handleSubmit(handleFormSubmit)}>
+                <Grid container spacing={2}>
+                    <FormFields fields={fields} control={control} />
+                </Grid>
 
-            <button type="submit">Submit</button>
-        </form>
+                <button type="submit">Submit</button>
+            </form>
+        </LocalizationProvider>
     );
 };
 

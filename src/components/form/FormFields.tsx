@@ -6,6 +6,7 @@ import { CheckboxController } from '../InputController/CheckboxController/Checkb
 import { RadioGroupController } from '../InputController/RadioGroupController/RadioGroupController';
 import { SwitchController } from '../InputController/SwitchController/SwitchController';
 import { CustomComponentController } from '../InputController/CustomComponentController/CustomComponentController';
+import DatePickerController from '../InputController/DatePickerController/DatePickerController';
 
 import { Grid } from '@mui/material';
 
@@ -18,6 +19,7 @@ const MuiFieldComponentMapper: MuiRhfFieldComponentMap = {
     checkbox: CheckboxController,
     radioGroup: RadioGroupController,
     switch: SwitchController,
+    datePicker: DatePickerController,
     custom: CustomComponentController
 };
 

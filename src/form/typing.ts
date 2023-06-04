@@ -8,21 +8,36 @@ import {
     SelectControllerProps,
     SwitchControllerProps,
     TextFieldControllerProps,
+    DatePickerControllerProps,
     CustomComponentControllerProps
 } from '../fields';
 
-export type FieldProps = {
-    fieldType: 'textField' | 'select' | 'autocomplete' | 'checkbox' | 'radioGroup' | 'switch' | string;
-    name: string;
-    label?: string;
-    props?: any;
-    gridProps?: Pick<GridProps, 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
-    textFieldProps?: TextFieldProps;
-    CustomComponent?: React.FC<any>;
+type DatePickerFieldProps<T> = {
+    fieldType: 'datePicker';
+    parser: (value: string) => T;
 };
 
+export type FieldProps<T = any> =
+    | (DatePickerFieldProps<T> & {
+          name: string;
+          label?: string;
+          props?: any;
+          gridProps?: Pick<GridProps, 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
+          textFieldProps?: TextFieldProps;
+          CustomComponent?: React.FC<any>;
+      })
+    | {
+          fieldType: 'textField' | 'select' | 'autocomplete' | 'checkbox' | 'radioGroup' | 'switch' | 'custom';
+          name: string;
+          label?: string;
+          props?: any;
+          gridProps?: Pick<GridProps, 'xs' | 'sm' | 'md' | 'lg' | 'xl'>;
+          textFieldProps?: TextFieldProps;
+          CustomComponent?: React.FC<any>;
+      };
+
 export interface FormFieldsProps {
-    fields: Array<FieldProps>;
+    fields: FieldProps[];
     control: Control<any>;
 }
 
@@ -33,5 +48,6 @@ export type MuiRhfFieldComponentMap = {
     autocomplete: React.FC<AutocompleteControllerProps>;
     radioGroup: React.FC<RadioGroupControllerProps>;
     switch: React.FC<SwitchControllerProps>;
+    datePicker: React.FC<DatePickerControllerProps>;
     custom: React.FC<CustomComponentControllerProps>;
 };
