@@ -126,7 +126,7 @@ const Template: Story<FormFieldsProps> = (args) => {
                 gridProps: { xs: 12 }
             },
             {
-                unregister: true,
+                hidden: true,
                 name: 'datePicker',
                 label: 'datePicker',
                 fieldType: 'datePicker',

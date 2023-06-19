@@ -27,7 +27,7 @@ export const FormFields: React.FC<FormFieldsProps> = ({ fields, control }) => {
     return (
         <>
             {fields
-                ?.filter(({ unregister }) => !unregister)
+                ?.filter(({ hidden }) => !hidden)
                 .map(({ fieldType, props, name, label, gridProps, ...rest }, index) => {
                     const MuiRhfField =
                         MuiFieldComponentMapper[fieldType as keyof MuiRhfFieldComponentMap] || TextFieldController;
