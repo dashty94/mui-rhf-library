@@ -33,16 +33,21 @@ const Template: Story<FormFieldsProps> = (args) => {
         singleAutocomplete: yup.string().nullable(),
         single: yup.string().required(),
         checkbox: yup.string().required(),
-        date: yup.string().required(),
         name: yup.object().shape({
             ckb: yup.string()
         }),
-        datePicker: yup.string().required()
+        datePicker: yup.string()
     });
 
-    const { handleSubmit, control } = useForm({
+    const {
+        handleSubmit,
+        control,
+        formState: { errors }
+    } = useForm({
         resolver: yupResolver(schema)
     });
+
+    console.log({ errors });
 
     const [loading, setLoading] = React.useState(true);
     const [options, setOptions] = React.useState<any[]>([]);
@@ -121,6 +126,7 @@ const Template: Story<FormFieldsProps> = (args) => {
                 gridProps: { xs: 12 }
             },
             {
+                unregister: true,
                 name: 'datePicker',
                 label: 'datePicker',
                 fieldType: 'datePicker',

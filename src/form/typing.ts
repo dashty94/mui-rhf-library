@@ -16,6 +16,7 @@ import { DatePickerProps } from '@mui/x-date-pickers';
 type DatePickerFieldProps<T> = DatePickerProps<any> & {
     fieldType: 'datePicker';
     parser: (value: string) => T;
+    unregister?: boolean;
 };
 
 export type FieldProps<T = any> =
@@ -28,6 +29,7 @@ export type FieldProps<T = any> =
           CustomComponent?: React.FC<any>;
       })
     | {
+          unregister?: boolean;
           fieldType: 'textField' | 'select' | 'autocomplete' | 'checkbox' | 'radioGroup' | 'switch' | 'custom';
           name: string;
           label?: string;

@@ -26,16 +26,18 @@ const MuiFieldComponentMapper: MuiRhfFieldComponentMap = {
 export const FormFields: React.FC<FormFieldsProps> = ({ fields, control }) => {
     return (
         <>
-            {fields.map(({ fieldType, props, name, label, gridProps, ...rest }, index) => {
-                const MuiRhfField =
-                    MuiFieldComponentMapper[fieldType as keyof MuiRhfFieldComponentMap] || TextFieldController;
+            {fields
+                ?.filter(({ unregister }) => !unregister)
+                .map(({ fieldType, props, name, label, gridProps, ...rest }, index) => {
+                    const MuiRhfField =
+                        MuiFieldComponentMapper[fieldType as keyof MuiRhfFieldComponentMap] || TextFieldController;
 
-                return (
-                    <Grid item xs={12} {...gridProps} key={name + index}>
-                        <MuiRhfField {...props} {...rest} name={name} label={label} control={control} />
-                    </Grid>
-                );
-            })}
+                    return (
+                        <Grid item xs={12} {...gridProps} key={name + index}>
+                            <MuiRhfField {...props} {...rest} name={name} label={label} control={control} />
+                        </Grid>
+                    );
+                })}
         </>
     );
 };
