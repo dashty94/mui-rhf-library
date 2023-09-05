@@ -21,8 +21,7 @@ export const DatePickerController: React.FC<DatePickerControllerProps> = ({ name
                         }
                     }}
                     {...rest}
-                    {...field}
-                    value={field.value ? parser(field.value) : ''}
+                    value={field.value ? parser(field.value) : parser(new Date(''))}
                 />
             )}
         />
