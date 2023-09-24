@@ -15,7 +15,7 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
             name={name}
             control={control}
             defaultValue={defaultValue || ''}
-            render={({ field: { ref, ...restFields }, fieldState }) => (
+            render={({ field: { ref, ...restField }, fieldState }) => (
                 <TextField
                     fullWidth={rest.fullWidth}
                     error={fieldState?.invalid}
@@ -30,7 +30,7 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
                     }
                     {...rest}
                     inputRef={ref}
-                    {...restFields}
+                    {...restField}
                 />
             )}
         />
