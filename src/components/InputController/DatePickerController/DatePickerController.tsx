@@ -9,10 +9,9 @@ export const DatePickerController: React.FC<DatePickerControllerProps> = ({ name
             name={name}
             control={control}
             defaultValue={rest?.defaultValue || ''}
-            render={({ field: { onChange, ref, value, ...restField }, fieldState: { invalid, error } }) => (
+            render={({ field: { ref, value, ...restField }, fieldState: { invalid, error } }) => (
                 <DatePicker
                     {...restField}
-                    onChange={onChange}
                     label={rest?.label}
                     inputRef={ref}
                     slotProps={{
