@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { AutocompleteController } from '../components/InputController/AutocompleteController/AutocompleteController';
 import { useForm } from 'react-hook-form';
 import { AutocompleteControllerProps } from '../fields';
@@ -23,9 +23,9 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<AutocompleteControllerProps> = (args) => {
+const Template: StoryFn<AutocompleteControllerProps> = (args) => {
     const schema = yup.object().shape({
-        autocomplete: yup.string().required()
+        autocomplete: args.multiple ? yup.array().of(yup.string()).min(2).required() : yup.string()
     });
 
     const { handleSubmit, control } = useForm({

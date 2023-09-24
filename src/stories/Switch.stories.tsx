@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { SwitchController } from '../components/InputController/SwitchController/SwitchController';
 import { useForm } from 'react-hook-form';
 import { SwitchControllerProps } from '../fields';
@@ -21,7 +21,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<SwitchControllerProps> = (args) => {
+const Template: StoryFn<SwitchControllerProps> = (args) => {
     const { control } = useForm();
 
     return <SwitchController {...args} control={control} />;

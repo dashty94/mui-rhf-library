@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { SelectController } from '../components/InputController/SelectController/SelectController';
 import { useForm } from 'react-hook-form';
 import { SelectControllerProps } from '../fields';
@@ -21,7 +21,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<SelectControllerProps> = (args) => {
+const Template: StoryFn<SelectControllerProps> = (args) => {
     const { control } = useForm();
 
     return <SelectController {...args} control={control} />;

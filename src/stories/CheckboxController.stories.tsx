@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { CheckboxController } from '../components/InputController/CheckboxController/CheckboxController';
 import { useForm } from 'react-hook-form';
 import { CheckboxControllerProps } from '../fields';
@@ -21,7 +21,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<CheckboxControllerProps> = (args) => {
+const Template: StoryFn<CheckboxControllerProps> = (args) => {
     const { control } = useForm();
 
     return <CheckboxController {...args} control={control} />;

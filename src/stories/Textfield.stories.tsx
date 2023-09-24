@@ -1,8 +1,10 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { TextFieldController } from '../components/InputController/TextFieldController/TextFieldController';
 import { useForm } from 'react-hook-form';
 import { TextFieldControllerProps } from '../fields';
+import { object, string } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const meta: Meta = {
     title: 'TextField Controller',
@@ -21,10 +23,21 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<TextFieldControllerProps> = (args) => {
-    const { control } = useForm();
+const schema = object().shape({
+    textfield: string().min(10).max(20).required()
+});
 
-    return <TextFieldController {...args} control={control} />;
+const Template: StoryFn<TextFieldControllerProps> = (args: TextFieldControllerProps) => {
+    const { control, handleSubmit } = useForm({
+        resolver: yupResolver(schema)
+    });
+
+    return (
+        <form onSubmit={handleSubmit(() => {})}>
+            <TextFieldController {...args} control={control} />
+            <button>submit</button>
+        </form>
+    );
 };
 
 export const TextField = Template.bind({});
