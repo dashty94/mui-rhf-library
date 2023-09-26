@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -27,14 +27,14 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<FormFieldsProps> = (args) => {
+const Template: StoryFn<FormFieldsProps> = (args) => {
     const schema = yup.object().shape({
         multiple: yup.array().min(1).of(yup.string().required()),
         singleAutocomplete: yup.string().nullable(),
         single: yup.string().required(),
         checkbox: yup.string().required(),
         name: yup.object().shape({
-            ckb: yup.string()
+            ckb: yup.string().test('min-date-allowed', (value) => new Date(value!) >= new Date())
         }),
         datePicker: yup.string()
     });

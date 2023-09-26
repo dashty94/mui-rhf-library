@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { RadioGroupController } from '../components/InputController/RadioGroupController/RadioGroupController';
 import { useForm } from 'react-hook-form';
 import { RadioGroupControllerProps } from '../fields';
@@ -21,7 +21,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<RadioGroupControllerProps> = (args) => {
+const Template: StoryFn<RadioGroupControllerProps> = (args) => {
     const { control } = useForm();
 
     return <RadioGroupController {...args} control={control} />;

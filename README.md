@@ -28,48 +28,43 @@ Here is a quick example to get you started:
 
 ```jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { TextFieldController, SelectController } from 'mui-rhf-library';
 import { useForm } from 'react-hook-form';
 
-
 function App() {
-    const {
-        control,
-	} = useForm();
+    const { control } = useForm();
 
     return (
         <>
-            <TextFieldController
-                control={control}
-                name="name"
-                defaultValue=""
-                label="TextField Controller"
-            />
+            <TextFieldController control={control} name="name" defaultValue="" label="TextField Controller" />
 
-        	<SelectController
+            <SelectController
                 name="select"
                 label="Select Controller"
                 control={control}
                 options={[
-        			{ label: 'Option One', value: 'option-one', example: {name: 'example-one'} },
-        			{ label: 'Option Two', value: 'option-two', example: {name: 'example-two'} }
-    			]}
-                optionValue='example.name',
-                optionLabel='example.name',
+                    { label: 'Option One', value: 'option-one', example: { name: 'example-one' } },
+                    { label: 'Option Two', value: 'option-two', example: { name: 'example-two' } }
+                ]}
+                optionValue="example.name"
+                optionLabel="example.name"
                 variant="outlined"
             />
         </>
     );
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+const container = document.querySelector('#app');
+const root = createRoot(container);
+root.render(<App />);
 ```
 
 Generate form fields:
 
 ```jsx
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 import { FormFields } from 'mui-rhf-library';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -104,7 +99,9 @@ function App() {
     );
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+const container = document.querySelector('#app');
+const root = createRoot(container);
+root.render(<App />);
 ```
 
 # Documentation

@@ -39,7 +39,7 @@ export const AutocompleteController = ({
             control={control}
             name={name}
             defaultValue={multiple ? defaultValue || [] : defaultValue || null}
-            render={({ field: { onChange: fieldOnChange, ...restField }, fieldState }) => {
+            render={({ field: { onChange: fieldOnChange, ref, ...restField }, fieldState }) => {
                 return (
                     <Autocomplete
                         options={options || []}
@@ -88,6 +88,7 @@ export const AutocompleteController = ({
                             return (
                                 <TextField
                                     {...params}
+                                    inputRef={ref}
                                     label={textFieldProps?.label}
                                     variant={textFieldProps?.variant}
                                     fullWidth={textFieldProps?.fullWidth}
