@@ -10,5 +10,7 @@ export { RadioGroupController } from './InputController/RadioGroupController/Rad
 export { CheckboxController } from './InputController/CheckboxController/CheckboxController';
 // Autocomplete Controller
 export { AutocompleteController } from './InputController/AutocompleteController/AutocompleteController';
+// Autocomplete Controller
+export { DatePickerController } from './InputController/DatePickerController/DatePickerController';
 // Form Fields
 export { FormFields } from './form/FormFields';
