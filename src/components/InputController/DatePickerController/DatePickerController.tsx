@@ -22,7 +22,7 @@ export const DatePickerController: React.FC<DatePickerControllerProps> = ({ name
                         }
                     }}
                     {...rest}
-                    value={value ? parser(value) : parser('')}
+                    value={value ? parser(value) : undefined}
                 />
             )}
         />

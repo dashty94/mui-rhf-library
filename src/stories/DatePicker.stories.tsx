@@ -27,7 +27,9 @@ const meta: Meta = {
 export default meta;
 
 const schema = object().shape({
-    datePicker: date().min(new Date())
+    datePicker: date()
+        .nullable()
+        .transform((v) => (v instanceof Date && !isNaN(v as any) ? v : null))
 });
 
 const Template: StoryFn<DatePickerControllerProps> = (args) => {
@@ -51,6 +53,5 @@ DatePicker.args = {
     name: 'datePicker',
     label: 'Text Field Controller',
     format: 'YYYY-MM-DD',
-    defaultValue: moment(new Date()),
     parser: (date) => moment(date)
 };
