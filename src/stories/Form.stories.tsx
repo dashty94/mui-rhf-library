@@ -39,15 +39,9 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
         datePicker: yup.string()
     });
 
-    const {
-        handleSubmit,
-        control,
-        formState: { errors }
-    } = useForm({
+    const { handleSubmit, control } = useForm({
         resolver: yupResolver(schema)
     });
-
-    console.log({ errors });
 
     const [loading, setLoading] = React.useState(true);
     const [options, setOptions] = React.useState<any[]>([]);
@@ -126,12 +120,13 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 gridProps: { xs: 12 }
             },
             {
-                hidden: true,
+                hidden: false,
                 name: 'datePicker',
                 label: 'datePicker',
                 fieldType: 'datePicker',
                 format: 'YYYY-MM-DD',
                 gridProps: { xs: 12 },
+                helperText: 'test',
                 parser: (value: any) => {
                     return moment(value);
                 }
@@ -140,7 +135,8 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 name: 'checkbox',
                 label: 'checkbox',
                 fieldType: 'checkbox',
-                gridProps: { xs: 12 }
+                gridProps: { xs: 12 },
+                helperText: 'test'
             },
             {
                 name: 'customComponent',
