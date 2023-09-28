@@ -50,7 +50,7 @@ export const SelectController = ({
             defaultValue={
                 rest?.multiple ? defaultValue?.map((dv: Option) => get(dv, optionValue, '')) || [] : defaultValue || ''
             }
-            render={({ field, fieldState }) => (
+            render={({ field: { ref, ...restField }, fieldState }) => (
                 <FormControl error={fieldState?.invalid} fullWidth={rest.fullWidth} size={rest.size}>
                     {!loading ? <InputLabel id={name}>{rest.label}</InputLabel> : <LinearProgress />}
 
@@ -59,7 +59,7 @@ export const SelectController = ({
                             labelId={name}
                             style={{ width: '100%' }}
                             multiple={rest?.multiple}
-                            input={<OutlinedInput label={rest.label} />}
+                            input={<OutlinedInput inputRef={ref} label={rest.label} />}
                             {...(rest?.multiple && {
                                 renderValue: (selected: any) => (
                                     <ChipsWrapper>
@@ -76,10 +76,10 @@ export const SelectController = ({
                                 )
                             })}
                             {...rest}
-                            {...field}
+                            {...restField}
                             onChange={(event) => {
-                                onChange && onChange(event);
-                                field.onChange(event);
+                                onChange?.(event);
+                                restField.onChange(event);
                             }}
                         >
                             {options?.map((option, index) => {
@@ -98,7 +98,7 @@ export const SelectController = ({
                         <TextField variant={rest?.variant} label={rest.label} disabled size={rest.size} />
                     )}
 
-                    <FormHelperText>{fieldState?.error?.message}</FormHelperText>
+                    <FormHelperText>{fieldState?.error?.message || rest?.helperText}</FormHelperText>
                 </FormControl>
             )}
         />

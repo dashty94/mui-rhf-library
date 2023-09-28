@@ -11,7 +11,8 @@ export const RadioGroupController: React.FC<RadioGroupControllerProps> = ({
     defaultValue,
     control,
     options,
-    onChange
+    onChange,
+    ...rest
 }) => {
     return (
         <Controller
@@ -25,7 +26,7 @@ export const RadioGroupController: React.FC<RadioGroupControllerProps> = ({
                         style={{ flexDirection: 'row' }}
                         {...field}
                         onChange={(event) => {
-                            onChange && onChange(event);
+                            onChange?.(event);
                             field.onChange(event);
                         }}
                     >
@@ -38,7 +39,7 @@ export const RadioGroupController: React.FC<RadioGroupControllerProps> = ({
                             />
                         ))}
                     </RadioGroup>
-                    <FormHelperText>{fieldState?.error?.message}</FormHelperText>
+                    <FormHelperText>{fieldState?.error?.message || rest.helperText}</FormHelperText>
                 </FormControl>
             )}
         />

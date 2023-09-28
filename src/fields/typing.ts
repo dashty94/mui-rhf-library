@@ -7,6 +7,7 @@ import { DatePickerProps } from '@mui/x-date-pickers';
 export type MuiRhfFieldProps = {
     control: Control<any>;
     name: string;
+    helperText?: React.ReactNode;
 };
 
 // Option
@@ -16,7 +17,7 @@ export type Option = {
 };
 
 // TextField
-export type TextFieldControllerProps = MuiRhfFieldProps &
+export type TextFieldControllerProps = Omit<MuiRhfFieldProps, 'helperText'> &
     TextFieldProps & {
         defaultValue?: any;
         type: React.HTMLInputTypeAttribute | undefined;
@@ -57,7 +58,7 @@ export type CheckboxControllerProps = MuiRhfFieldProps & {
 };
 
 // Autocomplete
-export type AutocompleteControllerProps = MuiRhfFieldProps &
+export type AutocompleteControllerProps = Omit<MuiRhfFieldProps, 'helperText'> &
     AutocompleteProps<Object, boolean, boolean, boolean> & {
         defaultValue: any;
         options: { [key: string]: any }[];

@@ -20,7 +20,7 @@ yarn add mui-rhf-library
 
 ## Demo
 
-Check the storybook of the library: https://6256bd53e0b94a003aad40bd-ihiyahoxwt.chromatic.com/
+Check the storybook of the library: https://6256bd53e0b94a003aad40bd-cnmtmxtjgl.chromatic.com/
 
 ## Usage
 
@@ -28,48 +28,43 @@ Here is a quick example to get you started:
 
 ```jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { TextFieldController, SelectController } from 'mui-rhf-library';
 import { useForm } from 'react-hook-form';
 
-
 function App() {
-    const {
-        control,
-	} = useForm();
+    const { control } = useForm();
 
     return (
         <>
-            <TextFieldController
-                control={control}
-                name="name"
-                defaultValue=""
-                label="TextField Controller"
-            />
+            <TextFieldController control={control} name="name" defaultValue="" label="TextField Controller" />
 
-        	<SelectController
+            <SelectController
                 name="select"
                 label="Select Controller"
                 control={control}
                 options={[
-        			{ label: 'Option One', value: 'option-one', example: {name: 'example-one'} },
-        			{ label: 'Option Two', value: 'option-two', example: {name: 'example-two'} }
-    			]}
-                optionValue='example.name',
-                optionLabel='example.name',
+                    { label: 'Option One', value: 'option-one', example: { name: 'example-one' } },
+                    { label: 'Option Two', value: 'option-two', example: { name: 'example-two' } }
+                ]}
+                optionValue="example.name"
+                optionLabel="example.name"
                 variant="outlined"
             />
         </>
     );
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+const container = document.querySelector('#app');
+const root = createRoot(container);
+root.render(<App />);
 ```
 
 Generate form fields:
 
 ```jsx
 import React from 'react';
+import { createRoot } from 'react-dom/client';
 import { FormFields } from 'mui-rhf-library';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -104,7 +99,9 @@ function App() {
     );
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+const container = document.querySelector('#app');
+const root = createRoot(container);
+root.render(<App />);
 ```
 
 # Documentation
@@ -123,17 +120,18 @@ Props of Material UI TextField are also available.
 
 Props of Material UI Select are also available.
 
-| Prop              | Type                                        | Default | Definition                                                                                              |
-| ----------------- | ------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*            | string                                      |         | The name of the input                                                                                   |
-| control\*         | `Control`                                   |         | The React Hook Form object to register components into React Hook Form.                                 |
+| Prop              | Type                                        | Default | Definition                                                   |
+| ----------------- | ------------------------------------------- | ------- | ------------------------------------------------------------ |
+| name\*            | string                                      |         | The name of the input                                        |
+| control\*         | `Control`                                   |         | The React Hook Form object to register components into React Hook Form. |
 | defaultValue      | any                                         |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| options           | `{disabled?: boolean, [key:string]: any}[]` |         | The option items that is available to the component.                                                    |
-| optionValue       | string                                      | 'value' | Set property of options's value                                                                         |
-| optionLabel       | string                                      | 'label' | Set property of items’s text label                                                                      |
-| onChange          | `(event: SelectChangeEvent) => void`        |         | Callback fired when a menu item is selected.                                                            |
-| loading           | boolean                                     | false   | Displays linear progress bar                                                                            |
-| customOptionLabel | `(option: any) => any`                      |         | Display custom option label                                                                             |
+| options           | `{disabled?: boolean, [key:string]: any}[]` |         | The option items that is available to the component.         |
+| optionValue       | string                                      | 'value' | Set property of options's value                              |
+| optionLabel       | string                                      | 'label' | Set property of items’s text label                           |
+| onChange          | `(event: SelectChangeEvent) => void`        |         | Callback fired when a menu item is selected.                 |
+| loading           | boolean                                     | false   | Displays linear progress bar                                 |
+| customOptionLabel | `(option: any) => any`                      |         | Display custom option label                                  |
+| helperText        | `ReactNode`                                 |         | Form helper text                                             |
 
 #### Autocomplete Controller
 
@@ -167,32 +165,35 @@ Props of Material UI Autocomplete are also available.
 
 #### Checkbox Controller
 
-| Prop         | Type                                                 | Default | Definition                                                                                              |
-| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*       | string                                               |         | The name of the input                                                                                   |
-| label\*      | string                                               |         | The label content                                                                                       |
-| control\*    | `Control`                                            |         | The React Hook Form object to register components into React Hook Form.                                 |
-| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the checkbox is changed                           |
+| Prop         | Type                                                 | Default | Definition                                                   |
+| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------ |
+| name\*       | string                                               |         | The name of the input                                        |
+| label\*      | string                                               |         | The label content                                            |
+| control\*    | `Control`                                            |         | The React Hook Form object to register components into React Hook Form. |
+| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the checkbox is changed |
 | defaultValue | boolean                                              |         | The default value of the input that would be injected into React Hook Form Controller and the component |
+| helperText   | `ReactNode`                                          |         | Form helper text                                             |
 
 #### Switch Controller
 
-| Prop         | Type                                                 | Default | Definition                                                                                              |
-| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*       | string                                               |         | The name of the input                                                                                   |
-| label\*      | string                                               |         | The label content                                                                                       |
-| control\*    | `Control`                                            |         | The React Hook Form object to register components into React Hook Form.                                 |
+| Prop         | Type                                                 | Default | Definition                                                   |
+| ------------ | ---------------------------------------------------- | ------- | ------------------------------------------------------------ |
+| name\*       | string                                               |         | The name of the input                                        |
+| label\*      | string                                               |         | The label content                                            |
+| control\*    | `Control`                                            |         | The React Hook Form object to register components into React Hook Form. |
 | defaultValue | boolean                                              |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the switch is changed                             |
+| onChange     | (event: React.ChangeEvent<HTMLInputElement>) => void |         | A custom method that gets triggered when the value of the switch is changed |
+| helperText   | `ReactNode`                                          |         | Form helper text                                             |
 
 #### DatePicker Controller
 
-| Prop         | Type      | Default | Definition                                                                                              |
-| ------------ | --------- | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*       | string    |         | The name of the input                                                                                   |
-| label\*      | string    |         | The label content                                                                                       |
-| control\*    | `Control` |         | The React Hook Form object to register components into React Hook Form.                                 |
-| defaultValue |           |         | The default value of the input that would be injected into React Hook Form Controller and the component |
+| Prop         | Type        | Default | Definition                                                   |
+| ------------ | ----------- | ------- | ------------------------------------------------------------ |
+| name\*       | string      |         | The name of the input                                        |
+| label\*      | string      |         | The label content                                            |
+| control\*    | `Control`   |         | The React Hook Form object to register components into React Hook Form. |
+| defaultValue |             |         | The default value of the input that would be injected into React Hook Form Controller and the component |
+| helperText   | `ReactNode` |         | Form helper text                                             |
 
 #### Custom Controller
 
