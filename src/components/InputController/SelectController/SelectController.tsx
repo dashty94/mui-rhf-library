@@ -81,6 +81,7 @@ export const SelectController = ({
                                 onChange?.(event);
                                 restField.onChange(event);
                             }}
+                            disabled={restField.disabled ?? rest.disabled}
                         >
                             {options?.map((option, index) => {
                                 return (

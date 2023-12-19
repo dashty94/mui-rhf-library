@@ -105,6 +105,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                         { label: 'three', value: 'three' }
                     ],
                     fullWidth: true,
+                    disabled: true,
                     loading: false
                 },
                 gridProps: { xs: 12 }
@@ -113,8 +114,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 name: 'name.ckb',
                 label: 'name',
                 props: {
-                    fullWidth: true,
-                    type: 'month'
+                    fullWidth: true
                 },
                 fieldType: 'textField',
                 gridProps: { xs: 12 }
@@ -135,8 +135,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 name: 'checkbox',
                 label: 'checkbox',
                 fieldType: 'checkbox',
-                gridProps: { xs: 12 },
-                helperText: 'test'
+                gridProps: { xs: 12 }
             },
             {
                 name: 'customComponent',
@@ -149,7 +148,10 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 name: 'switch',
                 label: 'switch',
                 fieldType: 'switch',
-                gridProps: { xs: 12 }
+                gridProps: { xs: 12 },
+                props: {
+                    disabled: false
+                }
             },
             {
                 name: 'formGroup',
@@ -159,7 +161,10 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 options: [
                     { label: 'Option 1', value: 'option1' },
                     { label: 'Option 2', value: 'option2' }
-                ]
+                ],
+                props: {
+                    disabled: true
+                }
             }
         ],
         [options, loading]
