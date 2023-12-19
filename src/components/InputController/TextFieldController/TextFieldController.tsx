@@ -15,24 +15,26 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
             name={name}
             control={control}
             defaultValue={defaultValue || ''}
-            render={({ field: { ref, ...restField }, fieldState }) => (
-                <TextField
-                    fullWidth={rest.fullWidth}
-                    error={fieldState?.invalid}
-                    helperText={fieldState?.error?.message}
-                    type={type}
-                    InputLabelProps={
-                        type === 'date' || type === 'month'
-                            ? {
-                                  shrink: true
-                              }
-                            : {}
-                    }
-                    {...rest}
-                    inputRef={ref}
-                    {...restField}
-                />
-            )}
+            render={({ field: { ref, ...restField }, fieldState }) => {
+                return (
+                    <TextField
+                        error={fieldState?.invalid}
+                        helperText={fieldState?.error?.message}
+                        type={type}
+                        InputLabelProps={
+                            type === 'date' || type === 'month'
+                                ? {
+                                      shrink: true
+                                  }
+                                : {}
+                        }
+                        {...rest}
+                        inputRef={ref}
+                        {...restField}
+                        disabled={restField.disabled ?? rest.disabled}
+                    />
+                );
+            }}
         />
     );
 };
