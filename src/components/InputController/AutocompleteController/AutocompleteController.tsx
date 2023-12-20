@@ -68,7 +68,6 @@ export const AutocompleteController = ({
                                 : get(option, optionValue, '') === get(value, optionValue, '');
                         }}
                         disableClearable={rest.disableClearable}
-                        disabled={rest.disabled}
                         {...(rest.noOptionsText && {
                             noOptionsText: rest.noOptionsText
                         })}
@@ -102,6 +101,7 @@ export const AutocompleteController = ({
                             );
                         }}
                         {...restField}
+                        disabled={restField.disabled ?? rest.disabled}
                     />
                 );
             }}

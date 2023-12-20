@@ -81,6 +81,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 label: 'singleAutocomplete',
                 fieldType: 'autocomplete',
                 props: {
+                    disabled: false,
                     defaultValue: '',
                     options: options,
                     loading: loading,
