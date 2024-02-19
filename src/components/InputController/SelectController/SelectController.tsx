@@ -78,9 +78,10 @@ export const SelectController = ({
                             {...rest}
                             {...restField}
                             onChange={(event) => {
-                                onChange && onChange(event);
+                                onChange?.(event);
                                 restField.onChange(event);
                             }}
+                            disabled={restField.disabled ?? rest.disabled}
                         >
                             {options?.map((option, index) => {
                                 return (
@@ -98,7 +99,7 @@ export const SelectController = ({
                         <TextField variant={rest?.variant} label={rest.label} disabled size={rest.size} />
                     )}
 
-                    <FormHelperText>{fieldState?.error?.message}</FormHelperText>
+                    <FormHelperText>{fieldState?.error?.message || rest?.helperText}</FormHelperText>
                 </FormControl>
             )}
         />

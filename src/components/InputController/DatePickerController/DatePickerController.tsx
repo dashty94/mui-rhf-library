@@ -9,22 +9,26 @@ export const DatePickerController: React.FC<DatePickerControllerProps> = ({ name
             name={name}
             control={control}
             defaultValue={rest?.defaultValue || ''}
-            render={({ field: { ref, value, ...restField }, fieldState: { invalid, error } }) => (
-                <DatePicker
-                    {...restField}
-                    label={rest?.label}
-                    inputRef={ref}
-                    slotProps={{
-                        textField: {
-                            error: invalid,
-                            helperText: error?.message,
-                            fullWidth: true
-                        }
-                    }}
-                    {...rest}
-                    value={value ? parser(value) : undefined}
-                />
-            )}
+            render={({ field: { ref, value, ...restField }, fieldState: { invalid, error } }) => {
+                const restProps = { ...rest };
+                delete restProps.defaultValue;
+                return (
+                    <DatePicker
+                        {...restField}
+                        label={rest?.label}
+                        inputRef={ref}
+                        slotProps={{
+                            textField: {
+                                error: invalid,
+                                helperText: error?.message || rest.helperText,
+                                fullWidth: true
+                            }
+                        }}
+                        {...restProps}
+                        value={value ? parser(value) : null}
+                    />
+                );
+            }}
         />
     );
 };

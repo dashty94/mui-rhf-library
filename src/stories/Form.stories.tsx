@@ -39,15 +39,9 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
         datePicker: yup.string()
     });
 
-    const {
-        handleSubmit,
-        control,
-        formState: { errors }
-    } = useForm({
+    const { handleSubmit, control } = useForm({
         resolver: yupResolver(schema)
     });
-
-    console.log({ errors });
 
     const [loading, setLoading] = React.useState(true);
     const [options, setOptions] = React.useState<any[]>([]);
@@ -87,6 +81,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 label: 'singleAutocomplete',
                 fieldType: 'autocomplete',
                 props: {
+                    disabled: false,
                     defaultValue: '',
                     options: options,
                     loading: loading,
@@ -111,6 +106,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                         { label: 'three', value: 'three' }
                     ],
                     fullWidth: true,
+                    disabled: true,
                     loading: false
                 },
                 gridProps: { xs: 12 }
@@ -119,19 +115,19 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 name: 'name.ckb',
                 label: 'name',
                 props: {
-                    fullWidth: true,
-                    type: 'month'
+                    fullWidth: true
                 },
                 fieldType: 'textField',
                 gridProps: { xs: 12 }
             },
             {
-                hidden: true,
+                hidden: false,
                 name: 'datePicker',
                 label: 'datePicker',
                 fieldType: 'datePicker',
                 format: 'YYYY-MM-DD',
                 gridProps: { xs: 12 },
+                helperText: 'test',
                 parser: (value: any) => {
                     return moment(value);
                 }
@@ -153,7 +149,10 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 name: 'switch',
                 label: 'switch',
                 fieldType: 'switch',
-                gridProps: { xs: 12 }
+                gridProps: { xs: 12 },
+                props: {
+                    disabled: false
+                }
             },
             {
                 name: 'formGroup',
@@ -163,7 +162,10 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 options: [
                     { label: 'Option 1', value: 'option1' },
                     { label: 'Option 2', value: 'option2' }
-                ]
+                ],
+                props: {
+                    disabled: true
+                }
             }
         ],
         [options, loading]

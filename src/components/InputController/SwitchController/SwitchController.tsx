@@ -44,7 +44,7 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
                                 label={label}
                             />
                         </FormGroup>
-                        <FormHelperText>{fieldState?.error?.message}</FormHelperText>
+                        <FormHelperText>{fieldState?.error?.message || rest?.helperText}</FormHelperText>
                     </FormControl>
                 );
             }}

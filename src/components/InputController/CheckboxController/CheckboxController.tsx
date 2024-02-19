@@ -30,14 +30,14 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
                                         {...field}
                                         {...rest}
                                         onChange={(e) => {
-                                            onChange && onChange(e);
+                                            onChange?.(e);
                                             field.onChange(e.target.checked);
                                         }}
                                     />
                                 }
                             />
                         </FormGroup>
-                        <FormHelperText>{fieldState?.error?.message}</FormHelperText>
+                        <FormHelperText>{fieldState?.error?.message || rest.helperText}</FormHelperText>
                     </FormControl>
                 );
             }}

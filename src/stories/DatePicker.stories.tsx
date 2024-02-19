@@ -36,10 +36,13 @@ const Template: StoryFn<DatePickerControllerProps> = (args) => {
     const { control, handleSubmit } = useForm({
         resolver: yupResolver(schema)
     });
-
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
-            <form onSubmit={handleSubmit(() => {})}>
+            <form
+                onSubmit={handleSubmit((data) => {
+                    console.log(data);
+                })}
+            >
                 <DatePickerController {...args} control={control} />
                 <button>submit</button>
             </form>
