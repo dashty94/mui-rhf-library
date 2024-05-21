@@ -48,6 +48,7 @@ export type RadioGroupControllerProps = MuiRhfFieldProps & {
     defaultValue: string | number;
     options: Array<Option>;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (event: React.FocusEvent<HTMLDivElement>) => void;
 };
 
 // Checkbox

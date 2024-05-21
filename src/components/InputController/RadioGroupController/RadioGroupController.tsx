@@ -12,6 +12,7 @@ export const RadioGroupController: React.FC<RadioGroupControllerProps> = ({
     control,
     options,
     onChange,
+    onBlur,
     ...rest
 }) => {
     return (
@@ -28,6 +29,10 @@ export const RadioGroupController: React.FC<RadioGroupControllerProps> = ({
                         onChange={(event) => {
                             onChange?.(event);
                             field.onChange(event);
+                        }}
+                        onBlur={(...args) => {
+                            field?.onBlur?.();
+                            onBlur?.(...args);
                         }}
                     >
                         {options.map((option, index) => (
