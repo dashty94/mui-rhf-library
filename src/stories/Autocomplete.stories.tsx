@@ -1,10 +1,10 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
+import { Meta, StoryFn } from '@storybook/react';
 import { AutocompleteController } from '../components/InputController/AutocompleteController/AutocompleteController';
+import { useForm } from 'react-hook-form';
 import { AutocompleteControllerProps } from '../fields';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 const meta: Meta = {
     title: 'Autocomplete Controller',

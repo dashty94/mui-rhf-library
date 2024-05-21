@@ -1,10 +1,10 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { object, string } from 'yup';
+import { Meta, StoryFn } from '@storybook/react';
 import { TextFieldController } from '../components/InputController/TextFieldController/TextFieldController';
+import { useForm } from 'react-hook-form';
 import { TextFieldControllerProps } from '../fields';
+import { object, string } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const meta: Meta = {
     title: 'TextField Controller',
