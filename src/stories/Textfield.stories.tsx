@@ -1,10 +1,10 @@
-import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { TextFieldController } from '../components/InputController/TextFieldController/TextFieldController';
-import { useForm } from 'react-hook-form';
-import { TextFieldControllerProps } from '../fields';
-import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Meta, StoryFn } from '@storybook/react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { object, string } from 'yup';
+import { TextFieldController } from '../components/InputController/TextFieldController/TextFieldController';
+import { TextFieldControllerProps } from '../fields';
 
 const meta: Meta = {
     title: 'TextField Controller',
@@ -46,5 +46,7 @@ TextField.args = {
     name: 'textfield',
     defaultValue: '',
     variant: 'outlined',
-    label: 'Text Field Controller'
+    label: 'Text Field Controller',
+    onBlur: () => console.log('Textfield onBlur event'),
+    onChange: () => console.log('Textfield onChange event')
 };
