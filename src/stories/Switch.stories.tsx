@@ -33,7 +33,4 @@ Switch.args = {
     name: 'switch',
     defaultValue: true,
     label: 'Switch',
-    onBlur: () => {
-        console.log('Switch onBlur event');
-    }
 };

@@ -47,6 +47,4 @@ TextField.args = {
     defaultValue: '',
     variant: 'outlined',
     label: 'Text Field Controller',
-    onBlur: () => console.log('Textfield onBlur event'),
-    onChange: () => console.log('Textfield onChange event')
 };

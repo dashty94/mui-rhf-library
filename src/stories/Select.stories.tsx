@@ -56,7 +56,4 @@ SelectMultiple.args = {
     variant: 'outlined',
     multiple: true,
     fullWidth: true,
-    onBlur: () => {
-        console.log('select onBlur event');
-    }
 };
