@@ -83,8 +83,8 @@ export const AutocompleteController = ({
                                     : get(newValue, optionValue, null)
                             );
                         }}
-                        onBlur={(...rest) => {
-                            onBlur?.(...rest);
+                        onBlur={(...args) => {
+                            onBlur?.(...args);
                             fieldOnBlur?.();
                         }}
                         {...rest}
