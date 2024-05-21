@@ -1,10 +1,10 @@
+import { FormControl, LinearProgress as MuiLinearProgress, TextField } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import { styled } from '@mui/material/styles';
+import get from 'lodash.get';
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import Autocomplete from '@mui/material/Autocomplete';
-import { TextField, LinearProgress as MuiLinearProgress, FormControl } from '@mui/material';
 import { AutocompleteControllerProps } from '../../../fields/index';
-import get from 'lodash.get';
-import { styled } from '@mui/material/styles';
 
 const LinearProgress = styled(MuiLinearProgress)(
     () => `
@@ -27,6 +27,7 @@ export const AutocompleteController = ({
     loading = false,
     onChange,
     customOptionLabel,
+    onBlur,
     ...rest
 }: AutocompleteControllerProps) => {
     return loading ? (
@@ -39,7 +40,7 @@ export const AutocompleteController = ({
             control={control}
             name={name}
             defaultValue={multiple ? defaultValue || [] : defaultValue || null}
-            render={({ field: { onChange: fieldOnChange, ref, ...restField }, fieldState }) => {
+            render={({ field: { onChange: fieldOnChange, onBlur: fieldOnBlur, ref, ...restField }, fieldState }) => {
                 return (
                     <Autocomplete
                         options={options || []}
@@ -81,6 +82,10 @@ export const AutocompleteController = ({
                                     ? newValue?.map((v: any) => get(v, optionValue, null) || v)
                                     : get(newValue, optionValue, null)
                             );
+                        }}
+                        onBlur={(...rest) => {
+                            onBlur?.(...rest);
+                            fieldOnBlur?.();
                         }}
                         {...rest}
                         renderInput={(params) => {

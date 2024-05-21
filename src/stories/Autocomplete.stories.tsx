@@ -1,10 +1,10 @@
-import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { AutocompleteController } from '../components/InputController/AutocompleteController/AutocompleteController';
-import { useForm } from 'react-hook-form';
-import { AutocompleteControllerProps } from '../fields';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Meta, StoryFn } from '@storybook/react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { AutocompleteController } from '../components/InputController/AutocompleteController/AutocompleteController';
+import { AutocompleteControllerProps } from '../fields';
 
 const meta: Meta = {
     title: 'Autocomplete Controller',
@@ -58,7 +58,8 @@ Autocomplete.args = {
     options: [
         { title: 'Option One', entity: { id: 'entity-one' }, value: 'option-one' },
         { title: 'Option two', entity: { id: 'entity-two' }, value: 'option-two' }
-    ]
+    ],
+    onBlur: () => console.log('Autocomplete onBlur called')
 };
 
 export const AutocompleteMultiple = Template.bind({});
