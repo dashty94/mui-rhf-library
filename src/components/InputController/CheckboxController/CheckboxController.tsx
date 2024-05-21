@@ -11,6 +11,7 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
     label,
     defaultValue,
     onChange,
+    onBlur,
     ...rest
 }) => {
     return (
@@ -32,6 +33,10 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
                                         onChange={(e) => {
                                             onChange?.(e);
                                             field.onChange(e.target.checked);
+                                        }}
+                                        onBlur={(...args) => {
+                                            onBlur?.(...args);
+                                            field.onBlur();
                                         }}
                                     />
                                 }

@@ -55,6 +55,7 @@ export type CheckboxControllerProps = MuiRhfFieldProps & {
     label: string;
     defaultValue?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
 };
 
 // Autocomplete
