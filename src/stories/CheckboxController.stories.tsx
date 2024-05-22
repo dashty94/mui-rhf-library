@@ -31,5 +31,5 @@ export const Checkbox = Template.bind({});
 
 Checkbox.args = {
     name: 'checkbox',
-    label: 'Checkbox Controller'
+    label: 'Checkbox Controller',
 };
