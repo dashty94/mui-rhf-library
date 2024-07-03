@@ -50,11 +50,10 @@ SelectMultiple.args = {
     defaultValue: [],
     options: [
         { label: 'Option One', value: 'option-one', entity: { id: 'entity-one' } },
-        { label: 'Option One', value: 'option-one', entity: { id: 'entity-one' } },
         { label: 'Option Two', value: 'option-two', entity: { id: 'entity-two' } }
     ],
     optionValue: 'entity.id',
     variant: 'outlined',
     multiple: true,
-    fullWidth: true
+    fullWidth: true,
 };

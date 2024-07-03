@@ -58,7 +58,8 @@ Autocomplete.args = {
     options: [
         { title: 'Option One', entity: { id: 'entity-one' }, value: 'option-one' },
         { title: 'Option two', entity: { id: 'entity-two' }, value: 'option-two' }
-    ]
+    ],
+    onBlur: () => console.log('Autocomplete onBlur called')
 };
 
 export const AutocompleteMultiple = Template.bind({});

@@ -37,6 +37,7 @@ export const SelectController = ({
     defaultValue,
     options,
     onChange,
+    onBlur,
     optionValue = 'value',
     optionLabel = 'label',
     loading = false,
@@ -80,6 +81,10 @@ export const SelectController = ({
                             onChange={(event) => {
                                 onChange?.(event);
                                 restField.onChange(event);
+                            }}
+                            onBlur={(...args) => {
+                                restField?.onBlur?.();
+                                onBlur?.(...args);
                             }}
                             disabled={restField.disabled ?? rest.disabled}
                         >

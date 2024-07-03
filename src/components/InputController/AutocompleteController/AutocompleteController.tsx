@@ -27,6 +27,7 @@ export const AutocompleteController = ({
     loading = false,
     onChange,
     customOptionLabel,
+    onBlur,
     ...rest
 }: AutocompleteControllerProps) => {
     return loading ? (
@@ -39,7 +40,7 @@ export const AutocompleteController = ({
             control={control}
             name={name}
             defaultValue={multiple ? defaultValue || [] : defaultValue || null}
-            render={({ field: { onChange: fieldOnChange, ref, ...restField }, fieldState }) => {
+            render={({ field: { onChange: fieldOnChange, onBlur: fieldOnBlur, ref, ...restField }, fieldState }) => {
                 return (
                     <Autocomplete
                         options={options || []}
@@ -81,6 +82,10 @@ export const AutocompleteController = ({
                                     ? newValue?.map((v: any) => get(v, optionValue, null) || v)
                                     : get(newValue, optionValue, null)
                             );
+                        }}
+                        onBlur={(...args) => {
+                            onBlur?.(...args);
+                            fieldOnBlur?.();
                         }}
                         {...rest}
                         renderInput={(params) => {

@@ -8,6 +8,8 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
     control,
     defaultValue,
     type,
+    onChange,
+    onBlur,
     ...rest
 }) => {
     return (
@@ -31,6 +33,14 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
                         {...rest}
                         inputRef={ref}
                         {...restField}
+                        onChange={(...args) => {
+                            restField?.onChange?.(...args);
+                            onChange?.(...args);
+                        }}
+                        onBlur={(...args) => {
+                            restField?.onBlur?.();
+                            onBlur?.(...args);
+                        }}
                         disabled={restField.disabled ?? rest.disabled}
                     />
                 );

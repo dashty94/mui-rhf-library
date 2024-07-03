@@ -32,5 +32,5 @@ export const Switch = Template.bind({});
 Switch.args = {
     name: 'switch',
     defaultValue: true,
-    label: 'Switch'
+    label: 'Switch',
 };

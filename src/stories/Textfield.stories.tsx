@@ -46,5 +46,5 @@ TextField.args = {
     name: 'textfield',
     defaultValue: '',
     variant: 'outlined',
-    label: 'Text Field Controller'
+    label: 'Text Field Controller',
 };

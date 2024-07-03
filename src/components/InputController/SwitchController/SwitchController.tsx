@@ -14,6 +14,7 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
     label,
     defaultValue = false,
     onChange,
+    onBlur,
     ...rest
 }) => {
     const [isChecked, setIsChecked] = useState(defaultValue);
@@ -38,6 +39,10 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
                                             setIsChecked(event.target.checked);
                                             field.onChange(Boolean(event.target.checked));
                                             onChange && onChange(event);
+                                        }}
+                                        onBlur={(...args) => {
+                                            field?.onBlur?.();
+                                            onBlur?.(...args);
                                         }}
                                     />
                                 }

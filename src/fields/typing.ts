@@ -40,6 +40,7 @@ export type SwitchControllerProps = MuiRhfFieldProps & {
     label: string;
     defaultValue?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
 };
 
 // RadioGroup
@@ -48,6 +49,7 @@ export type RadioGroupControllerProps = MuiRhfFieldProps & {
     defaultValue: string | number;
     options: Array<Option>;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (event: React.FocusEvent<HTMLDivElement>) => void;
 };
 
 // Checkbox
@@ -55,6 +57,7 @@ export type CheckboxControllerProps = MuiRhfFieldProps & {
     label: string;
     defaultValue?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
 };
 
 // Autocomplete
