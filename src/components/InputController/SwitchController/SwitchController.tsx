@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Controller } from 'react-hook-form';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -17,8 +17,6 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
     onBlur,
     ...rest
 }) => {
-    const [isChecked, setIsChecked] = useState(defaultValue);
-
     return (
         <Controller
             name={name}
@@ -32,11 +30,10 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
                                 style={{ width: '100%' }}
                                 control={
                                     <Switch
-                                        checked={isChecked}
+                                        checked={field?.value}
                                         {...field}
                                         {...rest}
                                         onChange={(event) => {
-                                            setIsChecked(event.target.checked);
                                             field.onChange(Boolean(event.target.checked));
                                             onChange && onChange(event);
                                         }}
