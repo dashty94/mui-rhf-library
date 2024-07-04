@@ -27,6 +27,10 @@ const meta: Meta = {
 
 export default meta;
 
+const MyCustomComponent = () => {
+    return <div>My Custom Component</div>;
+};
+
 const Template: StoryFn<FormFieldsProps> = (args) => {
     const schema = yup.object().shape({
         multiple: yup.array().min(1).of(yup.string().required()),
@@ -143,7 +147,10 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 fieldType: 'custom',
                 label: 'Custom Component',
                 gridProps: { xs: 12 },
-                CustomComponent: (props: any) => <div>hello</div>
+                CustomComponent: MyCustomComponent,
+                props: {
+                    // props to pass to custom component
+                }
             },
             {
                 name: 'switch',
