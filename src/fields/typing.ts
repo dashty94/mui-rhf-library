@@ -77,7 +77,7 @@ export type AutocompleteControllerProps = Omit<MuiRhfFieldProps, 'helperText'> &
         optionValue?: string;
         optionLabel?: string;
 
-        onChange?: (event: SelectChangeEvent) => void;
+        onChange?: (event: SelectChangeEvent, e: React.SyntheticEvent<Element, Event>) => void;
         customOptionLabel?: (option: any) => any;
     };
 
