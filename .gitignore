@@ -3,3 +3,4 @@ dist
 .vscode
 .env
 README-pv.md
+/.yarn

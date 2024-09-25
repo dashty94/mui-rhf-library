@@ -33,13 +33,10 @@ const MyCustomComponent = () => {
 
 const Template: StoryFn<FormFieldsProps> = (args) => {
     const schema = yup.object().shape({
-        multiple: yup.array().min(1).of(yup.string().required()),
         singleAutocomplete: yup.string().nullable(),
-        single: yup.string().required(),
-        checkbox: yup.string().required(),
-        name: yup.object().shape({
-            ckb: yup.string().test('min-date-allowed', (value) => new Date(value!) >= new Date())
-        }),
+        single: yup.string(),
+        checkbox: yup.string(),
+        name: yup.string().required(),
         datePicker: yup.string()
     });
 
@@ -64,22 +61,6 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
 
     const fields: FieldProps[] = useMemo(
         () => [
-            // {
-            //     name: 'multiple',
-            //     label: 'multiple',
-            //     fieldType: 'autocomplete',
-            //     props: {
-            //         defaultValue: [],
-            //         options: [
-            //             { label: 'one', value: 'one' },
-            //             { label: 'two', value: 'two' }
-            //         ],
-            //         multiple: true,
-            //         loading: false
-            //     },
-            //     gridProps: { xs: 12 },
-            //     textFieldProps: { label: 'First Name', fullWidth: true }
-            // },
             {
                 name: 'singleAutocomplete',
                 label: 'singleAutocomplete',
@@ -116,7 +97,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 gridProps: { xs: 12 }
             },
             {
-                name: 'name.ckb',
+                name: 'name',
                 label: 'name',
                 props: {
                     fullWidth: true
@@ -134,6 +115,9 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 helperText: 'test',
                 parser: (value: any) => {
                     return moment(value);
+                },
+                onChange: (value: any) => {
+                    console.log('datePicker');
                 }
             },
             {

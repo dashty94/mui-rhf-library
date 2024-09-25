@@ -62,7 +62,7 @@ export const DatePicker = Template.bind({});
 
 DatePicker.args = {
     name: 'datePicker',
-    label: 'Text Field Controller',
+    label: 'Date Picker Controller',
     format: 'YYYY-MM-DD',
     parser: (date) => moment(date)
 };
