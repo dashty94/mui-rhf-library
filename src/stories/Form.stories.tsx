@@ -117,7 +117,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                     return moment(value);
                 },
                 onChange: (value: any) => {
-                    console.log('datePicker');
+                    console.log('datePicker on change');
                 }
             },
             {
