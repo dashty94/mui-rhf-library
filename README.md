@@ -187,14 +187,14 @@ Props of Material UI Autocomplete are also available.
 
 #### DatePicker Controller
 
-| Prop         | Type                                 | Default | Definition                                                                                              |
-| ------------ | ------------------------------------ | ------- | ------------------------------------------------------------------------------------------------------- |
-| name\*       | string                               |         | The name of the input                                                                                   |
-| label\*      | string                               |         | The label content                                                                                       |
-| control\*    | `Control`                            |         | The React Hook Form object to register components into React Hook Form.                                 |
-| defaultValue |                                      |         | The default value of the input that would be injected into React Hook Form Controller and the component |
-| onChange     | `(event: SelectChangeEvent) => void` |         | A custom method that gets triggered when the value changes                                              |
-| helperText   | `ReactNode`                          |         | Form helper text                                                                                        |
+| Prop         | Type                                                                               | Default | Definition                                                                                              |
+| ------------ | ---------------------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
+| name\*       | string                                                                             |         | The name of the input                                                                                   |
+| label\*      | string                                                                             |         | The label content                                                                                       |
+| control\*    | `Control`                                                                          |         | The React Hook Form object to register components into React Hook Form.                                 |
+| defaultValue |                                                                                    |         | The default value of the input that would be injected into React Hook Form Controller and the component |
+| onChange     | `((value: any, context: PickerChangeHandlerContext<DateValidationError>) => void)` |         | A custom method that gets triggered when the value changes                                              |
+| helperText   | `ReactNode`                                                                        |         | Form helper text                                                                                        |
 
 #### Custom Controller
 
