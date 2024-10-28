@@ -59,16 +59,16 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
         }, 2000);
     }, []);
 
-    const fields: FieldProps[] = useMemo(
+    const fields = useMemo<FieldProps[]>(
         () => [
             {
                 name: 'singleAutocomplete',
                 label: 'singleAutocomplete',
                 fieldType: 'autocomplete',
+                options,
                 props: {
                     disabled: false,
                     defaultValue: '',
-                    options: options,
                     loading: loading,
                     optionLabel: 'name.ckb',
                     optionValue: 'id',
@@ -84,14 +84,13 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 name: 'single',
                 label: 'single',
                 fieldType: 'select',
+                options: [
+                    { label: 'one', value: 'one' },
+                    { label: 'two', value: 'two' },
+                    { label: 'three', value: 'three' }
+                ],
                 props: {
-                    options: [
-                        { label: 'one', value: 'one' },
-                        { label: 'two', value: 'two' },
-                        { label: 'three', value: 'three' }
-                    ],
                     fullWidth: true,
-                    disabled: true,
                     loading: false
                 },
                 gridProps: { xs: 12 }
@@ -111,11 +110,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 label: 'datePicker',
                 fieldType: 'datePicker',
                 format: 'YYYY-MM-DD',
-                gridProps: { xs: 12 },
-                helperText: 'test',
-                parser: (value: any) => {
-                    return moment(value);
-                },
+                parser: moment,
                 onChange: (value: any) => {
                     console.log('datePicker on change');
                 }
