@@ -8,7 +8,7 @@ import { SwitchController } from '../InputController/SwitchController/SwitchCont
 import { CustomComponentController } from '../InputController/CustomComponentController/CustomComponentController';
 import DatePickerController from '../InputController/DatePickerController/DatePickerController';
 
-import { Grid } from '@mui/material';
+import { Grid, Grid2, type Grid2Props, type GridProps } from '@mui/material';
 
 import { FormFieldsProps, MuiRhfFieldComponentMap } from '../../form/typing';
 
@@ -23,7 +23,9 @@ const MuiFieldComponentMapper: MuiRhfFieldComponentMap = {
     custom: CustomComponentController
 };
 
-export const FormFields: React.FC<FormFieldsProps> = ({ fields, control }) => {
+export const FormFields: React.FC<FormFieldsProps> = ({ fields, control, shouldUseDeprecatedGrid = false }) => {
+    const GridItem: React.FC<GridProps | Grid2Props> = shouldUseDeprecatedGrid ? Grid : Grid2;
+
     return (
         <>
             {fields
@@ -33,9 +35,9 @@ export const FormFields: React.FC<FormFieldsProps> = ({ fields, control }) => {
                         MuiFieldComponentMapper[fieldType as keyof MuiRhfFieldComponentMap] || TextFieldController;
 
                     return (
-                        <Grid item xs={12} {...gridProps} key={name + index}>
+                        <GridItem item xs={12} size={12} {...gridProps} key={name + index}>
                             <MuiRhfField {...props} {...rest} name={name} label={label} control={control} />
-                        </Grid>
+                        </GridItem>
                     );
                 })}
         </>

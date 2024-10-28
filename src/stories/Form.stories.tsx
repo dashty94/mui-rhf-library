@@ -170,7 +170,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
         <LocalizationProvider dateAdapter={AdapterMoment as any}>
             <form onSubmit={handleSubmit(handleFormSubmit)}>
                 <Grid container spacing={2}>
-                    <FormFields fields={fields} control={control} />
+                    <FormFields fields={fields} control={control} shouldUseDeprecatedGrid />
                 </Grid>
 
                 <button type="submit">Submit</button>
