@@ -114,6 +114,5 @@ AutocompleteVirtualized.args = {
     },
     defaultValue: [],
     optionValue: 'entity.id',
-    open: true,
     options: OPTIONS
 };
