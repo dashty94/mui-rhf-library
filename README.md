@@ -26,6 +26,8 @@ Check the storybook of the library: https://6256bd53e0b94a003aad40bd-cnmtmxtjgl.
 
 Here is a quick example to get you started:
 
+### Controllers
+
 ```jsx
 import React from 'react';
 import { createRoot } from 'react-dom/client';
@@ -60,7 +62,11 @@ const root = createRoot(container);
 root.render(<App />);
 ```
 
-Generate form fields:
+### Generate form fields
+
+You can generate form fields using the `FormFields` component.
+
+By default, the component renders form fields using Grid2, but if you decide to use Grid instead, set the `shouldUseDeprecatedGrid` prop to true.
 
 ```jsx
 import React from 'react';
@@ -68,6 +74,7 @@ import { createRoot } from 'react-dom/client';
 import { FormFields } from 'mui-rhf-library';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Grid2 } from '@mui/material';
 import * as yup from 'yup';
 
 function App() {
@@ -81,9 +88,8 @@ function App() {
             fieldType: 'textField', // 'textField' | 'select' | 'autocomplete' | 'checkbox' | 'radioGroup' | 'switch' | 'datePicker' |'custom'
             name: 'firstName',
             label: 'firstName',
-            control: control,
             props: { fullWidth: true }, // Props of the field
-            gridProps: {xs: 12} // Props of the Grid: "xs" | "sm" | "md" | "ld" | "xl"
+            gridProps: { size: { xs: 6 } } // Props of the Grid (Container of the input field)
         }
     ];
 
@@ -93,7 +99,9 @@ function App() {
 
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <FormFields fields={fields} control={control} />
+            <Grid2>
+                <FormFields fields={fields} control={control} />
+            </Grid2>
             <button type="submit">Submit</button>
         </form>
     );
@@ -105,6 +113,27 @@ root.render(<App />);
 ```
 
 # Documentation
+
+### Form Generation
+
+#### Form Fields
+
+| Prop                    | Type      | Default | Definition                                                              |
+| ----------------------- | --------- | ------- | ----------------------------------------------------------------------- |
+| fields                  | `Field[]` |         | The fields to be generated                                              |
+| control                 | `Control` |         | The React Hook Form object to register components into React Hook Form. |
+| shouldUseDeprecatedGrid | boolean   | false   | The component should use Grid2 instead of Grid.                         |
+
+**Field[]**: Array of fields to be generated, where each field is an object with the following properties:
+
+-   `name`: The name of the field.
+-   `label`: The label of the field.
+-   `fieldType`: The type of the field (`textField`, `select`, `autocomplete`, `checkbox`, `radioGroup`, `switch`, `datePicker`, or `custom`).
+-   `gridProps`: Props of the Grid (Container of the input field), for the available props, please check [Grid2](https://mui.com/material-ui/api/grid2/) or [Grid](https://mui.com/material-ui/api/grid/) (if you want to use deprecated Grid).
+-   `props`: Props of the field, for the available props, checkout related [documentation](https://mui.com/material-ui/all-components/) depends on the `fieldType`.
+-   `hidden`: If the field should be hidden.
+
+### Controllers
 
 #### TextField Controller
 
