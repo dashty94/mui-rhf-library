@@ -1,7 +1,8 @@
-import { Control } from 'react-hook-form';
-import { TextFieldProps, SelectProps, SelectChangeEvent, AutocompleteProps } from '@mui/material';
-import React from 'react';
+import { AutocompleteProps, SelectChangeEvent, SelectProps, TextFieldProps } from '@mui/material';
 import { DatePickerProps } from '@mui/x-date-pickers';
+import React from 'react';
+import { Control } from 'react-hook-form';
+import { VirtualListBoxProps } from '../components/shared/list-box-component';
 
 // Common input field props
 export type MuiRhfFieldProps = {
@@ -79,6 +80,9 @@ export type AutocompleteControllerProps = Omit<MuiRhfFieldProps, 'helperText'> &
 
         onChange?: (event: SelectChangeEvent, e: React.SyntheticEvent<Element, Event>) => void;
         customOptionLabel?: (option: any) => any;
+
+        virtualizationThreshold?: number;
+        virtualizationProps?: VirtualListBoxProps['virtualizationProps'];
     };
 
 export type CustomComponentControllerProps = MuiRhfFieldProps & {

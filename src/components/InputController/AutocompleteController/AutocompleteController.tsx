@@ -1,10 +1,11 @@
+import { FormControl, LinearProgress as MuiLinearProgress, TextField } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import { styled } from '@mui/material/styles';
+import get from 'lodash.get';
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import Autocomplete from '@mui/material/Autocomplete';
-import { TextField, LinearProgress as MuiLinearProgress, FormControl } from '@mui/material';
 import { AutocompleteControllerProps } from '../../../fields/index';
-import get from 'lodash.get';
-import { styled } from '@mui/material/styles';
+import { VirtualListBox } from '../../shared/list-box-component';
 
 const LinearProgress = styled(MuiLinearProgress)(
     () => `
@@ -28,8 +29,12 @@ export const AutocompleteController = ({
     onChange,
     customOptionLabel,
     onBlur,
+    virtualizationThreshold = 100,
+    virtualizationProps,
     ...rest
 }: AutocompleteControllerProps) => {
+    const isVirtualizing = options.length > virtualizationThreshold;
+
     return loading ? (
         <FormControl fullWidth={textFieldProps?.fullWidth}>
             <LinearProgress />
@@ -55,13 +60,24 @@ export const AutocompleteController = ({
                                 get(option, optionLabel, '') || (found && get(found, optionLabel, '')) || option || '';
                             return customOptionLabel ? customOptionLabel(found || option || '') : label?.toString();
                         }}
-                        renderOption={(props: React.HTMLAttributes<HTMLLIElement>, option: any): React.ReactNode => {
+                        renderOption={(...args): React.ReactNode | unknown[] => {
+                            if (isVirtualizing) {
+                                /*
+                                 * This is passing the props to `renderRow` in ListboxComponent,
+                                 * which is a custom component that renders the options for virtualized lists
+                                 */
+                                return args;
+                            }
+
+                            const [props, option] = args;
+
                             return (
                                 <li {...props} key={props.id}>
                                     {customOptionLabel ? customOptionLabel(option) : get(option, optionLabel, '')}
                                 </li>
                             );
                         }}
+                        renderGroup={isVirtualizing ? (...args) => args : undefined}
                         disableCloseOnSelect={multiple}
                         isOptionEqualToValue={(option: any, value: any) => {
                             return typeof value === 'string'
@@ -87,6 +103,9 @@ export const AutocompleteController = ({
                             onBlur?.(...args);
                             fieldOnBlur?.();
                         }}
+                        disableListWrap={isVirtualizing}
+                        ListboxComponent={isVirtualizing ? VirtualListBox : undefined}
+                        ListboxProps={isVirtualizing ? ({ virtualizationProps } as any) : undefined}
                         {...rest}
                         renderInput={(params) => {
                             return (

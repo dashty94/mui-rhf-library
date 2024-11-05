@@ -1,10 +1,10 @@
-import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { AutocompleteController } from '../components/InputController/AutocompleteController/AutocompleteController';
-import { useForm } from 'react-hook-form';
-import { AutocompleteControllerProps } from '../fields';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Meta, StoryFn } from '@storybook/react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { AutocompleteController } from '../components/InputController/AutocompleteController/AutocompleteController';
+import { AutocompleteControllerProps } from '../fields';
 
 const meta: Meta = {
     title: 'Autocomplete Controller',
@@ -78,4 +78,41 @@ AutocompleteMultiple.args = {
         { title: 'Option Two', entity: { id: 'entity-two' }, value: 'option-two' }
     ],
     multiple: true
+};
+
+export const AutocompleteVirtualized = Template.bind({});
+
+function random(length: number) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+
+    for (let i = 0; i < length; i += 1) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+
+    return result;
+}
+
+const OPTIONS = Array.from(new Array(1500))
+    .map(() => {
+        const value = random(10 + Math.ceil(Math.random() * 20));
+
+        return {
+            label: value,
+            entity: {
+                id: value
+            }
+        };
+    })
+    .sort((a, b) => a.label.toUpperCase().localeCompare(b.label.toUpperCase()));
+
+AutocompleteVirtualized.args = {
+    name: 'autocompleteVirtualized',
+    textFieldProps: {
+        label: 'Autocomplete Virtualized Controller',
+        fullWidth: true
+    },
+    defaultValue: [],
+    optionValue: 'entity.id',
+    options: OPTIONS
 };
