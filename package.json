@@ -19,15 +19,15 @@
         "chromatic": "chromatic --exit-zero-on-changes"
     },
     "devDependencies": {
-        "@babel/core": "^7.17.0",
-        "@babel/preset-env": "^7.22.20",
-        "@babel/preset-react": "^7.22.15",
-        "@babel/preset-typescript": "^7.22.15",
+        "@babel/core": "^7.26.0",
+        "@babel/preset-env": "^7.26.0",
+        "@babel/preset-react": "^7.25.9",
+        "@babel/preset-typescript": "^7.26.0",
         "@emotion/react": "^11.13.3",
         "@emotion/styled": "^11.13.0",
-        "@hookform/resolvers": "^2.9.11",
-        "@mui/material": "^6.1.5",
-        "@mui/x-date-pickers": "^6.18.5",
+        "@hookform/resolvers": "^3.9.1",
+        "@mui/material": "^6.1.6",
+        "@mui/x-date-pickers": "^6.20.2",
         "@rollup/plugin-commonjs": "^25.0.7",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-typescript": "^11.1.5",
@@ -52,7 +52,7 @@
         "storybook": "7.6.20",
         "tslib": "^2.6.2",
         "typescript": "^5.3.3",
-        "yup": "^0.32.11"
+        "yup": "^1.4.0"
     },
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",

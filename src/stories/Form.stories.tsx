@@ -37,7 +37,8 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
         single: yup.string(),
         checkbox: yup.string(),
         name: yup.string().required(),
-        datePicker: yup.string()
+        datePicker: yup.string(),
+        switch: yup.boolean()
     });
 
     const { handleSubmit, control, watch } = useForm({

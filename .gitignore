@@ -4,3 +4,4 @@ dist
 .env
 README-pv.md
 /.yarn/install-state.gz
+/storybook-static
