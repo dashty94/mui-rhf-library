@@ -5,3 +5,4 @@ dist
 README-pv.md
 /.yarn/install-state.gz
 /storybook-static
+build-storybook.log
