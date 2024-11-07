@@ -1,7 +1,5 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-
-// material ui
 import { FormControl, FormControlLabel, FormHelperText, FormLabel, Radio, RadioGroup } from '@mui/material';
 import { RadioGroupControllerProps } from '../../../fields';
 
@@ -26,8 +24,8 @@ export const RadioGroupController: React.FC<RadioGroupControllerProps> = ({
                     <RadioGroup
                         style={{ flexDirection: 'row' }}
                         {...field}
-                        onChange={(event) => {
-                            onChange?.(event);
+                        onChange={(event, value) => {
+                            onChange?.(event, value);
                             field.onChange(event);
                         }}
                         onBlur={(...args) => {

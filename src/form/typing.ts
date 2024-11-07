@@ -4,79 +4,76 @@ import React from 'react';
 import { Control } from 'react-hook-form';
 import {
     AutocompleteControllerProps,
+    AutocompleteProps,
     CheckboxControllerProps,
+    CheckboxProps,
     CustomComponentControllerProps,
     DatePickerControllerProps,
     RadioGroupControllerProps,
+    RadioGroupProps,
     SelectControllerProps,
+    SelectProps,
     SwitchControllerProps,
+    SwitchProps,
     TextFieldControllerProps
 } from '../fields';
 
-type Option = {
-    value: string;
-    label: string;
-    [key: string]: any;
-};
-
-type TextFieldProps = {
+type FieldTextFieldProps = {
     fieldType: 'textField';
+    props?: MuiTextFieldProps;
 };
 
-type SelectProps = {
+type FieldSelectProps = {
     fieldType: 'select';
-    options: Option[];
-    textFieldProps?: MuiTextFieldProps;
+    props: SelectProps;
 };
 
-type AutocompleteProps = {
+type FieldAutocompleteProps = {
     fieldType: 'autocomplete';
-    options: Option[];
     textFieldProps?: MuiTextFieldProps;
-    multiple?: boolean;
-    disableClearable?: boolean;
-    optionValue?: string;
-    optionLabel?: string;
+    props?: AutocompleteProps;
 };
 
-type CheckboxProps = {
+type FieldCheckboxProps = {
     fieldType: 'checkbox';
+    props?: CheckboxProps;
 };
 
-type RadioGroupProps = {
+type FieldRadioGroupProps = {
     fieldType: 'radioGroup';
-    options: Option[];
+    props: RadioGroupProps;
 };
 
-type SwitchProps = {
+type FieldSwitchProps = {
     fieldType: 'switch';
+    props: SwitchProps;
 };
 
-type DatePickerFieldProps<T> = DatePickerProps<any> & {
+type FieldDatePickerFieldProps<T> = DatePickerProps<any> & {
     fieldType: 'datePicker';
     parser: (value: string) => T;
 };
 
-type CustomComponentProps = {
+type FieldCustomComponentProps = {
     fieldType: 'custom';
     CustomComponent: React.FC<any>;
+    props?: any;
 };
 
 export type FieldProps<T = any> = {
     hidden?: boolean;
     name: string;
     label?: string;
-    props?: any;
     gridProps?: GridProps | Grid2Props;
 } & (
-    | TextFieldProps
-    | SelectProps
-    | AutocompleteProps
-    | CheckboxProps
-    | RadioGroupProps
-    | SwitchProps
-    | DatePickerFieldProps<T>
-    | CustomComponentProps
+    | FieldTextFieldProps
+    | FieldSelectProps
+    | FieldAutocompleteProps
+    | FieldCheckboxProps
+    | FieldRadioGroupProps
+    | FieldSwitchProps
+    | FieldDatePickerFieldProps<T>
+    | FieldCustomComponentProps
 );
 
 export interface FormFieldsProps {

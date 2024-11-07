@@ -12,7 +12,7 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
     control,
     name,
     label,
-    defaultValue = false,
+    defaultChecked,
     onChange,
     onBlur,
     ...rest
@@ -21,7 +21,7 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
         <Controller
             name={name}
             control={control}
-            defaultValue={defaultValue}
+            defaultValue={defaultChecked}
             render={({ field, fieldState }) => {
                 return (
                     <FormControl required error={fieldState?.invalid} component="fieldset">
@@ -33,9 +33,9 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
                                         checked={field?.value}
                                         {...field}
                                         {...rest}
-                                        onChange={(event) => {
+                                        onChange={(event, checked) => {
                                             field.onChange(Boolean(event.target.checked));
-                                            onChange && onChange(event);
+                                            onChange && onChange(event, checked);
                                         }}
                                         onBlur={(...args) => {
                                             field?.onBlur?.();

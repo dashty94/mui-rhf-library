@@ -78,8 +78,8 @@ export const SelectController = ({
                             })}
                             {...rest}
                             {...restField}
-                            onChange={(event) => {
-                                onChange?.(event);
+                            onChange={(event, child) => {
+                                onChange?.(event, child);
                                 restField.onChange(event);
                             }}
                             onBlur={(...args) => {

@@ -61,14 +61,14 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
         }, 2000);
     }, []);
 
-    const fields = useMemo<FieldProps[]>(
-        () => [
+    const fields = useMemo(
+        (): FieldProps[] => [
             {
                 name: 'singleAutocomplete',
                 label: 'singleAutocomplete',
                 fieldType: 'autocomplete',
-                options,
                 props: {
+                    options,
                     disabled: false,
                     defaultValue: '',
                     loading: loading,
@@ -77,21 +77,21 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                     onChange: (value: any) => {
                         console.log('custom onchange');
                     },
-                    customOptionLabel: (option: any) => option?.name?.ckb + '' + 'Custom Option Label'
+                    customOptionLabel: (option: any) => option?.name?.ckb + '' + 'Custom Option Label',
+                    textFieldProps: { label: 'singleAutocomplete', fullWidth: true }
                 },
-                gridProps: { size: { xs: 6 } },
-                textFieldProps: { label: 'singleAutocomplete', fullWidth: true }
+                gridProps: { size: { xs: 6 } }
             },
             {
                 name: 'single',
                 label: 'single',
                 fieldType: 'select',
-                options: [
-                    { label: 'one', value: 'one' },
-                    { label: 'two', value: 'two' },
-                    { label: 'three', value: 'three' }
-                ],
                 props: {
+                    options: [
+                        { label: 'one', value: 'one' },
+                        { label: 'two', value: 'two' },
+                        { label: 'three', value: 'three' }
+                    ],
                     fullWidth: true,
                     loading: false
                 },
@@ -140,19 +140,20 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 fieldType: 'switch',
                 gridProps: { size: { xs: 12 } },
                 props: {
-                    disabled: false
+                    disabled: false,
+                    label: 'Switch'
                 }
             },
             {
                 name: 'formGroup',
                 fieldType: 'radioGroup',
-                defaultValue: '',
                 label: 'RadioGroup Controller',
-                options: [
-                    { label: 'Option 1', value: 'option1' },
-                    { label: 'Option 2', value: 'option2' }
-                ],
                 props: {
+                    defaultValue: '',
+                    options: [
+                        { label: 'Option 1', value: 'option1' },
+                        { label: 'Option 2', value: 'option2' }
+                    ],
                     disabled: switchValue
                 }
             }

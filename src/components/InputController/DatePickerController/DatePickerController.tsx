@@ -10,17 +10,16 @@ export const DatePickerController: React.FC<DatePickerControllerProps> = ({
     onChange,
     ...rest
 }) => {
+    const { defaultValue, ...restProps } = rest;
     return (
         <Controller
             name={name}
             control={control}
-            defaultValue={rest?.defaultValue || ''}
+            defaultValue={defaultValue || ''}
             render={({
                 field: { ref, value, onChange: controllerOnChange, ...restField },
                 fieldState: { invalid, error }
             }) => {
-                const restProps = { ...rest };
-                delete restProps.defaultValue;
                 return (
                     <DatePicker
                         {...restField}
