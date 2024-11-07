@@ -30,13 +30,19 @@ export const FormFields: React.FC<FormFieldsProps> = ({ fields, control, shouldU
         <>
             {fields
                 ?.filter(({ hidden }) => !hidden)
-                .map(({ fieldType, name, label, gridProps, ...rest }, index) => {
-                    const MuiRhfField = (MuiFieldComponentMapper[fieldType as keyof MuiRhfFieldComponentMap] ||
-                        TextFieldController) as any;
+                .map(({ fieldType, props, name, label, gridProps, ...rest }, index) => {
+                    const MuiRhfField =
+                        MuiFieldComponentMapper[fieldType as keyof MuiRhfFieldComponentMap] || TextFieldController;
 
                     return (
-                        <GridItem item xs={12} size={12} {...gridProps} key={name + index}>
-                            <MuiRhfField {...rest} name={name} label={label} control={control} />
+                        <GridItem
+                            item={shouldUseDeprecatedGrid ? true : undefined}
+                            xs={shouldUseDeprecatedGrid ? 12 : undefined}
+                            size={12}
+                            {...gridProps}
+                            key={name + index}
+                        >
+                            <MuiRhfField {...props} {...rest} name={name} label={label} control={control} />
                         </GridItem>
                     );
                 })}

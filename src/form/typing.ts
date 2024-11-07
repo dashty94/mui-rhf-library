@@ -52,6 +52,7 @@ type FieldSwitchProps = {
 type FieldDatePickerFieldProps<T> = DatePickerProps<any> & {
     fieldType: 'datePicker';
     parser: (value: string) => T;
+    props?: any;
 };
 
 type FieldCustomComponentProps = {
