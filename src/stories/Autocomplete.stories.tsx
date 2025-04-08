@@ -51,7 +51,8 @@ Autocomplete.args = {
     textFieldProps: {
         label: 'Autocomplete Controller',
         fullWidth: true,
-        variant: 'outlined'
+        variant: 'outlined',
+        placeholder: 'Search...'
     },
     optionLabel: 'entity.id',
     optionValue: 'entity.id',
