@@ -92,10 +92,8 @@ export const AutocompleteController = ({
                             return (
                                 <TextField
                                     {...params}
+                                    {...textFieldProps}
                                     inputRef={ref}
-                                    label={textFieldProps?.label}
-                                    variant={textFieldProps?.variant}
-                                    fullWidth={textFieldProps?.fullWidth}
                                     error={fieldState?.invalid}
                                     helperText={fieldState?.error?.message || textFieldProps?.helperText}
                                     inputProps={{
