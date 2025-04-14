@@ -102,7 +102,7 @@
         "declaration": true,
         // "declarationDir": "types/esm",
         "sourceMap": true,
-        "outDir": "dist/types/esm",
+        "outDir": "dist/esm/types",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "emitDeclarationOnly": true
