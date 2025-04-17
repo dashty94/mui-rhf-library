@@ -1,5 +1,11 @@
 # mui-rhf-library
 
+## 2.0.2
+
+### Patch Changes
+
+-   Fix CheckboxController label prop
+
 ## 2.0.1
 
 ### Patch Changes
