@@ -42,7 +42,7 @@ export const FormFields: React.FC<FormFieldsProps> = ({ fields, control, shouldU
                             {...gridProps}
                             key={name + index}
                         >
-                            <MuiRhfField {...props} {...rest} name={name} label={label} control={control} />
+                            <MuiRhfField label={label} {...props} {...rest} name={name} control={control} />
                         </GridItem>
                     );
                 })}

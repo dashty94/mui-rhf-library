@@ -121,9 +121,11 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
             },
             {
                 name: 'checkbox',
-                label: 'checkbox',
                 fieldType: 'checkbox',
-                gridProps: { size: { xs: 12 } }
+                gridProps: { size: { xs: 12 } },
+                props: {
+                    label: 'checkbox'
+                }
             },
             {
                 name: 'customComponent',

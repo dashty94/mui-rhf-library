@@ -63,7 +63,7 @@ export type RadioGroupControllerProps = MuiRhfFieldProps & RadioGroupProps;
 
 // Checkbox
 export type CheckboxProps = MuiCheckboxProps & {
-    label: string;
+    label?: string;
     defaultValue?: boolean;
     onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
     helperText?: React.ReactNode;

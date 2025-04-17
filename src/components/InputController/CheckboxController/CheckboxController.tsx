@@ -7,7 +7,6 @@ import { CheckboxControllerProps } from '../../../fields';
 export const CheckboxController: React.FC<CheckboxControllerProps> = ({
     control,
     name,
-    label,
     defaultValue,
     onChange,
     onBlur,
@@ -23,7 +22,7 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
                     <FormControl required error={fieldState?.invalid} component="fieldset">
                         <FormGroup>
                             <FormControlLabel
-                                label={label}
+                                label={rest.label}
                                 control={
                                     <Checkbox
                                         checked={field.value}
