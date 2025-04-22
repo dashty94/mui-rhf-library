@@ -1,86 +1,87 @@
 {
-    "name": "mui-rhf-library",
-    "version": "2.0.2",
-    "description": "A set of configured Material UI form inputs configured with React Hook Form.",
-    "author": "dashty94",
-    "license": "MIT",
-    "keywords": [
-        "mui",
-        "react",
-        "form",
-        "yup",
-        "react-hook-form",
-        "material-ui"
-    ],
-    "scripts": {
-        "rollup": "rollup -c",
-        "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build",
-        "chromatic": "chromatic --exit-zero-on-changes"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.26.0",
-        "@babel/preset-env": "^7.26.0",
-        "@babel/preset-react": "^7.25.9",
-        "@babel/preset-typescript": "^7.26.0",
-        "@chromatic-com/storybook": "^3.2.2",
-        "@emotion/react": "^11.13.3",
-        "@emotion/styled": "^11.13.0",
-        "@hookform/resolvers": "^3.9.1",
-        "@mui/material": "^6.1.6",
-        "@mui/x-date-pickers": "^7.22.2",
-        "@rollup/plugin-commonjs": "^28.0.1",
-        "@rollup/plugin-node-resolve": "^15.3.0",
-        "@storybook/addon-actions": "^8.4.2",
-        "@storybook/addon-essentials": "^8.4.2",
-        "@storybook/addon-links": "^8.4.2",
-        "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
-        "@storybook/react": "^8.4.2",
-        "@storybook/react-webpack5": "^8.4.2",
-        "@storybook/types": "^8.4.2",
-        "@types/lodash.get": "^4.4.9",
-        "@types/react": "^18.3.12",
-        "babel-loader": "^9.2.1",
-        "chromatic": "^11.18.0",
-        "lodash.get": "^4.4.2",
-        "moment": "^2.30.1",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
-        "react-hook-form": "^7.53.2",
-        "rollup": "^4.25.0",
-        "rollup-plugin-dts": "^6.1.1",
-        "rollup-plugin-peer-deps-external": "^2.2.4",
-        "rollup-plugin-terser": "^7.0.2",
-        "storybook": "^8.4.2",
-        "tslib": "^2.8.1",
-        "typescript": "^5.6.3",
-        "yup": "^1.4.0"
-    },
-    "main": "dist/cjs/index.js",
-    "module": "dist/esm/index.js",
-    "files": [
-        "dist"
-    ],
-    "types": "dist/index.d.ts",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/dashty94/mui-rhf-library"
-    },
-    "dependencies": {
-        "@changesets/cli": "^2.27.9",
-        "@rollup/plugin-terser": "^0.4.4",
-        "@rollup/plugin-typescript": "11.1.6"
-    },
-    "peerDependencies": {
-        "@emotion/react": "^11.13.3",
-        "@emotion/styled": "^11.13.0",
-        "@mui/material": "^6.1.6",
-        "@mui/x-date-pickers": "^7.22.2",
-        "react": "^18.3.1",
-        "react-hook-form": "^7.53.2"
-    },
-    "resolutions": {
-        "@storybook/react-docgen-typescript-plugin": "npm:react-docgen-typescript-plugin@1.0.2"
-    },
-    "packageManager": "yarn@4.0.2"
+  "name": "mui-rhf-library",
+  "version": "2.0.2",
+  "description": "A set of configured Material UI form inputs configured with React Hook Form.",
+  "author": "dashty94",
+  "license": "MIT",
+  "keywords": [
+    "mui",
+    "react",
+    "form",
+    "yup",
+    "react-hook-form",
+    "material-ui"
+  ],
+  "scripts": {
+    "rollup": "rollup -c",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic --exit-zero-on-changes"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.27.0",
+    "@chromatic-com/storybook": "^3.2.6",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@hookform/resolvers": "^3.10.0",
+    "@mui/material": "^6.4.11",
+    "@mui/x-date-pickers": "^7.29.0",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^15.3.1",
+    "@storybook/addon-actions": "^8.6.12",
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-links": "^8.6.12",
+    "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
+    "@storybook/react": "^8.6.12",
+    "@storybook/react-webpack5": "^8.6.12",
+    "@storybook/test": "^8.6.12",
+    "@storybook/types": "^8.6.12",
+    "@types/lodash.get": "^4.4.9",
+    "@types/react": "^18.3.20",
+    "babel-loader": "^9.2.1",
+    "chromatic": "^11.28.2",
+    "lodash.get": "^4.4.2",
+    "moment": "^2.30.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.56.0",
+    "rollup": "^4.40.0",
+    "rollup-plugin-dts": "^6.2.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-terser": "^7.0.2",
+    "storybook": "^8.6.12",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3",
+    "yup": "^1.6.1"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dashty94/mui-rhf-library"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.29.2",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.4.11",
+    "@mui/x-date-pickers": "^7.29.0",
+    "react": "^19.1.0",
+    "react-hook-form": "^7.56.0"
+  },
+  "resolutions": {
+    "@storybook/react-docgen-typescript-plugin": "npm:react-docgen-typescript-plugin@1.0.2"
+  },
+  "packageManager": "yarn@4.9.1"
 }
