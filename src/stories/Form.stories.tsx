@@ -1,14 +1,14 @@
-import React, { useMemo } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Grid2 } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { Meta, StoryFn } from '@storybook/react';
+import moment from 'moment';
+import React, { useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { FormFields } from '../components/form/FormFields';
 import { FieldProps, FormFieldsProps } from '../form/typing';
-import { Grid } from '@mui/material';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import moment from 'moment';
 
 const meta: Meta = {
     title: 'Form',
@@ -27,24 +27,28 @@ const meta: Meta = {
 
 export default meta;
 
+const MyCustomComponent = () => {
+    return <div>My Custom Component</div>;
+};
+
 const Template: StoryFn<FormFieldsProps> = (args) => {
     const schema = yup.object().shape({
-        multiple: yup.array().min(1).of(yup.string().required()),
         singleAutocomplete: yup.string().nullable(),
-        single: yup.string().required(),
-        checkbox: yup.string().required(),
-        name: yup.object().shape({
-            ckb: yup.string().test('min-date-allowed', (value) => new Date(value!) >= new Date())
-        }),
-        datePicker: yup.string()
+        single: yup.string(),
+        checkbox: yup.string(),
+        name: yup.string().required(),
+        datePicker: yup.string(),
+        switch: yup.boolean()
     });
 
-    const { handleSubmit, control } = useForm({
+    const { handleSubmit, control, watch } = useForm({
         resolver: yupResolver(schema)
     });
 
     const [loading, setLoading] = React.useState(true);
     const [options, setOptions] = React.useState<any[]>([]);
+
+    const switchValue = watch('switch');
 
     // set loading to true after 2 seconds
     React.useEffect(() => {
@@ -58,42 +62,26 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
         }, 2000);
     }, []);
 
-    const fields: FieldProps[] = useMemo(
-        () => [
-            // {
-            //     name: 'multiple',
-            //     label: 'multiple',
-            //     fieldType: 'autocomplete',
-            //     props: {
-            //         defaultValue: [],
-            //         options: [
-            //             { label: 'one', value: 'one' },
-            //             { label: 'two', value: 'two' }
-            //         ],
-            //         multiple: true,
-            //         loading: false
-            //     },
-            //     gridProps: { xs: 12 },
-            //     textFieldProps: { label: 'First Name', fullWidth: true }
-            // },
+    const fields = useMemo(
+        (): FieldProps[] => [
             {
                 name: 'singleAutocomplete',
                 label: 'singleAutocomplete',
                 fieldType: 'autocomplete',
                 props: {
+                    options,
                     disabled: false,
                     defaultValue: '',
-                    options: options,
                     loading: loading,
                     optionLabel: 'name.ckb',
                     optionValue: 'id',
                     onChange: (value: any) => {
                         console.log('custom onchange');
                     },
-                    customOptionLabel: (option: any) => option?.name?.ckb + '' + 'Custom Option Label'
+                    customOptionLabel: (option: any) => option?.name?.ckb + '' + 'Custom Option Label',
+                    textFieldProps: { label: 'singleAutocomplete', fullWidth: true }
                 },
-                gridProps: { xs: 12 },
-                textFieldProps: { label: 'singleAutocomplete', fullWidth: true }
+                gridProps: { size: { xs: 6 } }
             },
             {
                 name: 'single',
@@ -106,19 +94,18 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                         { label: 'three', value: 'three' }
                     ],
                     fullWidth: true,
-                    disabled: true,
                     loading: false
                 },
-                gridProps: { xs: 12 }
+                gridProps: { size: { xs: 6 } }
             },
             {
-                name: 'name.ckb',
+                name: 'name',
                 label: 'name',
                 props: {
                     fullWidth: true
                 },
                 fieldType: 'textField',
-                gridProps: { xs: 12 }
+                gridProps: { size: { xs: 6 } }
             },
             {
                 hidden: false,
@@ -126,49 +113,55 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 label: 'datePicker',
                 fieldType: 'datePicker',
                 format: 'YYYY-MM-DD',
-                gridProps: { xs: 12 },
-                helperText: 'test',
-                parser: (value: any) => {
-                    return moment(value);
+                gridProps: { size: { xs: 6 } },
+                parser: moment,
+                onChange: (value: any) => {
+                    console.log('datePicker on change');
                 }
             },
             {
                 name: 'checkbox',
-                label: 'checkbox',
                 fieldType: 'checkbox',
-                gridProps: { xs: 12 }
+                gridProps: { size: { xs: 12 } },
+                props: {
+                    label: 'checkbox'
+                }
             },
             {
                 name: 'customComponent',
                 fieldType: 'custom',
                 label: 'Custom Component',
-                gridProps: { xs: 12 },
-                CustomComponent: (props: any) => <div>hello</div>
+                gridProps: { size: { xs: 12 } },
+                CustomComponent: MyCustomComponent,
+                props: {
+                    // props to pass to custom component
+                }
             },
             {
                 name: 'switch',
                 label: 'switch',
                 fieldType: 'switch',
-                gridProps: { xs: 12 },
+                gridProps: { size: { xs: 12 } },
                 props: {
-                    disabled: false
+                    disabled: false,
+                    label: 'Switch'
                 }
             },
             {
                 name: 'formGroup',
                 fieldType: 'radioGroup',
-                defaultValue: '',
                 label: 'RadioGroup Controller',
-                options: [
-                    { label: 'Option 1', value: 'option1' },
-                    { label: 'Option 2', value: 'option2' }
-                ],
                 props: {
-                    disabled: true
+                    defaultValue: '',
+                    options: [
+                        { label: 'Option 1', value: 'option1' },
+                        { label: 'Option 2', value: 'option2' }
+                    ],
+                    disabled: switchValue
                 }
             }
         ],
-        [options, loading]
+        [options, loading, switchValue]
     );
 
     const handleFormSubmit = (data: any) => {
@@ -178,9 +171,9 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
     return (
         <LocalizationProvider dateAdapter={AdapterMoment as any}>
             <form onSubmit={handleSubmit(handleFormSubmit)}>
-                <Grid container spacing={2}>
+                <Grid2 container spacing={2}>
                     <FormFields fields={fields} control={control} />
-                </Grid>
+                </Grid2>
 
                 <button type="submit">Submit</button>
             </form>

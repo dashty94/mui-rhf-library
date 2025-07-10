@@ -7,7 +7,7 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
     name,
     control,
     defaultValue,
-    type,
+    type = 'text',
     onChange,
     onBlur,
     ...rest

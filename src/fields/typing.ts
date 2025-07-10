@@ -1,5 +1,13 @@
 import { Control } from 'react-hook-form';
-import { TextFieldProps, SelectProps, SelectChangeEvent, AutocompleteProps } from '@mui/material';
+import {
+    type TextFieldProps as MuiTextFieldProps,
+    type SelectProps as MuiSelectProps,
+    type SwitchProps as MuiSwitchProps,
+    type FormControlProps as MuiFormControlProps,
+    SelectChangeEvent,
+    type AutocompleteProps as MuiAutocompleteProps,
+    type CheckboxProps as MuiCheckboxProps
+} from '@mui/material';
 import React from 'react';
 import { DatePickerProps } from '@mui/x-date-pickers';
 
@@ -17,70 +25,62 @@ export type Option = {
 };
 
 // TextField
-export type TextFieldControllerProps = Omit<MuiRhfFieldProps, 'helperText'> &
-    TextFieldProps & {
-        defaultValue?: any;
-        type: React.HTMLInputTypeAttribute | undefined;
-    };
+export type TextFieldProps = MuiTextFieldProps & {
+    type?: React.HTMLInputTypeAttribute | undefined;
+};
+export type TextFieldControllerProps = Omit<MuiRhfFieldProps, 'helperText'> & TextFieldProps;
 
 // Select
-export type SelectControllerProps = MuiRhfFieldProps &
-    SelectProps & {
-        defaultValue?: any;
-        options: { disabled?: boolean; [key: string]: any }[];
-        onChange?: (event: SelectChangeEvent) => void;
-        optionValue?: string;
-        optionLabel?: string;
-        loading?: boolean;
-        customOptionLabel?: (option: any) => any;
-    };
+export type SelectProps = MuiSelectProps & {
+    defaultValue?: any;
+    options: { disabled?: boolean; [key: string]: any }[];
+    optionValue?: string;
+    optionLabel?: string;
+    loading?: boolean;
+    customOptionLabel?: (option: any) => any;
+};
+export type SelectControllerProps = MuiRhfFieldProps & SelectProps;
 
 // Switch
-export type SwitchControllerProps = MuiRhfFieldProps & {
+export type SwitchProps = Omit<MuiSwitchProps, 'defaultValue'> & {
     label: string;
-    defaultValue?: boolean;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void;
     onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+    helperText?: React.ReactNode;
 };
+export type SwitchControllerProps = MuiRhfFieldProps & SwitchProps;
 
 // RadioGroup
-export type RadioGroupControllerProps = MuiRhfFieldProps & {
+export type RadioGroupProps = MuiFormControlProps & {
     label?: string;
     defaultValue: string | number;
     options: Array<Option>;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: string) => void;
     onBlur?: (event: React.FocusEvent<HTMLDivElement>) => void;
+    helperText?: React.ReactNode;
 };
+export type RadioGroupControllerProps = MuiRhfFieldProps & RadioGroupProps;
 
 // Checkbox
-export type CheckboxControllerProps = MuiRhfFieldProps & {
-    label: string;
+export type CheckboxProps = MuiCheckboxProps & {
+    label?: string;
     defaultValue?: boolean;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+    helperText?: React.ReactNode;
 };
+export type CheckboxControllerProps = MuiRhfFieldProps & CheckboxProps;
 
 // Autocomplete
-export type AutocompleteControllerProps = Omit<MuiRhfFieldProps, 'helperText'> &
-    AutocompleteProps<Object, boolean, boolean, boolean> & {
-        defaultValue: any;
-        options: { [key: string]: any }[];
-        multiple?: boolean;
+export type AutocompleteProps = Omit<MuiAutocompleteProps<Object, boolean, boolean, boolean, 'div'>, 'renderInput'> & {
+    textFieldProps: TextFieldProps; // Props that's only applied to the TextField component
+    optionValue?: string;
+    optionLabel?: string;
+    onChange?: (event: SelectChangeEvent, e: React.SyntheticEvent<Element, Event>) => void;
+    customOptionLabel?: (option: any) => any;
+};
+export type AutocompleteControllerProps = Omit<MuiRhfFieldProps, 'helperText'> & AutocompleteProps;
 
-        textFieldProps: TextFieldProps; // Props that's only applied to the TextField component
-
-        loading?: boolean;
-        renderOption?: (option: Option | any) => React.ReactNode;
-        disableClearable?: boolean;
-        // onChange?: (event: SelectChangeEvent) => void;
-
-        optionValue?: string;
-        optionLabel?: string;
-
-        onChange?: (event: SelectChangeEvent) => void;
-        customOptionLabel?: (option: any) => any;
-    };
-
+// CustomComponent
 export type CustomComponentControllerProps = MuiRhfFieldProps & {
     CustomComponent: React.FC<any>;
 };

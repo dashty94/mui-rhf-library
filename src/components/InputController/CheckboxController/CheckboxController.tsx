@@ -1,6 +1,5 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-// material ui
 import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText } from '@mui/material';
 
 import { CheckboxControllerProps } from '../../../fields';
@@ -8,7 +7,6 @@ import { CheckboxControllerProps } from '../../../fields';
 export const CheckboxController: React.FC<CheckboxControllerProps> = ({
     control,
     name,
-    label,
     defaultValue,
     onChange,
     onBlur,
@@ -24,14 +22,14 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
                     <FormControl required error={fieldState?.invalid} component="fieldset">
                         <FormGroup>
                             <FormControlLabel
-                                label={label}
+                                label={rest.label}
                                 control={
                                     <Checkbox
                                         checked={field.value}
                                         {...field}
                                         {...rest}
-                                        onChange={(e) => {
-                                            onChange?.(e);
+                                        onChange={(e, checked) => {
+                                            onChange?.(e, checked);
                                             field.onChange(e.target.checked);
                                         }}
                                         onBlur={(...args) => {

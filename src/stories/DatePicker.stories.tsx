@@ -1,13 +1,13 @@
-import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
-import { useForm } from 'react-hook-form';
-import { DatePickerControllerProps } from '../fields';
-import DatePickerController from '../components/InputController/DatePickerController/DatePickerController';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import { date, object } from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { Meta, StoryFn } from '@storybook/react';
 import moment from 'moment';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { date, object } from 'yup';
+import DatePickerController from '../components/InputController/DatePickerController/DatePickerController';
+import { DatePickerControllerProps } from '../fields';
 
 const meta: Meta = {
     title: 'DatePicker Controller',
@@ -33,9 +33,17 @@ const schema = object().shape({
 });
 
 const Template: StoryFn<DatePickerControllerProps> = (args) => {
-    const { control, handleSubmit } = useForm({
+    const { control, handleSubmit, watch } = useForm({
         resolver: yupResolver(schema)
     });
+
+    const handleOnChange = (value: any) => {
+        console.log({
+            watch: watch('datePicker'),
+            onChange: value
+        });
+    };
+
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
             <form
@@ -43,7 +51,7 @@ const Template: StoryFn<DatePickerControllerProps> = (args) => {
                     console.log(data);
                 })}
             >
-                <DatePickerController {...args} control={control} />
+                <DatePickerController {...args} onChange={handleOnChange} control={control} />
                 <button>submit</button>
             </form>
         </LocalizationProvider>
@@ -54,7 +62,7 @@ export const DatePicker = Template.bind({});
 
 DatePicker.args = {
     name: 'datePicker',
-    label: 'Text Field Controller',
+    label: 'Date Picker Controller',
     format: 'YYYY-MM-DD',
     parser: (date) => moment(date)
 };

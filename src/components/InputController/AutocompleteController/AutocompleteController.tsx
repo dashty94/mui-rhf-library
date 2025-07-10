@@ -75,8 +75,8 @@ export const AutocompleteController = ({
                         multiple={multiple}
                         size={rest.size}
                         className="MuiFormControl-marginDense"
-                        onChange={(_, newValue: any) => {
-                            onChange?.(newValue);
+                        onChange={(e, newValue: any) => {
+                            onChange?.(newValue, e);
                             fieldOnChange(
                                 multiple
                                     ? newValue?.map((v: any) => get(v, optionValue, null) || v)
@@ -92,10 +92,8 @@ export const AutocompleteController = ({
                             return (
                                 <TextField
                                     {...params}
+                                    {...textFieldProps}
                                     inputRef={ref}
-                                    label={textFieldProps?.label}
-                                    variant={textFieldProps?.variant}
-                                    fullWidth={textFieldProps?.fullWidth}
                                     error={fieldState?.invalid}
                                     helperText={fieldState?.error?.message || textFieldProps?.helperText}
                                     inputProps={{
