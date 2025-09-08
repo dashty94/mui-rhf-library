@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 import { TextFieldController } from '../components/InputController/TextFieldController/TextFieldController';
 import { useForm } from 'react-hook-form';
 import { TextFieldControllerProps } from '../fields';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 import { SelectController } from '../components/InputController/SelectController/SelectController';
 import { useForm } from 'react-hook-form';
 import { SelectControllerProps } from '../fields';

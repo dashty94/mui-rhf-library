@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 import { SwitchController } from '../components/InputController/SwitchController/SwitchController';
 import { useForm } from 'react-hook-form';
 import { SwitchControllerProps } from '../fields';

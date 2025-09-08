@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 import { RadioGroupController } from '../components/InputController/RadioGroupController/RadioGroupController';
 import { useForm } from 'react-hook-form';
 import { RadioGroupControllerProps } from '../fields';
