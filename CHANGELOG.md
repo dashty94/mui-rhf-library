@@ -1,5 +1,12 @@
 # mui-rhf-library
 
+## 2.0.3
+
+### Patch Changes
+
+-   Upgrade Storybook to v9 and update related configuration
+-   Update development dependencies and tooling
+
 ## 2.0.2
 
 ### Patch Changes
