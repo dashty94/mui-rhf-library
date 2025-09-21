@@ -30,7 +30,7 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
                                 style={{ width: '100%' }}
                                 control={
                                     <Switch
-                                        checked={field?.value}
+                                        checked={field?.value ?? false}
                                         {...field}
                                         {...rest}
                                         onChange={(event, checked) => {
