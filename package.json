@@ -1,6 +1,6 @@
 {
   "name": "mui-rhf-library",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "A set of configured Material UI form inputs configured with React Hook Form.",
   "author": "dashty94",
   "license": "MIT",
@@ -28,6 +28,7 @@
     "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^5.2.1",
     "@mui/material": "^6.5.0",
+    "@mui/system": "^7.3.2",
     "@mui/x-date-pickers": "^7.29.4",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
@@ -49,6 +50,7 @@
     "storybook": "^9.1.5",
     "tslib": "^2.8.1",
     "typescript": "^5.9.2",
+    "webpack": "^5.101.3",
     "yup": "^1.7.0"
   },
   "main": "dist/cjs/index.js",
@@ -70,6 +72,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^6.5.0",
+    "@mui/system": "^6.5.0",
     "@mui/x-date-pickers": "^7.29.4",
     "react": "^19.1.1",
     "react-hook-form": "^7.62.0"
