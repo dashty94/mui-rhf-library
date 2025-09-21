@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-webpack5';
 import { CheckboxController } from '../components/InputController/CheckboxController/CheckboxController';
 import { useForm } from 'react-hook-form';
 import { CheckboxControllerProps } from '../fields';
