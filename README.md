@@ -56,7 +56,7 @@ gridProps: { size: { xs: 12, sm: 6 } }
 
 ## Demo
 
-Check the storybook of the library: https://6256bd53e0b94a003aad40bd-guohgodcjf.chromatic.com/
+Check the storybook of the library: https://6256bd53e0b94a003aad40bd-crkdhbpfeg.chromatic.com/
 
 ## Usage
 
