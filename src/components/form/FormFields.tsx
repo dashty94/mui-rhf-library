@@ -8,7 +8,9 @@ import { SwitchController } from '../InputController/SwitchController/SwitchCont
 import { CustomComponentController } from '../InputController/CustomComponentController/CustomComponentController';
 import DatePickerController from '../InputController/DatePickerController/DatePickerController';
 
-import { Grid, Grid2, type Grid2Props, type GridProps } from '@mui/material';
+import Grid, { type GridProps } from '@mui/material/Grid';
+// Legacy Grid for backwards compatibility
+import GridLegacy, { type GridLegacyProps } from '@mui/material/GridLegacy';
 
 import { FormFieldsProps, MuiRhfFieldComponentMap } from '../../form/typing';
 
@@ -24,7 +26,7 @@ const MuiFieldComponentMapper: MuiRhfFieldComponentMap = {
 };
 
 export const FormFields: React.FC<FormFieldsProps> = ({ fields, control, shouldUseDeprecatedGrid = false }) => {
-    const GridItem: React.FC<GridProps | Grid2Props> = shouldUseDeprecatedGrid ? Grid : Grid2;
+    const GridItem: React.FC<GridProps | GridLegacyProps> = shouldUseDeprecatedGrid ? GridLegacy : Grid;
 
     return (
         <>

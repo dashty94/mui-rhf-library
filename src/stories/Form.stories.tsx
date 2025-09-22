@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Grid2 } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { Meta, StoryFn } from '@storybook/react-webpack5';
@@ -171,9 +171,9 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
     return (
         <LocalizationProvider dateAdapter={AdapterMoment as any}>
             <form onSubmit={handleSubmit(handleFormSubmit)}>
-                <Grid2 container spacing={2}>
+                <Grid container spacing={2}>
                     <FormFields fields={fields} control={control} />
-                </Grid2>
+                </Grid>
 
                 <button type="submit">Submit</button>
             </form>

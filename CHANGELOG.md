@@ -1,5 +1,55 @@
 # mui-rhf-library
 
+## 3.0.0
+
+### Major Changes
+
+#### Breaking Changes - MUI v7 Upgrade
+
+This release contains breaking changes due to the upgrade from MUI v6 to v7. Users must update their projects accordingly.
+
+##### Dependency Updates Required
+
+-   `@mui/material`: ^6.5.0 → ^7.3.2
+-   `@mui/system`: ^6.5.0 → ^7.3.2
+-   `@mui/x-date-pickers`: ^7.29.4 → ^8.11.3
+
+##### Grid Component Changes
+
+-   MUI v7 restructured the Grid components:
+    -   The previous `Grid` component is now `GridLegacy`
+    -   The previous `Grid2` component is now the new `Grid`
+-   The library now uses the new `Grid` by default (previously `Grid2`)
+-   Added `shouldUseDeprecatedGrid` prop for backward compatibility with `GridLegacy`
+
+##### Grid Props API Changes
+
+If you're passing custom `gridProps` to form fields, you need to update the syntax:
+
+**Before (MUI v6):**
+
+```javascript
+gridProps: { xs: 12, sm: 6, md: 4 }
+```
+
+**After (MUI v7):**
+
+```javascript
+// For responsive sizing
+gridProps: { size: { xs: 12, sm: 6, md: 4 } }
+
+// For single size across all breakpoints
+gridProps: { size: 6 }
+```
+
+##### Migration Path
+
+1. Update your MUI dependencies to v7
+2. Update any custom `gridProps` to use the new `size` prop syntax
+3. If you need temporary backward compatibility, use `shouldUseDeprecatedGrid={true}` on `FormFields`
+
+Contributors: [@Revan99](https://github.com/Revan99)
+
 ## 2.1.0
 
 ### Patch Changes
