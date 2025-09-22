@@ -18,6 +18,42 @@ npm install mui-rhf-library
 yarn add mui-rhf-library
 ```
 
+## Migration from v2 to v3
+
+Version 3.0.0 includes breaking changes due to the upgrade to MUI v7.
+
+### Quick Migration Steps:
+
+1. **Update MUI dependencies in your project:**
+
+```json
+{
+    "@mui/material": "^7.3.2",
+    "@mui/system": "^7.3.2",
+    "@mui/x-date-pickers": "^8.11.3"
+}
+```
+
+2. **Update Grid props if using custom `gridProps`:**
+
+```javascript
+// Before (v2)
+gridProps: { xs: 12, sm: 6 }
+
+// After (v3)
+gridProps: { size: { xs: 12, sm: 6 } }
+```
+
+3. **For temporary backward compatibility:**
+
+```jsx
+<FormFields
+    fields={fields}
+    control={control}
+    shouldUseDeprecatedGrid={true} // Use old Grid API
+/>
+```
+
 ## Demo
 
 Check the storybook of the library: https://6256bd53e0b94a003aad40bd-guohgodcjf.chromatic.com/
@@ -66,7 +102,7 @@ root.render(<App />);
 
 You can generate form fields using the `FormFields` component.
 
-By default, the component renders form fields using Grid2, but if you decide to use Grid instead, set the `shouldUseDeprecatedGrid` prop to true.
+By default, the component renders form fields using the new Grid component (MUI v7). If you need to use the legacy Grid API for backward compatibility, set the `shouldUseDeprecatedGrid` prop to true.
 
 ```jsx
 import React from 'react';
@@ -74,7 +110,7 @@ import { createRoot } from 'react-dom/client';
 import { FormFields } from 'mui-rhf-library';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Grid2 } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import * as yup from 'yup';
 
 function App() {
@@ -89,7 +125,7 @@ function App() {
             name: 'firstName',
             label: 'firstName',
             props: { fullWidth: true }, // Props of the field
-            gridProps: { size: { xs: 6 } } // Props of the Grid (Container of the input field)
+            gridProps: { size: { xs: 12, sm: 6 } } // Props of the Grid (Container of the input field)
         }
     ];
 
@@ -99,9 +135,9 @@ function App() {
 
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <Grid2>
+            <Grid container spacing={2}>
                 <FormFields fields={fields} control={control} />
-            </Grid2>
+            </Grid>
             <button type="submit">Submit</button>
         </form>
     );
@@ -118,11 +154,11 @@ root.render(<App />);
 
 #### Form Fields
 
-| Prop                    | Type      | Default | Definition                                                              |
-| ----------------------- | --------- | ------- | ----------------------------------------------------------------------- |
-| fields                  | `Field[]` |         | The fields to be generated                                              |
-| control                 | `Control` |         | The React Hook Form object to register components into React Hook Form. |
-| shouldUseDeprecatedGrid | boolean   | false   | The component should use Grid2 instead of Grid.                         |
+| Prop                    | Type      | Default | Definition                                                                     |
+| ----------------------- | --------- | ------- | ------------------------------------------------------------------------------ |
+| fields                  | `Field[]` |         | The fields to be generated                                                     |
+| control                 | `Control` |         | The React Hook Form object to register components into React Hook Form.        |
+| shouldUseDeprecatedGrid | boolean   | false   | Use GridLegacy (MUI v6 and earlier Grid API) instead of the new Grid (MUI v7). |
 
 **Field[]**: Array of fields to be generated, where each field is an object with the following properties:
 

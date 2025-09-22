@@ -1,4 +1,6 @@
-import { type Grid2Props, type GridProps, type TextFieldProps as MuiTextFieldProps } from '@mui/material';
+import { type TextFieldProps as MuiTextFieldProps } from '@mui/material';
+import { type GridLegacyProps } from '@mui/material/GridLegacy';
+import { type GridProps } from '@mui/material/Grid';
 import { DatePickerProps } from '@mui/x-date-pickers';
 import React from 'react';
 import { Control } from 'react-hook-form';
@@ -65,7 +67,7 @@ export type FieldProps<T = any> = {
     hidden?: boolean;
     name: string;
     label?: string;
-    gridProps?: GridProps | Grid2Props;
+    gridProps?: GridProps | GridLegacyProps;
 } & (
     | FieldTextFieldProps
     | FieldSelectProps
