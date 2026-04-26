@@ -27,7 +27,7 @@ const Template: StoryFn<SwitchControllerProps> = (args) => {
     return <SwitchController {...args} control={control} />;
 };
 
-export const Switch = Template.bind({});
+export const Switch: StoryFn<SwitchControllerProps> = Template.bind({});
 
 Switch.args = {
     name: 'switch',

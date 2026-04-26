@@ -77,11 +77,13 @@
         "react": "^19.1.1",
         "react-hook-form": "^7.62.0"
     },
-    "resolutions": {
-        "@storybook/react-docgen-typescript-plugin": "npm:react-docgen-typescript-plugin@1.0.2",
-        "socks": "^2.8.7",
-        "serialize-javascript": "6.0.2",
-        "brace-expansion@^2.0.1": "2.0.2"
+    "pnpm": {
+        "overrides": {
+            "@storybook/react-docgen-typescript-plugin": "npm:react-docgen-typescript-plugin@1.0.2",
+            "socks": "^2.8.7",
+            "serialize-javascript": "6.0.2",
+            "brace-expansion@^2.0.1": "2.0.2"
+        }
     },
-    "packageManager": "yarn@4.9.1"
+    "packageManager": "pnpm@10.10.0"
 }

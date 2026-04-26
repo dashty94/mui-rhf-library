@@ -181,4 +181,4 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
     );
 };
 
-export const Form = Template.bind({});
+export const Form: StoryFn<FormFieldsProps> = Template.bind({});

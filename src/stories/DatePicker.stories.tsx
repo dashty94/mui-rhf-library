@@ -58,7 +58,7 @@ const Template: StoryFn<DatePickerControllerProps> = (args) => {
     );
 };
 
-export const DatePicker = Template.bind({});
+export const DatePicker: StoryFn<DatePickerControllerProps> = Template.bind({});
 
 DatePicker.args = {
     name: 'datePicker',

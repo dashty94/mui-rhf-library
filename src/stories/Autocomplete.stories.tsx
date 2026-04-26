@@ -44,7 +44,7 @@ const Template: StoryFn<AutocompleteControllerProps> = (args) => {
     );
 };
 
-export const Autocomplete = Template.bind({});
+export const Autocomplete: StoryFn<AutocompleteControllerProps> = Template.bind({});
 
 Autocomplete.args = {
     name: 'autocomplete',
@@ -63,7 +63,7 @@ Autocomplete.args = {
     onBlur: () => console.log('Autocomplete onBlur called')
 };
 
-export const AutocompleteMultiple = Template.bind({});
+export const AutocompleteMultiple: StoryFn<AutocompleteControllerProps> = Template.bind({});
 
 AutocompleteMultiple.args = {
     name: 'autocompleteMultiple',

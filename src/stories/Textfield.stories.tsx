@@ -40,7 +40,7 @@ const Template: StoryFn<TextFieldControllerProps> = (args: TextFieldControllerPr
     );
 };
 
-export const TextField = Template.bind({});
+export const TextField: StoryFn<TextFieldControllerProps> = Template.bind({});
 
 TextField.args = {
     name: 'textfield',

@@ -27,7 +27,7 @@ const Template: StoryFn<CheckboxControllerProps> = (args) => {
     return <CheckboxController {...args} control={control} />;
 };
 
-export const Checkbox = Template.bind({});
+export const Checkbox: StoryFn<CheckboxControllerProps> = Template.bind({});
 
 Checkbox.args = {
     name: 'checkbox',
