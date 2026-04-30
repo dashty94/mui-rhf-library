@@ -103,7 +103,7 @@
         // "declarationDir": "types/esm",
         "sourceMap": true,
         "outDir": "dist/esm/types",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "allowSyntheticDefaultImports": true,
         "emitDeclarationOnly": true
     }

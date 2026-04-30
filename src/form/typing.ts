@@ -1,9 +1,8 @@
 import { type TextFieldProps as MuiTextFieldProps } from '@mui/material';
-import { type GridLegacyProps } from '@mui/material/GridLegacy';
 import { type GridProps } from '@mui/material/Grid';
-import { DatePickerProps } from '@mui/x-date-pickers';
+import type { DatePickerProps } from '@mui/x-date-pickers';
 import React from 'react';
-import { Control } from 'react-hook-form';
+import type { Control } from 'react-hook-form';
 import {
     AutocompleteControllerProps,
     AutocompleteProps,
@@ -51,7 +50,7 @@ type FieldSwitchProps = {
     props: SwitchProps;
 };
 
-type FieldDatePickerFieldProps<T> = DatePickerProps<any> & {
+type FieldDatePickerFieldProps<T> = DatePickerProps & {
     fieldType: 'datePicker';
     parser: (value: string) => T;
     props?: any;
@@ -67,7 +66,7 @@ export type FieldProps<T = any> = {
     hidden?: boolean;
     name: string;
     label?: string;
-    gridProps?: GridProps | GridLegacyProps;
+    gridProps?: GridProps;
 } & (
     | FieldTextFieldProps
     | FieldSelectProps
