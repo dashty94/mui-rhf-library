@@ -1,0 +1,7 @@
+[build]
+# `pnpm build` installs website deps and runs Vite (see root package.json).
+command = "pnpm install && pnpm build"
+publish = "website/dist"
+
+[build.environment]
+NODE_VERSION = "22"

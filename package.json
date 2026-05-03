@@ -13,6 +13,7 @@
         "material-ui"
     ],
     "scripts": {
+        "build": "pnpm install --dir website && pnpm -C website build",
         "rollup": "rollup -c",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
