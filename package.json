@@ -31,7 +31,7 @@
         "@mui/material": "^9.0.0",
         "@mui/system": "^9.0.0",
         "@mui/x-date-pickers": "^9.0.0",
-        "@rollup/plugin-commonjs": "^28.0.9",
+        "@rollup/plugin-commonjs": "^29.0.2",
         "@rollup/plugin-node-resolve": "^16.0.3",
         "@storybook/addon-docs": "^10.3.5",
         "@storybook/addon-links": "^10.3.5",
@@ -50,7 +50,7 @@
         "rollup-plugin-peer-deps-external": "^2.2.4",
         "storybook": "^10.3.5",
         "tslib": "^2.8.1",
-        "typescript": "^5.9.3",
+        "typescript": "^6.0.3",
         "webpack": "^5.106.2",
         "yup": "^1.7.1"
     },
@@ -80,7 +80,7 @@
     },
     "pnpm": {
         "overrides": {
-            "@storybook/react-docgen-typescript-plugin": "npm:react-docgen-typescript-plugin@1.0.2",
+            "@storybook/react-docgen-typescript-plugin": "npm:react-docgen-typescript-plugin@1.0.8",
             "socks": "^2.8.7"
         }
     },
