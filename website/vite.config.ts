@@ -47,6 +47,8 @@ export default defineConfig(({ mode }) => {
         (mode === 'development' ? 'http://localhost:5173' : 'https://dashty94.github.io/mui-rhf-library');
 
     return {
+        // Relative URLs so CSS/JS load under subdirectory hosts (e.g. GitHub Pages project sites).
+        base: './',
         plugins: [tailwindcss(), seoStaticFiles(siteUrl)],
     };
 });
