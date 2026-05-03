@@ -40,6 +40,69 @@ function seoStaticFiles(siteUrl: string) {
     };
 }
 
+function findViteCssLink(html: string): { tag: string; file: string } | null {
+    const relFirst =
+        /<link\b[^>]*\brel=["']stylesheet["'][^>]*href=["'](?:\.\/)?assets\/([^"']+\.css)["'][^>]*>/i;
+    const hrefFirst =
+        /<link\b[^>]*href=["'](?:\.\/)?assets\/([^"']+\.css)["'][^>]*\brel=["']stylesheet["'][^>]*>/i;
+
+    let m = relFirst.exec(html);
+    if (m) return { tag: m[0], file: m[1] };
+    m = hrefFirst.exec(html);
+    if (m) return { tag: m[0], file: m[1] };
+    return null;
+}
+
+/**
+ * Inlines the hashed Tailwind bundle into index.html and removes the empty entry script.
+ * Opening dist/index.html via file:// then works (crossorigin + ES modules fail on file URLs).
+ */
+function inlineBuiltCssAndStripEntry() {
+    let outDir = '';
+
+    return {
+        name: 'inline-built-css-strip-entry',
+        apply: 'build' as const,
+        enforce: 'post' as const,
+        configResolved(config: { root: string; build: { outDir: string } }) {
+            outDir = path.resolve(config.root, config.build.outDir);
+        },
+        closeBundle() {
+            const htmlPath = path.join(outDir, 'index.html');
+            let html = fs.readFileSync(htmlPath, 'utf8');
+
+            const link = findViteCssLink(html);
+            if (!link) return;
+
+            const cssPath = path.join(outDir, 'assets', link.file);
+            if (!fs.existsSync(cssPath)) return;
+
+            const css = fs.readFileSync(cssPath, 'utf8');
+            html = html.replace(link.tag, `<style>${css}</style>`);
+
+            html = html.replaceAll(
+                /<script\b[^>]*\bsrc=["'](?:\.\/)?assets\/[^"']+\.js["'][^>]*>\s*<\/script>\s*/gi,
+                '',
+            );
+
+            fs.writeFileSync(htmlPath, html);
+            fs.unlinkSync(cssPath);
+
+            try {
+                const assetsDir = path.join(outDir, 'assets');
+                if (fs.existsSync(assetsDir)) {
+                    for (const f of fs.readdirSync(assetsDir)) {
+                        fs.unlinkSync(path.join(assetsDir, f));
+                    }
+                    fs.rmdirSync(assetsDir);
+                }
+            } catch {
+                /* ignore */
+            }
+        },
+    };
+}
+
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     const siteUrl =
@@ -49,6 +112,6 @@ export default defineConfig(({ mode }) => {
     return {
         // Relative URLs so CSS/JS load under subdirectory hosts (e.g. GitHub Pages project sites).
         base: './',
-        plugins: [tailwindcss(), seoStaticFiles(siteUrl)],
+        plugins: [tailwindcss(), seoStaticFiles(siteUrl), inlineBuiltCssAndStripEntry()],
     };
 });
