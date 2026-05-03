@@ -1,6 +1,5 @@
 node_modules
 dist
-!website/dist
 .vscode
 .env
 README-pv.md
