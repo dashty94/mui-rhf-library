@@ -1,6 +1,6 @@
 {
     "name": "mui-rhf-library",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "description": "A set of configured Material UI form inputs configured with React Hook Form.",
     "author": "dashty94",
     "license": "MIT",
@@ -17,7 +17,10 @@
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
         "chromatic": "chromatic --exit-zero-on-changes",
-        "type-check": "tsc --noEmit"
+        "type-check": "tsc --noEmit",
+        "website:dev": "pnpm -C website dev",
+        "website:build": "pnpm -C website build",
+        "website:preview": "pnpm -C website preview"
     },
     "devDependencies": {
         "@babel/core": "^7.29.0",

@@ -18,42 +18,6 @@ npm install mui-rhf-library
 yarn add mui-rhf-library
 ```
 
-## Migration from v2 to v3
-
-Version 3.0.0 includes breaking changes due to the upgrade to MUI v7.
-
-### Quick Migration Steps:
-
-1. **Update MUI dependencies in your project:**
-
-```json
-{
-    "@mui/material": "^7.3.2",
-    "@mui/system": "^7.3.2",
-    "@mui/x-date-pickers": "^8.11.3"
-}
-```
-
-2. **Update Grid props if using custom `gridProps`:**
-
-```javascript
-// Before (v2)
-gridProps: { xs: 12, sm: 6 }
-
-// After (v3)
-gridProps: { size: { xs: 12, sm: 6 } }
-```
-
-3. **For temporary backward compatibility:**
-
-```jsx
-<FormFields
-    fields={fields}
-    control={control}
-    shouldUseDeprecatedGrid={true} // Use old Grid API
-/>
-```
-
 ## Demo
 
 Check the storybook of the library: https://6256bd53e0b94a003aad40bd-crkdhbpfeg.chromatic.com/
