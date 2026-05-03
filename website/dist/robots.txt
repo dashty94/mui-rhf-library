@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dashty94.github.io/mui-rhf-library/sitemap.xml
