@@ -2,6 +2,7 @@ node_modules
 dist
 .vscode
 .env
+!.env.example
 README-pv.md
 /storybook-static
 build-storybook.log
