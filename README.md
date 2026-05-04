@@ -1,5 +1,14 @@
 <!-- markdownlint-disable-next-line -->
 
+<div align="center">
+  <img
+    src="https://raw.githubusercontent.com/dashty94/mui-rhf-library/main/website/public/favicon.svg"
+    alt="mui-rhf-library logo"
+    width="72"
+    height="72"
+  />
+</div>
+
 <h1 align="center">mui-rhf-library</h1>
 
 <div align="center">
