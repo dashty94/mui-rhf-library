@@ -6,3 +6,5 @@ dist
 README-pv.md
 /storybook-static
 build-storybook.log
+.pnpm-store
+.DS_Store
