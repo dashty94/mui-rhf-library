@@ -96,9 +96,14 @@ export const AutocompleteController = ({
                                     inputRef={ref}
                                     error={fieldState?.invalid}
                                     helperText={fieldState?.error?.message || textFieldProps?.helperText}
-                                    inputProps={{
-                                        ...params.inputProps,
-                                        autoComplete: 'off'
+                                    slotProps={{
+                                        ...params.slotProps,
+                                        ...textFieldProps?.slotProps,
+                                        htmlInput: {
+                                            ...params.slotProps.htmlInput,
+                                            ...textFieldProps?.slotProps?.htmlInput,
+                                            autoComplete: 'off'
+                                        }
                                     }}
                                 />
                             );

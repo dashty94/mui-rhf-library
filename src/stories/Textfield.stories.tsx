@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react-webpack5';
 import { TextFieldController } from '../components/InputController/TextFieldController/TextFieldController';
-import { useForm } from 'react-hook-form';
+import { useForm, type Control } from 'react-hook-form';
 import { TextFieldControllerProps } from '../fields';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -34,13 +34,13 @@ const Template: StoryFn<TextFieldControllerProps> = (args: TextFieldControllerPr
 
     return (
         <form onSubmit={handleSubmit(() => {})}>
-            <TextFieldController {...args} control={control} />
+            <TextFieldController {...args} control={control as Control<any>} />
             <button>submit</button>
         </form>
     );
 };
 
-export const TextField = Template.bind({});
+export const TextField: StoryFn<TextFieldControllerProps> = Template.bind({});
 
 TextField.args = {
     name: 'textfield',

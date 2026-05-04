@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react-webpack5';
 import { AutocompleteController } from '../components/InputController/AutocompleteController/AutocompleteController';
-import { useForm } from 'react-hook-form';
+import { useForm, type Control } from 'react-hook-form';
 import { AutocompleteControllerProps } from '../fields';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -38,13 +38,13 @@ const Template: StoryFn<AutocompleteControllerProps> = (args) => {
 
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <AutocompleteController {...args} name="autocomplete" control={control} />
+            <AutocompleteController {...args} name="autocomplete" control={control as Control<any>} />
             <button type="submit">Submit</button>
         </form>
     );
 };
 
-export const Autocomplete = Template.bind({});
+export const Autocomplete: StoryFn<AutocompleteControllerProps> = Template.bind({});
 
 Autocomplete.args = {
     name: 'autocomplete',
@@ -63,7 +63,7 @@ Autocomplete.args = {
     onBlur: () => console.log('Autocomplete onBlur called')
 };
 
-export const AutocompleteMultiple = Template.bind({});
+export const AutocompleteMultiple: StoryFn<AutocompleteControllerProps> = Template.bind({});
 
 AutocompleteMultiple.args = {
     name: 'autocompleteMultiple',

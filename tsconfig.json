@@ -1,4 +1,5 @@
 {
+    "include": ["src/**/*"],
     "compilerOptions": {
         /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
@@ -97,13 +98,14 @@
         /* Completeness */
         // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
         "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+        "rootDir": "./src",
         "jsx": "react",
         "module": "ESNext",
         "declaration": true,
         // "declarationDir": "types/esm",
         "sourceMap": true,
         "outDir": "dist/esm/types",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "allowSyntheticDefaultImports": true,
         "emitDeclarationOnly": true
     }

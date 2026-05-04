@@ -1,4 +1,4 @@
-import { Control } from 'react-hook-form';
+import type { Control } from 'react-hook-form';
 import {
     type TextFieldProps as MuiTextFieldProps,
     type SelectProps as MuiSelectProps,
@@ -9,7 +9,7 @@ import {
     type CheckboxProps as MuiCheckboxProps
 } from '@mui/material';
 import React from 'react';
-import { DatePickerProps } from '@mui/x-date-pickers';
+import type { DatePickerProps } from '@mui/x-date-pickers';
 
 // Common input field props
 export type MuiRhfFieldProps = {
@@ -26,7 +26,7 @@ export type Option = {
 
 // TextField
 export type TextFieldProps = MuiTextFieldProps & {
-    type?: React.HTMLInputTypeAttribute | undefined;
+    type?: React.HTMLInputTypeAttribute;
 };
 export type TextFieldControllerProps = Omit<MuiRhfFieldProps, 'helperText'> & TextFieldProps;
 
@@ -87,6 +87,6 @@ export type CustomComponentControllerProps = MuiRhfFieldProps & {
 
 // DatePicker
 export type DatePickerControllerProps = MuiRhfFieldProps &
-    DatePickerProps<any> & {
+    DatePickerProps & {
         parser: (value: any) => any;
     };

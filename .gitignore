@@ -2,7 +2,9 @@ node_modules
 dist
 .vscode
 .env
+!.env.example
 README-pv.md
-/.yarn/install-state.gz
 /storybook-static
 build-storybook.log
+.pnpm-store
+.DS_Store

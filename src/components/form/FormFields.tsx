@@ -9,8 +9,6 @@ import { CustomComponentController } from '../InputController/CustomComponentCon
 import DatePickerController from '../InputController/DatePickerController/DatePickerController';
 
 import Grid, { type GridProps } from '@mui/material/Grid';
-// Legacy Grid for backwards compatibility
-import GridLegacy, { type GridLegacyProps } from '@mui/material/GridLegacy';
 
 import { FormFieldsProps, MuiRhfFieldComponentMap } from '../../form/typing';
 
@@ -26,7 +24,7 @@ const MuiFieldComponentMapper: MuiRhfFieldComponentMap = {
 };
 
 export const FormFields: React.FC<FormFieldsProps> = ({ fields, control, shouldUseDeprecatedGrid = false }) => {
-    const GridItem: React.FC<GridProps | GridLegacyProps> = shouldUseDeprecatedGrid ? GridLegacy : Grid;
+    const GridItem: React.FC<GridProps> = Grid;
 
     return (
         <>
@@ -37,13 +35,7 @@ export const FormFields: React.FC<FormFieldsProps> = ({ fields, control, shouldU
                         MuiFieldComponentMapper[fieldType as keyof MuiRhfFieldComponentMap] || TextFieldController;
 
                     return (
-                        <GridItem
-                            item={shouldUseDeprecatedGrid ? true : undefined}
-                            xs={shouldUseDeprecatedGrid ? 12 : undefined}
-                            size={12}
-                            {...gridProps}
-                            key={name + index}
-                        >
+                        <GridItem size={{ xs: 12 }} {...gridProps} key={name + index}>
                             <MuiRhfField label={label} {...props} {...rest} name={name} control={control} />
                         </GridItem>
                     );

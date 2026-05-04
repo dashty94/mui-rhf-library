@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Avoid flash of unstyled content before /src/style.css loads (esp. dev). Matches slate-950 / slate-100. -->
+        <style>
+            html {
+                background-color: #020617;
+                color: #f1f5f9;
+                font-family: system-ui, sans-serif;
+            }
+        </style>
+        <link rel="stylesheet" href="/src/style.css" />
+        <title>mui-rhf-library · Material UI form controllers for React Hook Form</title>
+        <meta
+            name="description"
+            content="mui-rhf-library provides Material UI form inputs wired for React Hook Form: TextField, Select, Autocomplete, Checkbox, Switch, RadioGroup, DatePicker controllers, plus declarative FormFields for faster validated forms."
+        />
+        <meta
+            name="keywords"
+            content="mui-rhf-library, Material UI, MUI, React Hook Form, React forms, TypeScript, form validation, TextField, Select, Autocomplete, npm package"
+        />
+        <meta name="author" content="dashty94" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="theme-color" content="#95d3ed" />
+
+        <link rel="canonical" href="%VITE_SITE_URL%/" />
+        <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="mui-rhf-library" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:title" content="mui-rhf-library · Material UI + React Hook Form" />
+        <meta
+            property="og:description"
+            content="Controllers and FormFields for Material UI with React Hook Form — ship accessible, validated forms with less boilerplate."
+        />
+        <meta property="og:url" content="%VITE_SITE_URL%/" />
+        <meta property="og:image" content="%VITE_SITE_URL%/social_share.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta
+            property="og:image:alt"
+            content="mui-rhf-library — Material UI form inputs controlled by React Hook Form"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="mui-rhf-library · Material UI + React Hook Form" />
+        <meta
+            name="twitter:description"
+            content="Controllers and FormFields for Material UI with React Hook Form — less boilerplate, faster forms."
+        />
+        <meta name="twitter:image" content="%VITE_SITE_URL%/social_share.png" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="min-h-screen bg-slate-950 font-sans text-slate-100 antialiased">
+        <div class="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
+            <div class="absolute -left-1/4 top-0 h-[520px] w-[520px] rounded-full bg-primary/20 blur-3xl"></div>
+            <div class="absolute -right-1/4 top-1/3 h-[480px] w-[480px] rounded-full bg-primary-deep/25 blur-3xl"></div>
+            <div class="absolute bottom-0 left-1/3 h-[360px] w-[360px] rounded-full bg-primary/10 blur-3xl"></div>
+        </div>
+
+        <header class="sticky top-0 z-50 border-b border-white/5 bg-slate-950/75 backdrop-blur-md">
+            <nav
+                class="relative mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4 md:gap-6"
+                aria-label="Primary"
+            >
+                <a
+                    href="#top"
+                    class="flex min-w-0 items-center gap-2 text-sm font-semibold tracking-tight text-white transition hover:text-primary-soft"
+                >
+                    <img
+                        src="./favicon.svg"
+                        alt="mui-rhf-library"
+                        width="48"
+                        height="48"
+                        class="h-10 w-10 shrink-0 sm:h-12 sm:w-12"
+                    />
+                    <span class="hidden text-xl font-bold sm:inline">mui-rhf-library</span>
+                </a>
+
+                <div class="hidden flex-wrap items-center justify-end gap-4 text-sm text-slate-400 md:flex">
+                    <a href="#features" class="transition hover:text-white">Features</a>
+                    <a href="#included" class="transition hover:text-white">Included</a>
+                    <a href="#install" class="transition hover:text-white">Install</a>
+                    <a href="#usage" class="transition hover:text-white">Usage</a>
+                    <a
+                        href="https://www.npmjs.com/package/mui-rhf-library"
+                        class="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-medium text-white transition hover:border-primary/45 hover:bg-primary/10"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        npm
+                    </a>
+                    <a
+                        href="https://github.com/dashty94/mui-rhf-library"
+                        class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-medium text-white transition hover:border-primary/45 hover:bg-primary/10"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <svg
+                            class="h-4 w-4 shrink-0 opacity-90"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.425-.135-.345-.72-1.425-1.23-1.715-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                            />
+                        </svg>
+                        GitHub
+                    </a>
+                </div>
+
+                <details class="relative md:hidden">
+                    <summary
+                        class="flex cursor-pointer list-none items-center justify-center rounded-lg border border-white/15 bg-white/5 p-2.5 text-white transition hover:border-primary/40 hover:bg-primary/10 [&::-webkit-details-marker]:hidden"
+                        aria-label="Open navigation menu"
+                    >
+                        <span class="sr-only">Menu</span>
+                        <span class="flex flex-col gap-1.5" aria-hidden="true">
+                            <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+                            <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+                            <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+                        </span>
+                    </summary>
+                    <div
+                        class="absolute right-0 z-[60] mt-2 w-[min(100vw-3rem,16rem)] rounded-xl border border-white/10 bg-slate-950/95 p-2 shadow-2xl shadow-black/40 ring-1 ring-white/5 backdrop-blur-md"
+                        role="group"
+                        aria-label="Page sections"
+                    >
+                        <a
+                            href="#features"
+                            class="block rounded-lg px-3 py-2.5 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white"
+                            onclick="this.closest('details')?.removeAttribute('open')"
+                            >Features</a
+                        >
+                        <a
+                            href="#included"
+                            class="block rounded-lg px-3 py-2.5 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white"
+                            onclick="this.closest('details')?.removeAttribute('open')"
+                            >Included</a
+                        >
+                        <a
+                            href="#install"
+                            class="block rounded-lg px-3 py-2.5 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white"
+                            onclick="this.closest('details')?.removeAttribute('open')"
+                            >Install</a
+                        >
+                        <a
+                            href="#usage"
+                            class="block rounded-lg px-3 py-2.5 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white"
+                            onclick="this.closest('details')?.removeAttribute('open')"
+                            >Usage</a
+                        >
+                        <div class="my-2 border-t border-white/10"></div>
+                        <a
+                            href="https://www.npmjs.com/package/mui-rhf-library"
+                            class="block rounded-lg px-3 py-2.5 text-sm font-medium text-white transition hover:bg-white/5"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onclick="this.closest('details')?.removeAttribute('open')"
+                            >npm</a
+                        >
+                        <a
+                            href="https://github.com/dashty94/mui-rhf-library"
+                            class="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-medium text-white transition hover:bg-white/5"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onclick="this.closest('details')?.removeAttribute('open')"
+                        >
+                            <svg
+                                class="h-4 w-4 shrink-0 opacity-90"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.425-.135-.345-.72-1.425-1.23-1.715-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                                />
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </details>
+            </nav>
+        </header>
+
+        <main id="top" class="relative mx-auto max-w-5xl px-6 pb-24 pt-16 sm:pt-24">
+            <section class="text-center">
+                <p
+                    class="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary-soft"
+                >
+                    <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                    MUI v9 · React Hook Form · TypeScript
+                </p>
+                <p class="mb-3 sm:mb-4">
+                    <a
+                        href="https://www.npmjs.com/package/mui-rhf-library"
+                        class="font-mono text-sm font-semibold tracking-tight text-primary-soft underline decoration-primary/30 underline-offset-4 transition hover:text-primary hover:decoration-primary/60 sm:text-base"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        mui-rhf-library
+                    </a>
+                </p>
+                <h1
+                    class="mx-auto max-w-3xl text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl"
+                >
+                    Forms that feel like
+                    <span class="bg-gradient-to-r from-primary via-primary-soft to-white bg-clip-text text-transparent">
+                        Material UI
+                    </span>
+                    — controlled by React Hook Form
+                </h1>
+                <p class="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-slate-400">
+                    A focused set of controllers and a
+                    <code class="font-mono text-sm text-primary-soft">FormFields</code>
+                    helper so you ship validated, accessible inputs faster — without re-wiring RHF on every project.
+                </p>
+                <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+                    <a
+                        href="#install"
+                        class="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-primary/30 transition hover:bg-primary-hover"
+                    >
+                        Get started
+                    </a>
+                    <a
+                        href="https://6256bd53e0b94a003aad40bd-yolmpspcao.chromatic.com/"
+                        class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/10"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Open Demo
+                    </a>
+                </div>
+            </section>
+
+            <section id="features" class="mt-28 scroll-mt-28">
+                <h2 class="text-center text-sm font-semibold uppercase tracking-widest text-primary">Why use it</h2>
+                <p class="mx-auto mt-3 max-w-xl text-center text-2xl font-semibold text-white">
+                    Less boilerplate between MUI and React Hook Form
+                </p>
+                <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <article
+                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-xl shadow-black/20 transition hover:border-primary/40 hover:bg-white/[0.05]"
+                    >
+                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15 text-lg">
+                            ⚡
+                        </div>
+                        <h3 class="mt-4 text-lg font-semibold text-white">Ready-made controllers</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                            Text fields, selects, autocomplete, checkboxes, switches, radio groups, and date pickers —
+                            each aligned with MUI props and RHF’s
+                            <span class="font-mono text-primary-soft">control</span>.
+                        </p>
+                    </article>
+                    <article
+                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-xl shadow-black/20 transition hover:border-primary/40 hover:bg-white/[0.05]"
+                    >
+                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/12 text-lg">
+                            🧩
+                        </div>
+                        <h3 class="mt-4 text-lg font-semibold text-white">Declarative FormFields</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                            Describe fields as data — names, types, grid layout, and props — and render a whole form
+                            region from one component.
+                        </p>
+                    </article>
+                    <article
+                        class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-xl shadow-black/20 transition hover:border-primary/40 hover:bg-white/[0.05] sm:col-span-2 lg:col-span-1"
+                    >
+                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-deep/25 text-lg">
+                            ✓
+                        </div>
+                        <h3 class="mt-4 text-lg font-semibold text-white">Works with your stack</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-slate-400">
+                            Pair with Yup or Zod resolvers, Emotion, and MUI’s layout primitives. MIT licensed and built
+                            for real apps.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="install" class="mt-28 scroll-mt-28">
+                <div
+                    class="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-8 sm:p-10"
+                >
+                    <h2 class="text-2xl font-semibold text-white">Installation</h2>
+                    <p class="mt-2 max-w-2xl text-slate-400">
+                        Install from npm alongside your MUI, Emotion, and React Hook Form peer dependencies.
+                    </p>
+                    <div class="mt-8 space-y-4">
+                        <div>
+                            <p class="mb-2 text-xs font-medium uppercase tracking-wider text-slate-500">pnpm</p>
+                            <div class="relative overflow-hidden rounded-xl border border-white/10 bg-slate-950/80">
+                                <pre
+                                    class="overflow-x-auto p-4 pr-14 font-mono text-sm text-primary-soft"
+                                ><code>pnpm add mui-rhf-library</code></pre>
+                                <button
+                                    type="button"
+                                    class="copy-install-btn absolute right-2 top-2 rounded-lg border border-white/10 bg-slate-900/95 p-2 text-slate-400 shadow-sm transition hover:border-primary/35 hover:bg-primary/10 hover:text-primary-soft"
+                                    data-copy-command="pnpm add mui-rhf-library"
+                                    aria-label="Copy pnpm install command"
+                                    title="Copy"
+                                >
+                                    <svg
+                                        class="copy-install-icon h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <div>
+                                <p class="mb-2 text-xs font-medium uppercase tracking-wider text-slate-500">npm</p>
+                                <div class="relative overflow-hidden rounded-xl border border-white/10 bg-slate-950/80">
+                                    <pre
+                                        class="overflow-x-auto p-4 pr-14 font-mono text-sm text-slate-300"
+                                    ><code>npm install mui-rhf-library</code></pre>
+                                    <button
+                                        type="button"
+                                        class="copy-install-btn absolute right-2 top-2 rounded-lg border border-white/10 bg-slate-900/95 p-2 text-slate-400 shadow-sm transition hover:border-primary/35 hover:bg-primary/10 hover:text-primary-soft"
+                                        data-copy-command="npm install mui-rhf-library"
+                                        aria-label="Copy npm install command"
+                                        title="Copy"
+                                    >
+                                        <svg
+                                            class="copy-install-icon h-4 w-4"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            viewBox="0 0 24 24"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                            />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="mb-2 text-xs font-medium uppercase tracking-wider text-slate-500">yarn</p>
+                                <div class="relative overflow-hidden rounded-xl border border-white/10 bg-slate-950/80">
+                                    <pre
+                                        class="overflow-x-auto p-4 pr-14 font-mono text-sm text-slate-300"
+                                    ><code>yarn add mui-rhf-library</code></pre>
+                                    <button
+                                        type="button"
+                                        class="copy-install-btn absolute right-2 top-2 rounded-lg border border-white/10 bg-slate-900/95 p-2 text-slate-400 shadow-sm transition hover:border-primary/35 hover:bg-primary/10 hover:text-primary-soft"
+                                        data-copy-command="yarn add mui-rhf-library"
+                                        aria-label="Copy yarn add command"
+                                        title="Copy"
+                                    >
+                                        <svg
+                                            class="copy-install-icon h-4 w-4"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            viewBox="0 0 24 24"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                            />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="included" class="mt-28 scroll-mt-28">
+                <h2 class="text-center text-sm font-semibold uppercase tracking-widest text-primary">
+                    What’s included
+                </h2>
+                <p class="mx-auto mt-3 max-w-2xl text-center text-2xl font-semibold text-white">
+                    Controllers and FormFields types
+                </p>
+                <p class="mx-auto mt-4 max-w-2xl text-center text-sm leading-relaxed text-slate-400">
+                    Everything maps to familiar MUI components and React Hook Form’s
+                    <span class="font-mono text-primary-soft/90">control</span> object.
+                </p>
+
+                <div class="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-12">
+                    <div>
+                        <h3 class="text-lg font-semibold text-white">Controllers</h3>
+                        <p class="mt-1 text-sm text-slate-500">Import and place next to your form logic.</p>
+                        <dl class="mt-6 space-y-4">
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">TextFieldController</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    MUI TextField bound to RHF—text, email, password, multiline, and standard TextField
+                                    props.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">SelectController</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    MUI Select with option lists, configurable value/label keys, loading indicator, and
+                                    helper text.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">AutocompleteController</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Autocomplete with options, plus
+                                    <span class="font-mono text-slate-500">textFieldProps</span> for the inner
+                                    TextField.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">CheckboxController</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Checkbox with label, default checked state, and optional blur handler.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">SwitchController</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    MUI Switch with label and optional custom change handling.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">RadioGroupController</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Radio group from an options array with label and helper text.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">DatePickerController</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    MUI X DatePicker integrated with RHF for date values.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">FormFields</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Renders multiple inputs from one
+                                    <span class="font-mono text-slate-500">fields</span> array (see
+                                    <span class="font-mono text-slate-500">fieldType</span> column).
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-white">
+                            <span class="font-mono text-base text-primary-soft">fieldType</span> values
+                        </h3>
+                        <p class="mt-1 text-sm text-slate-500">
+                            Used in each entry of the FormFields <span class="font-mono">fields</span> array.
+                        </p>
+                        <dl class="mt-6 space-y-4">
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">textField</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Renders a TextFieldController row.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">select</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Renders a SelectController row.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">autocomplete</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Renders an AutocompleteController row.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">checkbox</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Renders a CheckboxController row.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">radioGroup</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Renders a RadioGroupController row.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">switch</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Renders a SwitchController row.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">datePicker</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Renders a DatePickerController row.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="font-mono text-[13px] text-primary-soft">custom</dt>
+                                <dd class="mt-1 text-sm leading-relaxed text-slate-400">
+                                    Supply your own component for layouts or inputs the built-ins don’t cover.
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+
+                <div
+                    id="comparison"
+                    class="mt-12 scroll-mt-28 rounded-2xl border border-primary/25 bg-primary/5 p-6 sm:p-8"
+                >
+                    <h3 class="text-lg font-semibold text-white">vs wiring MUI + React Hook Form yourself</h3>
+                    <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-300 sm:text-base">
+                        Doing it by hand means repeating
+                        <span class="font-mono text-primary-soft/90">Controller</span> wrappers, default values, error
+                        messages, and ref forwarding for every MUI input variant. mui-rhf-library centralizes those
+                        patterns so you keep using MUI’s documented props and RHF’s
+                        <span class="font-mono text-primary-soft/90">control</span>—without rewriting the same glue for
+                        each new form.
+                    </p>
+                </div>
+            </section>
+
+            <section id="usage" class="mt-28 scroll-mt-28">
+                <h2 class="text-center text-sm font-semibold uppercase tracking-widest text-primary">Examples</h2>
+                <p class="mx-auto mt-3 max-w-xl text-center text-2xl font-semibold text-white">
+                    Controllers or data-driven FormFields
+                </p>
+                <p class="mx-auto mt-6 max-w-xl text-center text-sm text-slate-500">
+                    Drop-in MUI controllers, or describe fields in an array and render them with
+                    <span class="font-mono text-primary-soft/90">FormFields</span>.
+                </p>
+                <p class="mt-10 text-center text-sm font-medium text-slate-400">Individual controllers</p>
+                <div class="mt-3 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60 shadow-2xl">
+                    <div class="border-b border-white/10 bg-white/[0.03] px-4 py-3">
+                        <span class="text-xs font-medium text-slate-500">App.tsx</span>
+                    </div>
+                    <pre
+                        class="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed text-slate-300 sm:text-sm"
+                    ><code><span class="text-primary-soft">import</span> { TextFieldController, SelectController } <span class="text-primary-soft">from</span> <span class="text-primary-deep">'mui-rhf-library'</span>;
+<span class="text-primary-soft">import</span> { useForm } <span class="text-primary-soft">from</span> <span class="text-primary-deep">'react-hook-form'</span>;
+
+<span class="text-primary-soft">type</span> <span class="text-amber-200">ExampleFormValues</span> = {
+  name: string;
+  role: string;
+};
+
+<span class="text-primary-soft">export function</span> <span class="text-amber-200">Example</span>() {
+  <span class="text-primary-soft">const</span> { control } = <span class="text-amber-200">useForm</span>&lt;<span class="text-amber-200">ExampleFormValues</span>&gt;({
+    defaultValues: { name: <span class="text-primary-deep">''</span>, role: <span class="text-primary-deep">''</span> },
+  });
+
+  <span class="text-primary-soft">return</span> (
+    &lt;&gt;
+      &lt;<span class="text-primary">TextFieldController</span>
+        control={control}
+        name=<span class="text-primary-deep">"name"</span>
+        defaultValue=<span class="text-primary-deep">""</span>
+        label=<span class="text-primary-deep">"Full name"</span>
+      /&gt;
+      &lt;<span class="text-primary">SelectController</span>
+        name=<span class="text-primary-deep">"role"</span>
+        label=<span class="text-primary-deep">"Role"</span>
+        control={control}
+        options={[
+          { label: <span class="text-primary-deep">'Admin'</span>, value: <span class="text-primary-deep">'admin'</span> },
+          { label: <span class="text-primary-deep">'Editor'</span>, value: <span class="text-primary-deep">'editor'</span> },
+        ]}
+      /&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+                </div>
+
+                <p class="mt-12 text-center text-sm font-medium text-slate-400">FormFields from a config array</p>
+                <div class="mt-3 overflow-hidden rounded-2xl border border-white/10 bg-slate-950/60 shadow-2xl">
+                    <div class="border-b border-white/10 bg-white/[0.03] px-4 py-3">
+                        <span class="text-xs font-medium text-slate-500">SignupForm.tsx</span>
+                    </div>
+                    <pre
+                        class="overflow-x-auto p-5 font-mono text-[13px] leading-relaxed text-slate-300 sm:text-sm"
+                    ><code><span class="text-primary-soft">import</span> { FormFields, <span class="text-primary-soft">type</span> FieldProps } <span class="text-primary-soft">from</span> <span class="text-primary-deep">'mui-rhf-library'</span>;
+<span class="text-primary-soft">import</span> { useForm } <span class="text-primary-soft">from</span> <span class="text-primary-deep">'react-hook-form'</span>;
+<span class="text-primary-soft">import</span> { yupResolver } <span class="text-primary-soft">from</span> <span class="text-primary-deep">'@hookform/resolvers/yup'</span>;
+<span class="text-primary-soft">import</span> Grid <span class="text-primary-soft">from</span> <span class="text-primary-deep">'@mui/material/Grid'</span>;
+<span class="text-primary-soft">import</span> * <span class="text-primary-soft">as</span> yup <span class="text-primary-soft">from</span> <span class="text-primary-deep">'yup'</span>;
+
+<span class="text-primary-soft">type</span> <span class="text-amber-200">SignupFormValues</span> = {
+  firstName: string;
+  lastName: string;
+  acceptTerms: boolean;
+};
+
+<span class="text-primary-soft">const</span> signupSchema = yup
+  .object({
+    firstName: yup.string().required(<span class="text-primary-deep">'First name is required'</span>),
+    lastName: yup.string().required(<span class="text-primary-deep">'Last name is required'</span>),
+    acceptTerms: yup
+      .boolean()
+      .oneOf([<span class="text-primary-soft">true</span>], <span class="text-primary-deep">'You must accept the terms'</span>),
+  })
+  .required();
+
+<span class="text-primary-soft">export function</span> <span class="text-amber-200">SignupForm</span>() {
+  <span class="text-primary-soft">const</span> { control, handleSubmit } = <span class="text-amber-200">useForm</span>&lt;<span class="text-amber-200">SignupFormValues</span>&gt;({
+    defaultValues: { firstName: <span class="text-primary-deep">''</span>, lastName: <span class="text-primary-deep">''</span>, acceptTerms: <span class="text-primary-soft">false</span> },
+    resolver: <span class="text-amber-200">yupResolver</span>(signupSchema),
+  });
+
+  <span class="text-primary-soft">const</span> fields: FieldProps[] = [
+    {
+      fieldType: <span class="text-primary-deep">'textField'</span>,
+      name: <span class="text-primary-deep">'firstName'</span>,
+      label: <span class="text-primary-deep">'First name'</span>,
+      props: { fullWidth: <span class="text-primary-soft">true</span> },
+      gridProps: { size: { xs: <span class="text-primary-soft">12</span>, sm: <span class="text-primary-soft">6</span> } },
+    },
+    {
+      fieldType: <span class="text-primary-deep">'textField'</span>,
+      name: <span class="text-primary-deep">'lastName'</span>,
+      label: <span class="text-primary-deep">'Last name'</span>,
+      props: { fullWidth: <span class="text-primary-soft">true</span> },
+      gridProps: { size: { xs: <span class="text-primary-soft">12</span>, sm: <span class="text-primary-soft">6</span> } },
+    },
+    {
+      fieldType: <span class="text-primary-deep">'checkbox'</span>,
+      name: <span class="text-primary-deep">'acceptTerms'</span>,
+      label: <span class="text-primary-deep">'I accept the terms'</span>,
+      gridProps: { size: { xs: <span class="text-primary-soft">12</span> } },
+    },
+  ];
+
+  <span class="text-primary-soft">return</span> (
+    &lt;<span class="text-primary">form</span>
+      onSubmit={handleSubmit((data: <span class="text-amber-200">SignupFormValues</span>) =&gt; {
+        console.log(data);
+      })}
+    &gt;
+      &lt;<span class="text-primary">Grid</span> container spacing={<span class="text-primary-soft">2</span>}&gt;
+        &lt;<span class="text-primary">FormFields</span> fields={fields} control={control} /&gt;
+      &lt;/<span class="text-primary">Grid</span>&gt;
+      &lt;<span class="text-primary">button</span> type=<span class="text-primary-deep">"submit"</span>&gt;Submit&lt;/<span class="text-primary">button</span>&gt;
+    &lt;/<span class="text-primary">form</span>&gt;
+  );
+}</code></pre>
+                </div>
+
+                <p class="mt-6 text-center text-sm text-slate-500">
+                    Full API tables and migration notes live in the
+                    <a
+                        href="https://github.com/dashty94/mui-rhf-library"
+                        class="inline-flex items-center gap-1.5 text-primary underline decoration-primary/40 underline-offset-4 hover:text-primary-soft"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.425-.135-.345-.72-1.425-1.23-1.715-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                            />
+                        </svg>
+                        repository README
+                    </a>
+                    .
+                </p>
+            </section>
+
+            <footer
+                class="mt-28 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-12 text-center text-sm text-slate-500 sm:flex-row sm:text-left"
+            >
+                <p>© Open source</p>
+                <p class="max-w-md sm:text-right">
+                    Built for teams using Material UI with React Hook Form — ship consistent forms with less glue code.
+                </p>
+            </footer>
+        </main>
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "WebSite",
+                        "@id": "%VITE_SITE_URL%/#website",
+                        "name": "mui-rhf-library",
+                        "url": "%VITE_SITE_URL%/",
+                        "image": "%VITE_SITE_URL%/social_share.png",
+                        "description": "Material UI form inputs wired for React Hook Form — controllers and declarative FormFields.",
+                        "inLanguage": "en-US",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "dashty94",
+                            "url": "https://github.com/dashty94"
+                        }
+                    },
+                    {
+                        "@type": "SoftwareSourceCode",
+                        "@id": "%VITE_SITE_URL%/#software",
+                        "name": "mui-rhf-library",
+                        "description": "A set of configured Material UI form inputs integrated with React Hook Form.",
+                        "license": "https://opensource.org/licenses/MIT",
+                        "url": "%VITE_SITE_URL%/",
+                        "codeRepository": "https://github.com/dashty94/mui-rhf-library",
+                        "programmingLanguage": ["TypeScript", "JavaScript"],
+                        "runtimePlatform": "React",
+                        "sameAs": [
+                            "https://github.com/dashty94/mui-rhf-library",
+                            "https://www.npmjs.com/package/mui-rhf-library"
+                        ]
+                    }
+                ]
+            }
+        </script>
+
+        <script>
+            (function () {
+                var menu = document.querySelector('header nav details');
+                if (!menu) return;
+                document.addEventListener('click', function (e) {
+                    if (!menu.open) return;
+                    if (menu.contains(e.target)) return;
+                    menu.removeAttribute('open');
+                });
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' && menu.open) menu.removeAttribute('open');
+                });
+            })();
+            (function () {
+                var installSection = document.getElementById('install');
+                if (!installSection) return;
+
+                var copySvg =
+                    '<svg class="copy-install-icon h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>';
+                var checkSvg =
+                    '<svg class="copy-install-icon h-4 w-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>';
+
+                installSection.addEventListener('click', function (e) {
+                    var btn = e.target.closest('.copy-install-btn');
+                    if (!btn || !installSection.contains(btn)) return;
+                    var text = btn.getAttribute('data-copy-command');
+                    if (!text || !navigator.clipboard || !navigator.clipboard.writeText) return;
+
+                    var prevLabel = btn.getAttribute('aria-label');
+                    navigator.clipboard.writeText(text).then(function () {
+                        btn.innerHTML = checkSvg;
+                        btn.setAttribute('aria-label', 'Copied');
+                        btn.setAttribute('title', 'Copied');
+                        clearTimeout(btn._copyT);
+                        btn._copyT = setTimeout(function () {
+                            btn.innerHTML = copySvg;
+                            btn.setAttribute('aria-label', prevLabel || 'Copy command');
+                            btn.setAttribute('title', 'Copy');
+                        }, 2000);
+                    });
+                });
+            })();
+        </script>
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GOOGLE_TAG_ID%"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', '%VITE_GOOGLE_TAG_ID%');
+        </script>
+
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>

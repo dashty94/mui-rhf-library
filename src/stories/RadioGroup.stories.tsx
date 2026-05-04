@@ -27,7 +27,7 @@ const Template: StoryFn<RadioGroupControllerProps> = (args) => {
     return <RadioGroupController {...args} control={control} />;
 };
 
-export const FormGroup = Template.bind({});
+export const FormGroup: StoryFn<RadioGroupControllerProps> = Template.bind({});
 
 FormGroup.args = {
     name: 'formGroup',

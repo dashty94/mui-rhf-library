@@ -5,7 +5,7 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { Meta, StoryFn } from '@storybook/react-webpack5';
 import moment from 'moment';
 import React, { useMemo } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, type Control } from 'react-hook-form';
 import * as yup from 'yup';
 import { FormFields } from '../components/form/FormFields';
 import { FieldProps, FormFieldsProps } from '../form/typing';
@@ -172,7 +172,7 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
         <LocalizationProvider dateAdapter={AdapterMoment as any}>
             <form onSubmit={handleSubmit(handleFormSubmit)}>
                 <Grid container spacing={2}>
-                    <FormFields fields={fields} control={control} />
+                    <FormFields fields={fields} control={control as Control<any>} />
                 </Grid>
 
                 <button type="submit">Submit</button>
@@ -181,4 +181,4 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
     );
 };
 
-export const Form = Template.bind({});
+export const Form: StoryFn<FormFieldsProps> = Template.bind({});

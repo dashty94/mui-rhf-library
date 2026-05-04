@@ -23,13 +23,6 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
                         error={fieldState?.invalid}
                         helperText={fieldState?.error?.message}
                         type={type}
-                        InputLabelProps={
-                            type === 'date' || type === 'month'
-                                ? {
-                                      shrink: true
-                                  }
-                                : {}
-                        }
                         {...rest}
                         inputRef={ref}
                         {...restField}
@@ -42,6 +35,14 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
                             onBlur?.(...args);
                         }}
                         disabled={restField.disabled ?? rest.disabled}
+                        slotProps={{
+                            inputLabel:
+                                type === 'date' || type === 'month'
+                                    ? {
+                                          shrink: true
+                                      }
+                                    : {}
+                        }}
                     />
                 );
             }}

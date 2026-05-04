@@ -27,7 +27,7 @@ const Template: StoryFn<SelectControllerProps> = (args) => {
     return <SelectController {...args} control={control} />;
 };
 
-export const Select = Template.bind({});
+export const Select: StoryFn<SelectControllerProps> = Template.bind({});
 
 Select.args = {
     name: 'select',
@@ -42,7 +42,7 @@ Select.args = {
     fullWidth: true
 };
 
-export const SelectMultiple = Template.bind({});
+export const SelectMultiple: StoryFn<SelectControllerProps> = Template.bind({});
 
 SelectMultiple.args = {
     name: 'selectMultiple',
