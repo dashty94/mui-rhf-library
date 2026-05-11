@@ -12,7 +12,8 @@
 <h1 align="center">mui-rhf-library</h1>
 
 <div align="center">
-A set of configured [Material UI](https://github.com/mui/material-ui) form inputs configured with [React Hook Form](https://github.com/react-hook-form/react-hook-form).
+  A set of <a href="https://github.com/mui/material-ui">Material UI</a> form inputs integrated with
+  <a href="https://github.com/react-hook-form/react-hook-form">React Hook Form</a>.
 </div>
 
 ## Installation
