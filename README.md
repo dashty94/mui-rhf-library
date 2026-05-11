@@ -12,7 +12,7 @@
 <h1 align="center">mui-rhf-library</h1>
 
 <div align="center">
-A set of configured Material UI form inputs configured with React Hook Form.
+A set of configured [Material UI](https://github.com/mui/material-ui) form inputs configured with [React Hook Form](https://github.com/react-hook-form/react-hook-form).
 </div>
 
 ## Installation
@@ -135,12 +135,12 @@ root.render(<App />);
 
 **Field[]**: Array of fields to be generated, where each field is an object with the following properties:
 
--   `name`: The name of the field.
--   `label`: The label of the field.
--   `fieldType`: The type of the field (`textField`, `select`, `autocomplete`, `checkbox`, `radioGroup`, `switch`, `datePicker`, or `custom`).
--   `gridProps`: Props of the Grid (Container of the input field), for the available props, please check [Grid2](https://mui.com/material-ui/api/grid2/) or [Grid](https://mui.com/material-ui/api/grid/) (if you want to use deprecated Grid).
--   `props`: Props of the field, for the available props, checkout related [documentation](https://mui.com/material-ui/all-components/) depends on the `fieldType`.
--   `hidden`: If the field should be hidden.
+- `name`: The name of the field.
+- `label`: The label of the field.
+- `fieldType`: The type of the field (`textField`, `select`, `autocomplete`, `checkbox`, `radioGroup`, `switch`, `datePicker`, or `custom`).
+- `gridProps`: Props of the Grid (Container of the input field), for the available props, please check [Grid2](https://mui.com/material-ui/api/grid2/) or [Grid](https://mui.com/material-ui/api/grid/) (if you want to use deprecated Grid).
+- `props`: Props of the field, for the available props, checkout related [documentation](https://mui.com/material-ui/all-components/) depends on the `fieldType`.
+- `hidden`: If the field should be hidden.
 
 ### Controllers
 
