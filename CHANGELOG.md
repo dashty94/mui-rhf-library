@@ -24,8 +24,7 @@ This release raises supported peer versions to **MUI v9** and updates related to
 ##### Repository (not part of the npm package tarball)
 
 - **pnpm** is now the documented package manager; root `pnpm-lock.yaml` added
-- **Marketing site** added under `website/` (Vite + Tailwind; build output is deploy-only)
-- Root **`build`** script installs website deps and produces the site build when needed
+- **Marketing site** added under `website/`
 
 Contributors: [@dashty94](https://github.com/dashty94)
 
