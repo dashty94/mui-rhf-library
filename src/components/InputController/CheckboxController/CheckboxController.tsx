@@ -10,6 +10,8 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
     defaultValue,
     onChange,
     onBlur,
+    label,
+    helperText,
     ...rest
 }) => {
     return (
@@ -22,7 +24,7 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
                     <FormControl required error={fieldState?.invalid} component="fieldset">
                         <FormGroup>
                             <FormControlLabel
-                                label={rest.label}
+                                label={label}
                                 control={
                                     <Checkbox
                                         checked={field.value}
@@ -40,7 +42,7 @@ export const CheckboxController: React.FC<CheckboxControllerProps> = ({
                                 }
                             />
                         </FormGroup>
-                        <FormHelperText>{fieldState?.error?.message || rest.helperText}</FormHelperText>
+                        <FormHelperText>{fieldState?.error?.message || helperText}</FormHelperText>
                     </FormControl>
                 );
             }}

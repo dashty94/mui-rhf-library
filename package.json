@@ -1,6 +1,6 @@
 {
     "name": "mui-rhf-library",
-    "version": "3.1.2",
+    "version": "3.1.3",
     "homepage": "https://mui-rhf-library.dashty.dev/",
     "description": "A set of configured Material UI form inputs configured with React Hook Form.",
     "author": "dashty94",
@@ -41,7 +41,7 @@
         "@storybook/addon-docs": "^10.3.5",
         "@storybook/addon-links": "^10.3.5",
         "@storybook/addon-webpack5-compiler-babel": "^4.0.1",
-        "@storybook/react-webpack5": "^10.3.5",
+        "@storybook/react-webpack5": "^10.4.0",
         "@types/lodash.get": "^4.4.9",
         "@types/react": "^19.2.14",
         "chromatic": "^16.6.0",
@@ -86,7 +86,9 @@
     "pnpm": {
         "overrides": {
             "@storybook/react-docgen-typescript-plugin": "npm:react-docgen-typescript-plugin@1.0.8",
-            "socks": "^2.8.7"
+            "socks": "^2.8.7",
+            "fast-uri@<=3.1.1": ">=3.1.2",
+            "@babel/plugin-transform-modules-systemjs@>=7.12.0 <=7.29.3": ">=7.29.4"
         }
     },
     "packageManager": "pnpm@10.33.2"

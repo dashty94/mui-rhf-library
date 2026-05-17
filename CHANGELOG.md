@@ -1,5 +1,11 @@
 # mui-rhf-library
 
+## 3.1.3
+
+### Patch Changes
+
+- Fix a bug where the CheckboxController would not show the helper text
+
 ## 3.1.2
 
 ### Major Changes

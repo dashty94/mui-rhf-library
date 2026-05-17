@@ -31,5 +31,5 @@ export const Checkbox: StoryFn<CheckboxControllerProps> = Template.bind({});
 
 Checkbox.args = {
     name: 'checkbox',
-    label: 'Checkbox Controller',
+    label: 'Checkbox Controller'
 };

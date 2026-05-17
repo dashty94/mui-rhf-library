@@ -7,6 +7,8 @@ settings:
 overrides:
   '@storybook/react-docgen-typescript-plugin': npm:react-docgen-typescript-plugin@1.0.8
   socks: ^2.8.7
+  fast-uri@<=3.1.1: '>=3.1.2'
+  '@babel/plugin-transform-modules-systemjs@>=7.12.0 <=7.29.3': '>=7.29.4'
 
 importers:
 
@@ -71,8 +73,8 @@ importers:
         specifier: ^4.0.1
         version: 4.0.1(webpack@5.106.2(esbuild@0.27.7))
       '@storybook/react-webpack5':
-        specifier: ^10.3.5
-        version: 10.3.5(esbuild@0.27.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
+        specifier: ^10.4.0
+        version: 10.4.0(@types/react@19.2.14)(esbuild@0.27.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
       '@types/lodash.get':
         specifier: ^4.4.9
         version: 4.4.9
@@ -451,8 +453,8 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
-  '@babel/plugin-transform-modules-systemjs@7.29.0':
-    resolution: {integrity: sha512-PrujnVFbOdUpw4UHiVwKvKRLMMic8+eC0CuNlxjsyZUiBjhFdPsewdXCkveh2KqBA9/waD0W1b4hXSOBQJezpQ==}
+  '@babel/plugin-transform-modules-systemjs@7.29.4':
+    resolution: {integrity: sha512-N7QmZ0xRZfjHOfZeQLJjwgX2zS9pdGHSVl/cjSGlo4dXMqvurfxXDMKY4RqEKzPozV78VMcd0lxyG13mlbKc4w==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -1340,19 +1342,19 @@ packages:
   '@storybook/addon-webpack5-compiler-babel@4.0.1':
     resolution: {integrity: sha512-1oTh6264hFGl40D5YCPhnpuirXeBSNo+7L8MZ4pKMLRLOsnK8CKC3Yp4L+tGySsJFsem8RXau8eZAQskf2Re/g==}
 
-  '@storybook/builder-webpack5@10.3.5':
-    resolution: {integrity: sha512-DYjIpfuwkl8CrDbYWjMcwxrLY3QpcZtDJr4ZcT3hrbZHF5BJ3HnVIv1YM+KF/bJfIUMS2h/YMsRyKVYGthiSzQ==}
+  '@storybook/builder-webpack5@10.4.0':
+    resolution: {integrity: sha512-xmCx6izralwdJeo2HHNpjQ/jGbe7KjqbsqDIw0NQdjl51ED7rYZf84lt9/YYuPh54NnObKXwaE/jXDRERHkpSg==}
     peerDependencies:
-      storybook: ^10.3.5
+      storybook: ^10.4.0
       typescript: '*'
     peerDependenciesMeta:
       typescript:
         optional: true
 
-  '@storybook/core-webpack@10.3.5':
-    resolution: {integrity: sha512-CEtGU2f6+FefIR3v4P1KBJB17UngZDSmib2w36jfVp1pNPIzqdIG2s1NCKAM7vbQHxXVcLpBH31mJqyU+vdypQ==}
+  '@storybook/core-webpack@10.4.0':
+    resolution: {integrity: sha512-5C7WwEZ2JsgJ/dpgn2ZReiAEGA0pAbgLvLwEkI83RVag54lXlUyk9mTyfPRPZqDib9eZBYiBw039cU1lvbz6Ag==}
     peerDependencies:
-      storybook: ^10.3.5
+      storybook: ^10.4.0
 
   '@storybook/csf-plugin@10.3.5':
     resolution: {integrity: sha512-qlEzNKxOjq86pvrbuMwiGD/bylnsXk1dg7ve0j77YFjEEchqtl7qTlrXvFdNaLA89GhW6D/EV6eOCu/eobPDgw==}
@@ -1381,12 +1383,12 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  '@storybook/preset-react-webpack@10.3.5':
-    resolution: {integrity: sha512-PAlh2nJOY+yxYBUBAurWOdd+1RGhl8e5MhpC8hTNhaTB8//WKTpUAOyM8Q1PvflCYKU9Hz11nP4Q4jY1WVEoUA==}
+  '@storybook/preset-react-webpack@10.4.0':
+    resolution: {integrity: sha512-KiYWdTwfzX5dJyo5G57xbGOkViOmtrY+oW1Xx66ph5CONNW9vGTxPDAe/xjBBStHJW4xGV0xTfWuK439B6c7Yw==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      storybook: ^10.3.5
+      storybook: ^10.4.0
       typescript: '*'
     peerDependenciesMeta:
       typescript:
@@ -1399,25 +1401,45 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       storybook: ^10.3.5
 
-  '@storybook/react-webpack5@10.3.5':
-    resolution: {integrity: sha512-g5nxwFBVjm59IDG8qu0mnIno7DJHKvBuJvwO/HyHSuaKvmNRkDCJ8mDegPhpaEwmHPX4dg1GDDUjZ4fwFbQWbA==}
+  '@storybook/react-dom-shim@10.4.0':
+    resolution: {integrity: sha512-dcYWzdPaJEHVlyOyyz0/0v3QJXmcnK2sjw4YiFwU9IVJhoJrBlE9lMtmbO3QqIbq4qA0hElYtGkKO7tMLSKDGw==}
+    peerDependencies:
+      '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      '@types/react-dom': ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      storybook: ^10.4.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@storybook/react-webpack5@10.4.0':
+    resolution: {integrity: sha512-gXVXZXeNRpkJF8luM3Xa607OATFsZdDh8zaOeFF7Fqm7EO6t9gFw6kpMNKMCSiQEP+JtbVQ4r6Kts4TL5MbjKg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      storybook: ^10.3.5
+      storybook: ^10.4.0
       typescript: '>= 4.9.x'
     peerDependenciesMeta:
       typescript:
         optional: true
 
-  '@storybook/react@10.3.5':
-    resolution: {integrity: sha512-tpLTLaVGoA6fLK3ReyGzZUricq7lyPaV2hLPpj5wqdXLV/LpRtAHClUpNoPDYSBjlnSjL81hMZijbkGC3mA+gw==}
+  '@storybook/react@10.4.0':
+    resolution: {integrity: sha512-M1pFs4WywzKAlrBR38h8H6Q1VOca7V7tgBD3/pJGEY8z+8smRE7+Y8Gq7wZ3K0j8/0rWPxXMBD44V/1ZUV4OdA==}
     peerDependencies:
+      '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      '@types/react-dom': ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      storybook: ^10.3.5
+      storybook: ^10.4.0
       typescript: '>= 4.9.x'
     peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
       typescript:
         optional: true
 
@@ -2041,8 +2063,8 @@ packages:
   fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
 
-  fast-uri@3.1.0:
-    resolution: {integrity: sha512-iPeeDKJSWf4IEOasVVrknXpaBV0IApz/gp7S2bb7Z4Lljbl2MGJRqInZiUrQwV16cpzw/D3S5j5Julj/gT52AA==}
+  fast-uri@3.1.2:
+    resolution: {integrity: sha512-rVjf7ArG3LTk+FS6Yw81V1DLuZl1bRbNrev6Tmd/9RaroeeRRJhAt7jg/6YFxbvAQXUCavSoZhPPj6oOx+5KjQ==}
 
   fastq@1.20.1:
     resolution: {integrity: sha512-GGToxJ/w1x32s/D2EKND7kTil4n8OVk/9mycTc4VDza13lOvpUZTGX3mFSCtV9ksdGBVzvsyAVLM6mHFThxXxw==}
@@ -3443,7 +3465,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/plugin-transform-modules-systemjs@7.29.0(@babel/core@7.29.0)':
+  '@babel/plugin-transform-modules-systemjs@7.29.4(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/helper-module-transforms': 7.28.6(@babel/core@7.29.0)
@@ -3689,7 +3711,7 @@ snapshots:
       '@babel/plugin-transform-member-expression-literals': 7.27.1(@babel/core@7.29.0)
       '@babel/plugin-transform-modules-amd': 7.27.1(@babel/core@7.29.0)
       '@babel/plugin-transform-modules-commonjs': 7.28.6(@babel/core@7.29.0)
-      '@babel/plugin-transform-modules-systemjs': 7.29.0(@babel/core@7.29.0)
+      '@babel/plugin-transform-modules-systemjs': 7.29.4(@babel/core@7.29.0)
       '@babel/plugin-transform-modules-umd': 7.27.1(@babel/core@7.29.0)
       '@babel/plugin-transform-named-capturing-groups-regex': 7.29.0(@babel/core@7.29.0)
       '@babel/plugin-transform-new-target': 7.27.1(@babel/core@7.29.0)
@@ -4435,9 +4457,9 @@ snapshots:
       - supports-color
       - webpack
 
-  '@storybook/builder-webpack5@10.3.5(esbuild@0.27.7)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)':
+  '@storybook/builder-webpack5@10.4.0(esbuild@0.27.7)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)':
     dependencies:
-      '@storybook/core-webpack': 10.3.5(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))
+      '@storybook/core-webpack': 10.4.0(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))
       case-sensitive-paths-webpack-plugin: 2.4.0
       cjs-module-lexer: 1.4.3
       css-loader: 7.1.4(webpack@5.106.2(esbuild@0.27.7))
@@ -4462,7 +4484,7 @@ snapshots:
       - uglify-js
       - webpack-cli
 
-  '@storybook/core-webpack@10.3.5(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))':
+  '@storybook/core-webpack@10.4.0(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))':
     dependencies:
       storybook: 10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       ts-dedent: 2.2.0
@@ -4483,9 +4505,9 @@ snapshots:
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
 
-  '@storybook/preset-react-webpack@10.3.5(esbuild@0.27.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)':
+  '@storybook/preset-react-webpack@10.4.0(esbuild@0.27.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)':
     dependencies:
-      '@storybook/core-webpack': 10.3.5(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))
+      '@storybook/core-webpack': 10.4.0(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))
       '@storybook/react-docgen-typescript-plugin': react-docgen-typescript-plugin@1.0.8(typescript@6.0.3)(webpack@5.106.2(esbuild@0.27.7))
       '@types/semver': 7.7.1
       magic-string: 0.30.21
@@ -4512,11 +4534,19 @@ snapshots:
       react-dom: 19.2.5(react@19.2.5)
       storybook: 10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
-  '@storybook/react-webpack5@10.3.5(esbuild@0.27.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)':
+  '@storybook/react-dom-shim@10.4.0(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))':
     dependencies:
-      '@storybook/builder-webpack5': 10.3.5(esbuild@0.27.7)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
-      '@storybook/preset-react-webpack': 10.3.5(esbuild@0.27.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
-      '@storybook/react': 10.3.5(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
+      react: 19.2.5
+      react-dom: 19.2.5(react@19.2.5)
+      storybook: 10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+    optionalDependencies:
+      '@types/react': 19.2.14
+
+  '@storybook/react-webpack5@10.4.0(@types/react@19.2.14)(esbuild@0.27.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)':
+    dependencies:
+      '@storybook/builder-webpack5': 10.4.0(esbuild@0.27.7)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
+      '@storybook/preset-react-webpack': 10.4.0(esbuild@0.27.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
+      '@storybook/react': 10.4.0(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
       storybook: 10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -4525,21 +4555,24 @@ snapshots:
     transitivePeerDependencies:
       - '@rspack/core'
       - '@swc/core'
+      - '@types/react'
+      - '@types/react-dom'
       - esbuild
       - supports-color
       - uglify-js
       - webpack-cli
 
-  '@storybook/react@10.3.5(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)':
+  '@storybook/react@10.4.0(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(typescript@6.0.3)':
     dependencies:
       '@storybook/global': 5.0.0
-      '@storybook/react-dom-shim': 10.3.5(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))
+      '@storybook/react-dom-shim': 10.4.0(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))
       react: 19.2.5
       react-docgen: 8.0.3
       react-docgen-typescript: 2.4.0(typescript@6.0.3)
       react-dom: 19.2.5(react@19.2.5)
       storybook: 10.3.5(@testing-library/dom@10.4.1)(prettier@2.8.8)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
     optionalDependencies:
+      '@types/react': 19.2.14
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
@@ -4781,7 +4814,7 @@ snapshots:
   ajv@8.18.0:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.1.0
+      fast-uri: 3.1.2
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
@@ -5170,7 +5203,7 @@ snapshots:
 
   fast-json-stable-stringify@2.1.0: {}
 
-  fast-uri@3.1.0: {}
+  fast-uri@3.1.2: {}
 
   fastq@1.20.1:
     dependencies:
