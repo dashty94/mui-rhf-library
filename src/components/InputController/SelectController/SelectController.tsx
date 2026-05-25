@@ -42,6 +42,7 @@ export const SelectController = ({
     optionLabel = 'label',
     loading = false,
     customOptionLabel,
+    helperText,
     ...rest
 }: SelectControllerProps) => {
     return (
@@ -104,7 +105,7 @@ export const SelectController = ({
                         <TextField variant={rest?.variant} label={rest.label} disabled size={rest.size} />
                     )}
 
-                    <FormHelperText>{fieldState?.error?.message || rest?.helperText}</FormHelperText>
+                    <FormHelperText>{fieldState?.error?.message || helperText}</FormHelperText>
                 </FormControl>
             )}
         />

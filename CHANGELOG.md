@@ -1,6 +1,15 @@
 # mui-rhf-library
 
-## 3.1.3
+## 4.0.0
+
+### Major Changes
+
+- Update storybook
+- Update dependencies
+
+Contributors: [@dashty94](https://github.com/dashty94)
+
+## 3.1.4
 
 ### Patch Changes
 

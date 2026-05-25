@@ -15,6 +15,7 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
     defaultChecked,
     onChange,
     onBlur,
+    helperText,
     ...rest
 }) => {
     return (
@@ -46,7 +47,7 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
                                 label={label}
                             />
                         </FormGroup>
-                        <FormHelperText>{fieldState?.error?.message || rest?.helperText}</FormHelperText>
+                        <FormHelperText>{fieldState?.error?.message || helperText}</FormHelperText>
                     </FormControl>
                 );
             }}

@@ -30,7 +30,7 @@ yarn add mui-rhf-library
 
 ## Demo
 
-Check the storybook of the library: https://6256bd53e0b94a003aad40bd-yolmpspcao.chromatic.com/
+Check the storybook of the library: https://6256bd53e0b94a003aad40bd-rrlcysbvah.chromatic.com/
 
 ## Usage
 

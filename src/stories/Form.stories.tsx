@@ -94,7 +94,8 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                         { label: 'three', value: 'three' }
                     ],
                     fullWidth: true,
-                    loading: false
+                    loading: false,
+                    helperText: 'helperText'
                 },
                 gridProps: { size: { xs: 6 } }
             },
@@ -124,7 +125,8 @@ const Template: StoryFn<FormFieldsProps> = (args) => {
                 fieldType: 'checkbox',
                 gridProps: { size: { xs: 12 } },
                 props: {
-                    label: 'checkbox'
+                    label: 'checkbox',
+                    helperText: 'helperText'
                 }
             },
             {

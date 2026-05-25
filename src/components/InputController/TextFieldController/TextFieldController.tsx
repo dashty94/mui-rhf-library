@@ -12,6 +12,21 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
     onBlur,
     ...rest
 }) => {
+    const { slotProps, ...restProps } = rest;
+    const inputLabelSlotProps = slotProps?.inputLabel;
+    const shouldShrinkInputLabel = type === 'date' || type === 'month';
+    const mergedSlotProps = shouldShrinkInputLabel
+        ? {
+              ...slotProps,
+              inputLabel: {
+                  ...(typeof inputLabelSlotProps === 'object' && inputLabelSlotProps !== null
+                      ? inputLabelSlotProps
+                      : {}),
+                  shrink: true
+              }
+          }
+        : slotProps;
+
     return (
         <Controller
             name={name}
@@ -23,7 +38,7 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
                         error={fieldState?.invalid}
                         helperText={fieldState?.error?.message}
                         type={type}
-                        {...rest}
+                        {...restProps}
                         inputRef={ref}
                         {...restField}
                         onChange={(...args) => {
@@ -35,14 +50,7 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
                             onBlur?.(...args);
                         }}
                         disabled={restField.disabled ?? rest.disabled}
-                        slotProps={{
-                            inputLabel:
-                                type === 'date' || type === 'month'
-                                    ? {
-                                          shrink: true
-                                      }
-                                    : {}
-                        }}
+                        slotProps={mergedSlotProps}
                     />
                 );
             }}

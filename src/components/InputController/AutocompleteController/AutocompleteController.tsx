@@ -28,12 +28,19 @@ export const AutocompleteController = ({
     onChange,
     customOptionLabel,
     onBlur,
+    helperText,
+    label,
     ...rest
 }: AutocompleteControllerProps) => {
     return loading ? (
         <FormControl fullWidth={textFieldProps?.fullWidth}>
             <LinearProgress />
-            <TextField variant={textFieldProps?.variant} label={textFieldProps?.label} disabled />
+            <TextField
+                variant={textFieldProps?.variant}
+                label={textFieldProps?.label ?? label}
+                helperText={textFieldProps?.helperText || helperText}
+                disabled
+            />
         </FormControl>
     ) : (
         <Controller
@@ -95,7 +102,8 @@ export const AutocompleteController = ({
                                     {...textFieldProps}
                                     inputRef={ref}
                                     error={fieldState?.invalid}
-                                    helperText={fieldState?.error?.message || textFieldProps?.helperText}
+                                    label={textFieldProps?.label ?? label}
+                                    helperText={fieldState?.error?.message || textFieldProps?.helperText || helperText}
                                     slotProps={{
                                         ...params.slotProps,
                                         ...textFieldProps?.slotProps,

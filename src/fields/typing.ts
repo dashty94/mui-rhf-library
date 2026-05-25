@@ -38,6 +38,7 @@ export type SelectProps = MuiSelectProps & {
     optionLabel?: string;
     loading?: boolean;
     customOptionLabel?: (option: any) => any;
+    helperText?: React.ReactNode;
 };
 export type SelectControllerProps = MuiRhfFieldProps & SelectProps;
 
@@ -73,6 +74,8 @@ export type CheckboxControllerProps = MuiRhfFieldProps & CheckboxProps;
 // Autocomplete
 export type AutocompleteProps = Omit<MuiAutocompleteProps<Object, boolean, boolean, boolean, 'div'>, 'renderInput'> & {
     textFieldProps: TextFieldProps; // Props that's only applied to the TextField component
+    label?: React.ReactNode;
+    helperText?: React.ReactNode;
     optionValue?: string;
     optionLabel?: string;
     onChange?: (event: SelectChangeEvent, e: React.SyntheticEvent<Element, Event>) => void;
