@@ -10,6 +10,7 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
     type = 'text',
     onChange,
     onBlur,
+    helperText,
     ...rest
 }) => {
     const { slotProps, ...restProps } = rest;
@@ -35,8 +36,6 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
             render={({ field: { ref, ...restField }, fieldState }) => {
                 return (
                     <TextField
-                        error={fieldState?.invalid}
-                        helperText={fieldState?.error?.message}
                         type={type}
                         {...restProps}
                         inputRef={ref}
@@ -51,6 +50,8 @@ export const TextFieldController: React.FC<TextFieldControllerProps> = ({
                         }}
                         disabled={restField.disabled ?? rest.disabled}
                         slotProps={mergedSlotProps}
+                        error={fieldState?.invalid}
+                        helperText={fieldState?.error?.message || helperText}
                     />
                 );
             }}

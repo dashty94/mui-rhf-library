@@ -1,5 +1,11 @@
 # mui-rhf-library
 
+## 4.0.1
+
+### Patch Changes
+
+- Fix a bug where the TextFieldController would not show the helper text
+
 ## 4.0.0
 
 ### Major Changes
