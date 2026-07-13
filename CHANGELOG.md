@@ -1,5 +1,11 @@
 # mui-rhf-library
 
+## 4.0.2
+
+### Patch Changes
+
+- Update dependencies
+
 ## 4.0.1
 
 ### Patch Changes
