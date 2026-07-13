@@ -8,8 +8,8 @@
         "preview": "vite preview"
     },
     "devDependencies": {
-        "@types/node": "^22.13.5",
-        "@tailwindcss/vite": "^4.1.11",
+        "@types/node": "^22.20.1",
+        "@tailwindcss/vite": "^4.3.2",
         "tailwindcss": "^4.1.11",
         "vite": "^8.1.4"
     }
