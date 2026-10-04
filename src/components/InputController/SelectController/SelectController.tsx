@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { SelectControllerProps, Option } from '../../../fields/index';
-import get from 'lodash.get';
+import { get } from '../../../utils/get';
 
 const ChipsWrapper = styled('div')(
     () => `

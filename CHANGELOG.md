@@ -1,5 +1,16 @@
 # mui-rhf-library
 
+## 4.0.3
+
+### Patch Changes
+
+- Move `@changesets/cli`, `@rollup/plugin-terser` and `@rollup/plugin-typescript` to devDependencies so they are no longer installed in consumer projects (removes the `braces` audit warning they pulled in)
+- Widen the `react` peer dependency from a canary range to `^19.0.0`
+- Ship only the bundled output and `dist/index.d.ts`; stale build artifacts and story type declarations are no longer published
+- Replace the deprecated `lodash.get` with an internal helper, reducing the bundle size
+- Document the required peer dependencies in the README
+- Update dependencies
+
 ## 4.0.2
 
 ### Patch Changes

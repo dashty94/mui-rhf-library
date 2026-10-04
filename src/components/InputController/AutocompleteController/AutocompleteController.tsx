@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form';
 import Autocomplete from '@mui/material/Autocomplete';
 import { TextField, LinearProgress as MuiLinearProgress, FormControl } from '@mui/material';
 import { AutocompleteControllerProps } from '../../../fields/index';
-import get from 'lodash.get';
+import { get } from '../../../utils/get';
 import { styled } from '@mui/material/styles';
 
 const LinearProgress = styled(MuiLinearProgress)(

@@ -21,11 +21,20 @@
 mui-rhf-library is available as an [npm package](https://www.npmjs.com/package/mui-rhf-library).
 
 ```sh
-// with npm
+# with npm
 npm install mui-rhf-library
 
-// with yarn
+# with yarn
 yarn add mui-rhf-library
+
+# with pnpm
+pnpm add mui-rhf-library
+```
+
+The library relies on the following peer dependencies, install them if your project does not already have them:
+
+```sh
+npm install react react-hook-form @mui/material @mui/system @mui/x-date-pickers @emotion/react @emotion/styled
 ```
 
 ## Demo
