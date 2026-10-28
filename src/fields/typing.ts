@@ -63,7 +63,7 @@ export type RadioGroupProps = MuiFormControlProps & {
 export type RadioGroupControllerProps = MuiRhfFieldProps & RadioGroupProps;
 
 // Checkbox
-export type CheckboxProps = MuiCheckboxProps & {
+export type CheckboxProps = Omit<MuiCheckboxProps, 'defaultValue'> & {
     label?: string;
     defaultValue?: boolean;
     onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
@@ -86,6 +86,8 @@ export type AutocompleteControllerProps = Omit<MuiRhfFieldProps, 'helperText'> &
 // CustomComponent
 export type CustomComponentControllerProps = MuiRhfFieldProps & {
     CustomComponent: React.FC<any>;
+    // Any other props are forwarded to CustomComponent
+    [key: string]: any;
 };
 
 // DatePicker
