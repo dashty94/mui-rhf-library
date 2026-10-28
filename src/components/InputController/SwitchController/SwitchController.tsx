@@ -22,7 +22,7 @@ export const SwitchController: React.FC<SwitchControllerProps> = ({
         <Controller
             name={name}
             control={control}
-            defaultValue={defaultChecked}
+            defaultValue={defaultChecked ?? false}
             render={({ field, fieldState }) => {
                 return (
                     <FormControl required error={fieldState?.invalid} component="fieldset">

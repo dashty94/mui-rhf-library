@@ -1,5 +1,19 @@
 # mui-rhf-library
 
+## 4.1.0
+
+### Minor Changes
+
+- `SwitchController` now defaults its form value to `false` instead of `undefined`, so an untouched switch submits `false` (matching `CheckboxController`). A value from the form's `defaultValues` still takes precedence
+- `CustomComponentControllerProps` now accepts extra props, which are forwarded to `CustomComponent` (this already worked at runtime but did not type-check)
+
+### Patch Changes
+
+- Fix `CheckboxProps` so `defaultValue` is typed as `boolean`; previously it was intersected with MUI's string-typed `defaultValue`, making `defaultValue={true}` a type error
+- Add a test suite (Vitest + React Testing Library) covering every controller, `FormFields` and the `get` helper; tests now run before publishing
+- Update dependencies, including MUI 9.5, MUI X date pickers 9.16 and react-hook-form 7.91
+- Resolve `pnpm audit` findings in development tooling (`fast-uri`, `webpack-dev-middleware`)
+
 ## 4.0.3
 
 ### Patch Changes
