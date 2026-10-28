@@ -39,7 +39,7 @@ npm install react react-hook-form @mui/material @mui/system @mui/x-date-pickers 
 
 ## Demo
 
-Check the storybook of the library: https://6256bd53e0b94a003aad40bd-rrlcysbvah.chromatic.com/
+Check the storybook of the library: https://6256bd53e0b94a003aad40bd-kthutdahcu.chromatic.com/
 
 ## Usage
 
